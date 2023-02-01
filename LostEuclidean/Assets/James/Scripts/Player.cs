@@ -34,14 +34,14 @@ public class Player : MonoBehaviour
         // Lower the speed as necessary
         if (ramp < 1f && moving)
         {
-            ramp += (1 - drag);
+            ramp += (1 - (3 * drag));
 
             if (ramp > 1f)
                 ramp = 1f;
         }
         if (ramp > 0 && !moving)
         {
-            ramp -= drag;
+            ramp *= (1 - drag);
 
             if (ramp < 0.01f)
                 ramp = 0f;
