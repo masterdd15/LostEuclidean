@@ -63,4 +63,17 @@ public class Player : MonoBehaviour
             //moveVec = Vector3.zero;
         }
     }
+
+    public void ChangeColor(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Flashlight fl = GetComponentInChildren<Flashlight>();
+
+            if (fl != null)
+            {
+                fl.ChangeColorInput();
+            }
+        }
+    }
 }

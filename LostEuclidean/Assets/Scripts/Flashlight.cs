@@ -24,6 +24,14 @@ public class Flashlight : MonoBehaviour
         ChangeLightColor();
     }
 
+    public void ChangeColorInput()
+    {
+        currentColor++;
+        if ((int)currentColor >= 3)
+            currentColor = LightColor.Blue;
+        ChangeLightColor();
+    }
+
     private void ChangeLightColor()
     {
         for (int i = 0; i < lightMasks.Length; i++)
