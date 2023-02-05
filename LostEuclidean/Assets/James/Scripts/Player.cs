@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] Camera m_Camera;
     [SerializeField] Rigidbody rb;
     public float speed;
     public float drag;
@@ -25,12 +26,16 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Look at the mouse
+        LookAtMouse();
+
         // Move the character
         if (ramp != 0)
         {
-            transform.Translate(moveVec * speed * ramp * Time.deltaTime);
+            transform.Translate(moveVec * speed * ramp * Time.deltaTime, Space.World);
+            //rb.MovePosition(transform.position + (moveVec * speed * ramp * Time.deltaTime));
         }
-        
+
         // Lower the speed as necessary
         if (ramp < 1f && moving)
         {
@@ -46,6 +51,21 @@ public class Player : MonoBehaviour
             if (ramp < 0.01f)
                 ramp = 0f;
         }
+    }
+
+    void LookAtMouse()
+    {
+        Vector3 mousePos = Mouse.current.position.ReadValue();
+
+        Vector3 worldMousPos = m_Camera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 10f));
+
+        //Debug.Log(worldMousPos.x + " " + worldMousPos.y);
+
+        worldMousPos = new Vector3(worldMousPos.x, transform.position.y, worldMousPos.z);
+        Vector3 targetDir = worldMousPos - transform.position;
+
+        float rotY = Mathf.Atan2(targetDir.z, targetDir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, -rotY, 0f);
     }
 
     public void Move(InputAction.CallbackContext context)
