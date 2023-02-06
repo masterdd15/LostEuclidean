@@ -14,9 +14,21 @@ public class Flashlight : MonoBehaviour
     Transform[] lightMasks = new Transform[3];
     [SerializeField]
     Light[] lights = new Light[3];
+    [SerializeField]
+    Transform player;
 
     private const float PICKUP_DISTANCE = 2.0f;
-    private Vector3 HOLD_OFFSET = new Vector3(0.5f, 0.5f, 0.5f);
+    private Vector3 HOLD_OFFSET = new Vector3(-0.5f, 0.0f, 0.0f);
+    private Quaternion HOLD_ROTATION;
+
+    void Awake()
+    {
+        if (player == null)
+        {
+            player = GameObject.Find("Player").transform;
+        }
+        HOLD_ROTATION = Quaternion.Euler(new Vector3(0.0f, 90.0f, 0.0f));
+    }
 
     private void TryPickUp(Transform holder)
     {
@@ -24,7 +36,7 @@ public class Flashlight : MonoBehaviour
             return;
         isHolding = true;
         transform.parent = holder;
-        transform.localRotation = Quaternion.identity;
+        transform.localRotation = HOLD_ROTATION;
         transform.localPosition = HOLD_OFFSET;
     }
 
@@ -46,13 +58,21 @@ public class Flashlight : MonoBehaviour
         ChangeLightColor();
     }
 
-    public void ChangeColorInput()
+    public void OnPickUpFlashlight (InputValue value)
+    {
+        if (isHolding)
+            TryDrop();
+        else
+            TryPickUp(player);
+    }
+
+    /*public void ChangeColorInput()
     {
         currentColor++;
         if ((int)currentColor >= 3)
             currentColor = LightColor.Blue;
         ChangeLightColor();
-    }
+    }*/
 
     private void ChangeLightColor()
     {
