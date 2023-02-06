@@ -7,7 +7,6 @@ public enum LightColor { Blue = 0, Green, Red}
 
 public class Flashlight : MonoBehaviour
 {
-    private KeyCode cycleKey = KeyCode.R;
     private LightColor currentColor = LightColor.Blue;
     private bool isHolding = true;
 
@@ -16,8 +15,31 @@ public class Flashlight : MonoBehaviour
     [SerializeField]
     Light[] lights = new Light[3];
 
-    void OnChangeColor(InputValue value)
+    private const float PICKUP_DISTANCE = 2.0f;
+    private Vector3 HOLD_OFFSET = new Vector3(0.5f, 0.5f, 0.5f);
+
+    private void TryPickUp(Transform holder)
     {
+        if (isHolding || (holder.position - transform.position).magnitude >= PICKUP_DISTANCE)
+            return;
+        isHolding = true;
+        transform.parent = holder;
+        transform.localRotation = Quaternion.identity;
+        transform.localPosition = HOLD_OFFSET;
+    }
+
+    private void TryDrop ()
+    {
+        if (!isHolding)
+            return;
+        isHolding = false;
+        transform.parent = null;
+    }
+
+    public void OnChangeColor(InputValue value)
+    {
+        if (!isHolding)
+            return;
         currentColor++;
         if ((int)currentColor >= 3)
             currentColor = LightColor.Blue;
