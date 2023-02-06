@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] LayerMask cameraRotateMask;
+    [SerializeField] LayerMask playerLookMask;
     [SerializeField] Camera m_Camera;
     [SerializeField] Rigidbody rb;
     public float speed;
@@ -14,6 +16,7 @@ public class Player : MonoBehaviour
     bool moving;
     Vector3 moveVec;
     float ramp;
+    bool camRotating;
 
     // Start is called before the first frame update
     void Start()
@@ -21,14 +24,12 @@ public class Player : MonoBehaviour
         moving = false;
         ramp = 0f;
         moveVec = Vector3.zero;
+        camRotating = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (moving)
-            Debug.Log("WE'RE MOVING!!!!!!!");
-
         // Look at the mouse
         LookAtMouse();
 
@@ -60,15 +61,27 @@ public class Player : MonoBehaviour
     {
         Vector3 mousePos = Mouse.current.position.ReadValue();
 
-        Vector3 worldMousPos = m_Camera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 10f));
+        //Vector3 worldMousPos = m_Camera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 10f));
 
         //Debug.Log(worldMousPos.x + " " + worldMousPos.y);
 
-        worldMousPos = new Vector3(worldMousPos.x, transform.position.y, worldMousPos.z);
-        Vector3 targetDir = worldMousPos - transform.position;
+        RaycastHit hit;
+        Vector3 worldMousePos = Vector3.zero;
+        Ray mouseRay = m_Camera.ScreenPointToRay(mousePos);
 
-        float rotY = Mathf.Atan2(targetDir.z, targetDir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, -rotY, 0f);
+        if (Physics.Raycast(mouseRay, out hit))
+        {
+            worldMousePos = hit.point;
+        }
+
+        if (worldMousePos != Vector3.zero)
+        {
+            worldMousePos = new Vector3(worldMousePos.x, transform.position.y, worldMousePos.z);
+            Vector3 targetDir = worldMousePos - transform.position;
+
+            float rotY = Mathf.Atan2(targetDir.z, targetDir.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, -rotY, 0f);
+        }
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -85,6 +98,51 @@ public class Player : MonoBehaviour
             moving = false;
             //moveVec = Vector3.zero;
         }
+    }
+
+    public void RotateCamera(InputAction.CallbackContext context)
+    {
+        if (context.performed && !camRotating)
+        {
+            if (context.ReadValue<float>() < 0)
+            {
+                StartCoroutine(CameraRotatingCoroutine(1f));
+            }
+            else
+            {
+                StartCoroutine(CameraRotatingCoroutine(-1f));
+            }
+        }
+    }
+
+    IEnumerator CameraRotatingCoroutine(float dir)
+    {
+        camRotating = true;
+
+        Vector2 center = new Vector2(m_Camera.scaledPixelWidth / 2, m_Camera.scaledPixelHeight / 2);
+        RaycastHit hit;
+        Vector3 rotatePoint = Vector3.zero;
+        Ray mouseRay = m_Camera.ScreenPointToRay(center);
+
+        if (Physics.Raycast(mouseRay, out hit, Mathf.Infinity, cameraRotateMask))
+        {
+            rotatePoint = hit.point;
+        }
+
+        float deg = 0f;
+        while (deg < 90f)
+        {
+            if (rotatePoint != Vector3.zero)
+            {
+                m_Camera.transform.RotateAround(rotatePoint, Vector3.up, 2 * dir);
+            }
+
+            deg += 2;
+
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        camRotating = false;
     }
 
     /*public void ChangeColor(InputAction.CallbackContext context)
