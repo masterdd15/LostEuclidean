@@ -84,7 +84,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void ChangeColor(InputAction.CallbackContext context)
+    /*public void ChangeColor(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
@@ -95,5 +95,5 @@ public class Player : MonoBehaviour
                 fl.ChangeColorInput();
             }
         }
-    }
+    }*/
 }
