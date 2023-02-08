@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     [SerializeField] Camera m_Camera;
+    [SerializeField] LayerMask playerLookMask;
 
     [Header("Player Controller Variables")]
     [SerializeField] Rigidbody rb;
@@ -35,6 +36,8 @@ public class Player : MonoBehaviour
         // Move the character
         if (ramp != 0)
         {
+            Vector3 cameraForward = m_Camera.transform.forward;
+
             transform.Translate(moveVec * speed * ramp * Time.deltaTime, Space.World);
             //rb.MovePosition(transform.position + (moveVec * speed * ramp * Time.deltaTime));
         }
@@ -68,7 +71,7 @@ public class Player : MonoBehaviour
         Vector3 worldMousePos = Vector3.zero;
         Ray mouseRay = m_Camera.ScreenPointToRay(mousePos);
 
-        if (Physics.Raycast(mouseRay, out hit))
+        if (Physics.Raycast(mouseRay, out hit, Mathf.Infinity, playerLookMask))
         {
             worldMousePos = hit.point;
         }
