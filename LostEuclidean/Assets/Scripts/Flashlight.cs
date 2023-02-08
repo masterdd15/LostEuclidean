@@ -3,19 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public enum LightColor { Blue = 0, Green, Red}
+public enum LightColor { Blue = 0, Red, Green, Off}
 
 public class Flashlight : MonoBehaviour
 {
-    private LightColor currentColor = LightColor.Blue;
-    private bool isHolding = true;
-
     [Space(10), Header("Dependencies"), SerializeField]
     Transform[] lightMasks = new Transform[3];
     [SerializeField]
     Light[] lights = new Light[3];
     [SerializeField]
+    LightColor[] lightModes;
+    [SerializeField]
     Transform player;
+
+    private LightColor currentColor = LightColor.Off;
+    private int currentColorIndex = 0;
+    private bool isHolding = true;
+    public List<ColorObject> colorObjList = new List<ColorObject>();
 
     private const float PICKUP_DISTANCE = 2.0f;
     private Vector3 HOLD_OFFSET = new Vector3(-0.5f, 0.0f, 0.0f);
@@ -52,9 +56,16 @@ public class Flashlight : MonoBehaviour
     {
         if (!isHolding)
             return;
-        currentColor++;
-        if ((int)currentColor >= 3)
-            currentColor = LightColor.Blue;
+        for (int i = 0; i < colorObjList.Count; i++)
+        {
+            RemoveColorObject(colorObjList[0]);
+        }
+        currentColorIndex++;
+        if (currentColorIndex >= lightModes.Length)
+        {
+            currentColorIndex = 0;
+        }
+        currentColor = lightModes[currentColorIndex];
         ChangeLightColor();
     }
 
@@ -90,4 +101,41 @@ public class Flashlight : MonoBehaviour
             }
         }
     }
+
+    private void AddColorObject (ColorObject obj)
+    {
+        if (!colorObjList.Contains(obj))
+        {
+            colorObjList.Add(obj);
+            obj.OnLightEnter(currentColor);
+        }
+    }
+
+    private void RemoveColorObject (ColorObject obj)
+    {
+        if (colorObjList.Contains(obj))
+        {
+            colorObjList.Remove(obj);
+            obj.OnLightExit(currentColor);
+        }
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        ColorObject obj = other.GetComponent<ColorObject>();
+        if (obj != null)
+        {
+            AddColorObject(obj);
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        ColorObject obj = other.GetComponent<ColorObject>();
+        if (obj != null)
+        {
+            RemoveColorObject(obj);
+        }
+    }
+
 }
