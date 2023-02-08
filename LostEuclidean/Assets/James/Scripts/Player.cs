@@ -36,8 +36,6 @@ public class Player : MonoBehaviour
         // Move the character
         if (ramp != 0)
         {
-            Vector3 cameraForward = m_Camera.transform.forward;
-
             transform.Translate(moveVec * speed * ramp * Time.deltaTime, Space.World);
             //rb.MovePosition(transform.position + (moveVec * speed * ramp * Time.deltaTime));
         }
@@ -94,6 +92,14 @@ public class Player : MonoBehaviour
 
             moveVec = new Vector3(inputMove.x, 0f, inputMove.y);
             moving = true;
+
+            // Rotate the moveVec to correspond to the camera
+            Vector3 cameraRotation = m_Camera.transform.rotation.eulerAngles;
+
+            // Get the direction of the player's forward
+            cameraRotation = new Vector3(0f, cameraRotation.y, 0f);
+
+            moveVec = Quaternion.Euler(0f, cameraRotation.y, 0f) * moveVec;
         }
         else
         {
