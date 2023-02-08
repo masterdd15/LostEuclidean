@@ -57,6 +57,32 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        //// Move the character
+        //if (ramp != 0)
+        //{
+        //    //transform.Translate(moveVec * speed * ramp * Time.deltaTime, Space.World);
+        //    //rb.MovePosition(transform.position + (moveVec * speed * ramp * Time.deltaTime));
+        //}
+
+        //// Lower the speed as necessary
+        //if (ramp < 1f && moving)
+        //{
+        //    ramp += (1 - (3 * drag));
+
+        //    if (ramp > 1f)
+        //        ramp = 1f;
+        //}
+        //if (ramp > 0 && !moving)
+        //{
+        //    ramp *= (1 - drag);
+
+        //    if (ramp < 0.01f)
+        //        ramp = 0f;
+        //}
+    }
+
     void LookAtMouse()
     {
         Vector3 mousePos = Mouse.current.position.ReadValue();
