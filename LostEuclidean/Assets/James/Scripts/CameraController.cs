@@ -80,9 +80,23 @@ public class CameraController : MonoBehaviour
                 foreach (Transform wall in wallParent.transform)
                 {
                     if (i == leftWall || i == rightWall)
+                    {
                         wall.gameObject.layer = wallHiddenLayer;
+
+                        foreach (Transform child in wall)
+                        {
+                            child.gameObject.layer = wallHiddenLayer;
+                        }
+                    }
                     else
+                    {
                         wall.gameObject.layer = wallLayer;
+
+                        foreach (Transform child in wall)
+                        {
+                            child.gameObject.layer = wallLayer;
+                        }
+                    }
 
                     i++;
                 }

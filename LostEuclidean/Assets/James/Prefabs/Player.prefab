@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Camera: {fileID: 0}
   playerLookMask:
     serializedVersion: 2
-    m_Bits: 3072
+    m_Bits: 11264
   rb: {fileID: 1990308870574399716}
   speed: 5
   drag: 0.15
