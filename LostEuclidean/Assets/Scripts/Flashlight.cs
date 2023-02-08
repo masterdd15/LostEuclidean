@@ -19,7 +19,7 @@ public class Flashlight : MonoBehaviour
     private LightColor currentColor = LightColor.Off;
     private int currentColorIndex = 0;
     private bool isHolding = true;
-    public List<ColorObject> colorObjList = new List<ColorObject>();
+    private List<ColorObject> colorObjList = new List<ColorObject>();
 
     private const float PICKUP_DISTANCE = 2.0f;
     private Vector3 HOLD_OFFSET = new Vector3(-0.5f, 0.0f, 0.0f);
