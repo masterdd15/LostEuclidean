@@ -5,9 +5,9 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] LayerMask cameraRotateMask;
-    [SerializeField] LayerMask playerLookMask;
     [SerializeField] Camera m_Camera;
+
+    [Header("Player Controller Variables")]
     [SerializeField] Rigidbody rb;
     public float speed;
     public float drag;
@@ -24,7 +24,6 @@ public class Player : MonoBehaviour
         moving = false;
         ramp = 0f;
         moveVec = Vector3.zero;
-        camRotating = false;
     }
 
     // Update is called once per frame
@@ -106,44 +105,16 @@ public class Player : MonoBehaviour
         {
             if (context.ReadValue<float>() < 0)
             {
-                StartCoroutine(CameraRotatingCoroutine(1f));
+                m_Camera.gameObject.GetComponent<CameraController>().RotateCamera(1f);
             }
             else
             {
-                StartCoroutine(CameraRotatingCoroutine(-1f));
+                m_Camera.gameObject.GetComponent<CameraController>().RotateCamera(-1f);
             }
         }
     }
 
-    IEnumerator CameraRotatingCoroutine(float dir)
-    {
-        camRotating = true;
-
-        Vector2 center = new Vector2(m_Camera.scaledPixelWidth / 2, m_Camera.scaledPixelHeight / 2);
-        RaycastHit hit;
-        Vector3 rotatePoint = Vector3.zero;
-        Ray mouseRay = m_Camera.ScreenPointToRay(center);
-
-        if (Physics.Raycast(mouseRay, out hit, Mathf.Infinity, cameraRotateMask))
-        {
-            rotatePoint = hit.point;
-        }
-
-        float deg = 0f;
-        while (deg < 90f)
-        {
-            if (rotatePoint != Vector3.zero)
-            {
-                m_Camera.transform.RotateAround(rotatePoint, Vector3.up, 2 * dir);
-            }
-
-            deg += 2;
-
-            yield return new WaitForSeconds(0.01f);
-        }
-
-        camRotating = false;
-    }
+    
 
     /*public void ChangeColor(InputAction.CallbackContext context)
     {
