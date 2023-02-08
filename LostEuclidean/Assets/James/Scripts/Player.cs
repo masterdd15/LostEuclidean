@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     [SerializeField] Camera m_Camera;
+
+    [Header("Player Controller Variables")]
     [SerializeField] Rigidbody rb;
     public float speed;
     public float drag;
@@ -14,6 +16,7 @@ public class Player : MonoBehaviour
     bool moving;
     Vector3 moveVec;
     float ramp;
+    bool camRotating;
 
     // Start is called before the first frame update
     void Start()
@@ -26,9 +29,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (moving)
-            Debug.Log("WE'RE MOVING!!!!!!!");
-
         // Look at the mouse
         LookAtMouse();
 
@@ -60,15 +60,27 @@ public class Player : MonoBehaviour
     {
         Vector3 mousePos = Mouse.current.position.ReadValue();
 
-        Vector3 worldMousPos = m_Camera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 10f));
+        //Vector3 worldMousPos = m_Camera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 10f));
 
         //Debug.Log(worldMousPos.x + " " + worldMousPos.y);
 
-        worldMousPos = new Vector3(worldMousPos.x, transform.position.y, worldMousPos.z);
-        Vector3 targetDir = worldMousPos - transform.position;
+        RaycastHit hit;
+        Vector3 worldMousePos = Vector3.zero;
+        Ray mouseRay = m_Camera.ScreenPointToRay(mousePos);
 
-        float rotY = Mathf.Atan2(targetDir.z, targetDir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, -rotY, 0f);
+        if (Physics.Raycast(mouseRay, out hit))
+        {
+            worldMousePos = hit.point;
+        }
+
+        if (worldMousePos != Vector3.zero)
+        {
+            worldMousePos = new Vector3(worldMousePos.x, transform.position.y, worldMousePos.z);
+            Vector3 targetDir = worldMousePos - transform.position;
+
+            float rotY = Mathf.Atan2(targetDir.z, targetDir.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, -rotY, 0f);
+        }
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -86,6 +98,23 @@ public class Player : MonoBehaviour
             //moveVec = Vector3.zero;
         }
     }
+
+    public void RotateCamera(InputAction.CallbackContext context)
+    {
+        if (context.performed && !camRotating)
+        {
+            if (context.ReadValue<float>() < 0)
+            {
+                m_Camera.gameObject.GetComponent<CameraController>().RotateCamera(1f);
+            }
+            else
+            {
+                m_Camera.gameObject.GetComponent<CameraController>().RotateCamera(-1f);
+            }
+        }
+    }
+
+    
 
     /*public void ChangeColor(InputAction.CallbackContext context)
     {
