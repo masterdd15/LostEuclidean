@@ -156,7 +156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1924918766038209991, guid: 95e69907bef7049479adc2320b10da3a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5
+      value: 0.52
       objectReference: {fileID: 0}
     - target: {fileID: 1924918766038209991, guid: 95e69907bef7049479adc2320b10da3a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -222,10 +222,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3666768251220872560, guid: 95e69907bef7049479adc2320b10da3a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8160abaf29b27ba4ca34aa199ae34f7d, type: 2}
     - target: {fileID: 4756433649166295884, guid: 95e69907bef7049479adc2320b10da3a, type: 3}
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4890421761362821123, guid: 95e69907bef7049479adc2320b10da3a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 993e14ec19475ad4b9f03e776082f363, type: 2}
     - target: {fileID: 5112363151975494424, guid: 95e69907bef7049479adc2320b10da3a, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -244,7 +252,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7072047884288903057, guid: 95e69907bef7049479adc2320b10da3a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.239
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8053485223711550181, guid: 95e69907bef7049479adc2320b10da3a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8686954543260103587, guid: 95e69907bef7049479adc2320b10da3a, type: 3}
       propertyPath: m_RenderingLayerMask
@@ -343,7 +355,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 567
+    m_Bits: 3639
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0

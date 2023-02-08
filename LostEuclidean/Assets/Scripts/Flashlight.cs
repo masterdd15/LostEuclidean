@@ -7,12 +7,15 @@ public enum LightColor { Blue = 0, Red, Green, Off}
 
 public class Flashlight : MonoBehaviour
 {
+    [SerializeField]
+    LightColor[] lightModes = { LightColor.Off };
+
     [Space(10), Header("Dependencies"), SerializeField]
     Transform[] lightMasks = new Transform[3];
     [SerializeField]
     Light[] lights = new Light[3];
     [SerializeField]
-    LightColor[] lightModes;
+    Transform[] volumetricMeshes = new Transform[3];
     [SerializeField]
     Transform player;
 
@@ -22,7 +25,7 @@ public class Flashlight : MonoBehaviour
     private List<ColorObject> colorObjList = new List<ColorObject>();
 
     private const float PICKUP_DISTANCE = 2.0f;
-    private Vector3 HOLD_OFFSET = new Vector3(-0.5f, 0.0f, 0.0f);
+    private Vector3 HOLD_OFFSET = new Vector3(0.5f, 0.0f, 0.0f);
     private Quaternion HOLD_ROTATION;
 
     void Awake()
@@ -93,11 +96,13 @@ public class Flashlight : MonoBehaviour
             {
                 lightMasks[i].gameObject.SetActive(true);
                 lights[i].gameObject.SetActive(true);
+                volumetricMeshes[i].gameObject.SetActive(true);
             }
             else
             {
                 lightMasks[i].gameObject.SetActive(false);
                 lights[i].gameObject.SetActive(false);
+                volumetricMeshes[i].gameObject.SetActive(false);
             }
         }
     }
