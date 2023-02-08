@@ -6,7 +6,6 @@ public class CameraController : MonoBehaviour
 {
     [Header("Camera and Layer Variables")]
     [SerializeField] LayerMask cameraRotateMask;
-    [SerializeField] LayerMask playerLookMask;
     [SerializeField] int wallLayer;
     [SerializeField] int wallHiddenLayer;
     [SerializeField] Camera m_Camera;
