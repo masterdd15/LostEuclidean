@@ -254,6 +254,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 511296bb-3b7c-467f-b023-c07d7d429cee
     m_ActionName: Player/RotateCamera[/Keyboard/q,/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1990308870574399717}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: CameraControl
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 12bac59d-b327-4bb8-8e00-acd8c9aa8171
+    m_ActionName: Player/CameraControl[/Keyboard/ctrl]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
