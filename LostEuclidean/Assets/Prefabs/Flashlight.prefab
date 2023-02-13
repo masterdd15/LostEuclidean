@@ -384,7 +384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc15fac3e0a014c45b21139d807b776d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightModes: 
+  lightModes: 03000000000000000100000002000000
   lightMasks:
   - {fileID: 7875244812120967338}
   - {fileID: 7875244814018028741}
@@ -399,7 +399,7 @@ MonoBehaviour:
   - {fileID: 2585913953807456479}
   player: {fileID: 0}
   contextualPromptCanvas: {fileID: 7066262958351435146}
-  buttonText: {fileID: 0}
+  buttonText: {fileID: 7066262958783304246}
 --- !u!114 &-7676308693320649013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1297,5 +1297,10 @@ MonoBehaviour:
 --- !u!223 &7066262958351435146 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 1385770910046690179, guid: 8fc0c1e49149b06479c9dd53d21b4cd0, type: 3}
+  m_PrefabInstance: {fileID: 8154708256362520073}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7066262958783304246 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1385770909363162175, guid: 8fc0c1e49149b06479c9dd53d21b4cd0, type: 3}
   m_PrefabInstance: {fileID: 8154708256362520073}
   m_PrefabAsset: {fileID: 0}
