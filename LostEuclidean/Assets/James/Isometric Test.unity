@@ -1689,7 +1689,7 @@ PrefabInstance:
       objectReference: {fileID: 48000157}
     - target: {fileID: 2915566448870680948, guid: a34defe71ee85e04fad803995f1c189c, type: 3}
       propertyPath: m_Name
-      value: Main Camera
+      value: Ortho Camera
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a34defe71ee85e04fad803995f1c189c, type: 3}
