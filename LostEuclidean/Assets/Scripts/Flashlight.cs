@@ -19,6 +19,7 @@ public class Flashlight : MonoBehaviour
     [SerializeField]
     Transform player;
     [SerializeField] Canvas contextualPromptCanvas;
+    [SerializeField] GameObject buttonText;
 
     private Light[] playerLights = new Light[3];
     private Transform[] playerMasks = new Transform[3];
@@ -63,6 +64,10 @@ public class Flashlight : MonoBehaviour
                 contextualPromptCanvas.enabled = false;
             }
         }
+        else if (isHolding && contextualPromptCanvas.enabled)
+        {
+            contextualPromptCanvas.enabled = false;
+        }
     }
 
     private void TryPickUp(Transform holder)
@@ -74,6 +79,8 @@ public class Flashlight : MonoBehaviour
         transform.localRotation = HOLD_ROTATION;
         transform.localPosition = HOLD_OFFSET;
         UpdateLightColor();
+
+        buttonText.SetActive(true);
     }
 
     private void TryDrop ()
@@ -83,6 +90,8 @@ public class Flashlight : MonoBehaviour
         isHolding = false;
         transform.parent = null;
         UpdateLightColor();
+
+        buttonText.SetActive(false);
     }
 
     public void OnChangeColor(InputValue value)

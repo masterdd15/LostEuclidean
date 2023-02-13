@@ -399,6 +399,7 @@ MonoBehaviour:
   - {fileID: 2585913953807456479}
   player: {fileID: 0}
   contextualPromptCanvas: {fileID: 7066262958351435146}
+  buttonText: {fileID: 0}
 --- !u!114 &-7676308693320649013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,7 +413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 778c089016a85dc45be5fc082672ae64, type: 3}
-  m_NotificationBehavior: 1
+  m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -1276,6 +1277,23 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1385770910046690188, guid: 8fc0c1e49149b06479c9dd53d21b4cd0, type: 3}
   m_PrefabInstance: {fileID: 8154708256362520073}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7066262958351435145 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1385770910046690176, guid: 8fc0c1e49149b06479c9dd53d21b4cd0, type: 3}
+  m_PrefabInstance: {fileID: 8154708256362520073}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4994315741300713280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7066262958351435145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29cef7e0dc3db8d488b1419fc7248647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!223 &7066262958351435146 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 1385770910046690179, guid: 8fc0c1e49149b06479c9dd53d21b4cd0, type: 3}
