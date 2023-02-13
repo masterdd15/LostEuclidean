@@ -13,9 +13,11 @@ public class CameraController : MonoBehaviour
 
     [Header("Other Variables")]
     [SerializeField] GameObject wallParent;
+    [SerializeField] float cameraSpeed;
 
     bool camRotating;
     int leftWall;
+    Vector3 moveVec;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,38 @@ public class CameraController : MonoBehaviour
         leftWall = startingLeftWall;
 
         camRotating = false;
+
+        moveVec = Vector3.zero;
+    }
+
+    private void Update()
+    {
+        // Move the camera if necessary
+        if (moveVec != Vector3.zero && !camRotating)
+        {
+            transform.Translate(moveVec * Time.deltaTime * cameraSpeed, Space.World);
+        }
+    }
+
+    public void SetCameraMovement(Vector2 inputVec)
+    {
+        if (inputVec == Vector2.zero)
+        {
+            moveVec = Vector3.zero;
+        }
+        else
+        {
+            // Set the initial movement vector
+            moveVec = new Vector3(inputVec.x, inputVec.y, 0f);
+
+            // Now we need to rotate the moveVec to the camera's rotation because we want to be moving relative to the camera's rotation in world space
+            Vector3 cameraRotation = m_Camera.transform.rotation.eulerAngles;
+
+            // Get the direction of the camera's forward
+            cameraRotation = new Vector3(0f, cameraRotation.y, 0f);
+
+            moveVec = Quaternion.Euler(0f, cameraRotation.y, 0f) * moveVec;
+        }
     }
 
     public void RotateCamera(float direction)
@@ -44,55 +78,72 @@ public class CameraController : MonoBehaviour
             rotatePoint = hit.point;
         }
 
-        float deg = 0f;
-        bool revealed = false;
-        while (deg < 90f)
+        if (rotatePoint != Vector3.zero)
         {
-            if (rotatePoint != Vector3.zero)
+            float deg = 0f;
+            bool revealed = false;
+            while (deg < 90f)
             {
-                m_Camera.transform.RotateAround(rotatePoint, Vector3.up, 2 * dir);
-            }
-
-            // Reveal and hide walls as necessary
-            if (deg > 45f && !revealed)
-            {
-                if (dir > 0)
+                if (rotatePoint != Vector3.zero)
                 {
-                    leftWall--;
-
-                    if (leftWall < 0)
-                        leftWall = wallParent.transform.childCount - 1;
-                }
-                else
-                {
-                    leftWall++;
-
-                    if (leftWall > wallParent.transform.childCount - 1)
-                        leftWall = 0;
+                    m_Camera.transform.RotateAround(rotatePoint, Vector3.up, 2 * dir);
                 }
 
-                int rightWall = leftWall + 1;
-                if (rightWall > wallParent.transform.childCount - 1)
-                    rightWall = 0;
-
-                int i = 0;
-
-                foreach (Transform wall in wallParent.transform)
+                // Reveal and hide walls as necessary
+                if (deg > 45f && !revealed)
                 {
-                    if (i == leftWall || i == rightWall)
-                        wall.gameObject.layer = wallHiddenLayer;
+                    if (dir > 0)
+                    {
+                        leftWall--;
+
+                        if (leftWall < 0)
+                            leftWall = wallParent.transform.childCount - 1;
+                    }
                     else
-                        wall.gameObject.layer = wallLayer;
+                    {
+                        leftWall++;
 
-                    i++;
+                        if (leftWall > wallParent.transform.childCount - 1)
+                            leftWall = 0;
+                    }
+
+                    int rightWall = leftWall + 1;
+                    if (rightWall > wallParent.transform.childCount - 1)
+                        rightWall = 0;
+
+                    int i = 0;
+
+                    foreach (Transform wall in wallParent.transform)
+                    {
+                        if (i == leftWall || i == rightWall)
+                        {
+                            wall.gameObject.layer = wallHiddenLayer;
+
+                            foreach (Transform child in wall)
+                            {
+                                child.gameObject.layer = wallHiddenLayer;
+                            }
+                        }
+                        else
+                        {
+                            wall.gameObject.layer = wallLayer;
+
+                            foreach (Transform child in wall)
+                            {
+                                child.gameObject.layer = wallLayer;
+                            }
+                        }
+
+                        i++;
+                    }
+
+                    revealed = true;
                 }
 
-                revealed = true;
+                deg += 2;
+
+                yield return new WaitForSeconds(0.01f);
             }
-
-            deg += 2;
-
-            yield return new WaitForSeconds(0.01f);
         }
 
         camRotating = false;

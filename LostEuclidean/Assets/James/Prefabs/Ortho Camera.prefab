@@ -133,9 +133,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraRotateMask:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 10240
   wallLayer: 10
   wallHiddenLayer: 12
   m_Camera: {fileID: 2915566448870680950}
   startingLeftWall: 1
   wallParent: {fileID: 0}
+  cameraSpeed: 5

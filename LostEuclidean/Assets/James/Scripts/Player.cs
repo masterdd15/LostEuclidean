@@ -18,10 +18,12 @@ public class Player : MonoBehaviour
     Vector3 moveVec;
     float ramp;
     bool camRotating;
+    bool controlCamera;
 
     // Start is called before the first frame update
     void Start()
     {
+        controlCamera = false;
         moving = false;
         ramp = 0f;
         moveVec = Vector3.zero;
@@ -57,32 +59,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        //// Move the character
-        //if (ramp != 0)
-        //{
-        //    //transform.Translate(moveVec * speed * ramp * Time.deltaTime, Space.World);
-        //    //rb.MovePosition(transform.position + (moveVec * speed * ramp * Time.deltaTime));
-        //}
-
-        //// Lower the speed as necessary
-        //if (ramp < 1f && moving)
-        //{
-        //    ramp += (1 - (3 * drag));
-
-        //    if (ramp > 1f)
-        //        ramp = 1f;
-        //}
-        //if (ramp > 0 && !moving)
-        //{
-        //    ramp *= (1 - drag);
-
-        //    if (ramp < 0.01f)
-        //        ramp = 0f;
-        //}
-    }
-
     void LookAtMouse()
     {
         Vector3 mousePos = Mouse.current.position.ReadValue();
@@ -112,25 +88,39 @@ public class Player : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (!controlCamera) // If we're not controlling the camera, move the player
         {
-            Vector2 inputMove = context.ReadValue<Vector2>();
+            if (context.performed)
+            {
+                Vector2 inputMove = context.ReadValue<Vector2>();
 
-            moveVec = new Vector3(inputMove.x, 0f, inputMove.y);
-            moving = true;
+                moveVec = new Vector3(inputMove.x, 0f, inputMove.y);
+                moving = true;
 
-            // Rotate the moveVec to correspond to the camera
-            Vector3 cameraRotation = m_Camera.transform.rotation.eulerAngles;
+                // Rotate the moveVec to correspond to the camera
+                Vector3 cameraRotation = m_Camera.transform.rotation.eulerAngles;
 
-            // Get the direction of the player's forward
-            cameraRotation = new Vector3(0f, cameraRotation.y, 0f);
+                // Get the direction of the player's forward
+                cameraRotation = new Vector3(0f, cameraRotation.y, 0f);
 
-            moveVec = Quaternion.Euler(0f, cameraRotation.y, 0f) * moveVec;
+                moveVec = Quaternion.Euler(0f, cameraRotation.y, 0f) * moveVec;
+            }
+            else
+            {
+                moving = false;
+                //moveVec = Vector3.zero;
+            }
         }
-        else
+        else // Move the camera
         {
-            moving = false;
-            //moveVec = Vector3.zero;
+            if (context.performed)
+            {
+                m_Camera.GetComponent<CameraController>().SetCameraMovement(context.ReadValue<Vector2>());
+            }
+            else
+            {
+                m_Camera.GetComponent<CameraController>().SetCameraMovement(Vector2.zero);
+            }
         }
     }
 
@@ -149,7 +139,23 @@ public class Player : MonoBehaviour
         }
     }
 
-    
+    public void CameraControl(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            controlCamera = true;
+
+            // Make sure we cancel all movement on the player
+            moveVec = Vector3.zero;
+        }
+        else
+        {
+            controlCamera = false;
+
+            // Make sure we cancel all camera movement
+            m_Camera.GetComponent<CameraController>().SetCameraMovement(Vector2.zero);
+        }
+    }
 
     /*public void ChangeColor(InputAction.CallbackContext context)
     {
