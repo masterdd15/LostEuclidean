@@ -9,7 +9,7 @@ public class ContextualPromptRotator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_Camera = GameObject.Find("Ortho Camera");
+        m_Camera = GameObject.FindGameObjectWithTag("MainCamera");
     }
 
     // Update is called once per frame
