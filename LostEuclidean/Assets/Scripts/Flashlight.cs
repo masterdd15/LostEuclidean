@@ -18,13 +18,14 @@ public class Flashlight : MonoBehaviour
     Transform[] volumetricMeshes = new Transform[3];
     [SerializeField]
     Transform player;
+    [SerializeField] Canvas contextualPromptCanvas;
 
     private Light[] playerLights = new Light[3];
     private Transform[] playerMasks = new Transform[3];
 
     private LightColor currentColor = LightColor.Off;
     private int currentColorIndex = 0;
-    private bool isHolding = true;
+    private bool isHolding = false;
     private List<ColorObject> colorObjList = new List<ColorObject>();
 
     private const float PICKUP_DISTANCE = 2.0f;
@@ -47,6 +48,21 @@ public class Flashlight : MonoBehaviour
         playerMasks[2] = playerLightMask.Find("Player_LightMask_Green").transform;
 
         HOLD_ROTATION = Quaternion.Euler(new Vector3(0.0f, 90.0f, 0.0f));
+    }
+
+    private void Update()
+    {
+        if (!isHolding)
+        {
+            if ((player.position - transform.position).magnitude <= PICKUP_DISTANCE && !contextualPromptCanvas.enabled)
+            {
+                contextualPromptCanvas.enabled = true;
+            }
+            else if ((player.position - transform.position).magnitude > PICKUP_DISTANCE && contextualPromptCanvas.enabled)
+            {
+                contextualPromptCanvas.enabled = false;
+            }
+        }
     }
 
     private void TryPickUp(Transform holder)
