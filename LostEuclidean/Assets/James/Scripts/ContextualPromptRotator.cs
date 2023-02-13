@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class ContextualPromptRotator : MonoBehaviour
 {
-    GameObject camera = null;
+    GameObject m_Camera = null;
 
     // Start is called before the first frame update
     void Start()
     {
-        camera = GameObject.Find("Ortho Camera");
+        m_Camera = GameObject.Find("Ortho Camera");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (camera != null)
+        if (m_Camera != null)
         {
-            transform.LookAt(camera.transform);
+            transform.LookAt(m_Camera.transform);
 
             Vector3 transRotation = transform.rotation.eulerAngles;
 
