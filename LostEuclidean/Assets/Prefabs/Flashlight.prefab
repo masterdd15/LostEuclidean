@@ -368,6 +368,7 @@ Transform:
   - {fileID: 7692363753113001311}
   - {fileID: 7692363752061921336}
   - {fileID: 1320290729401803810}
+  - {fileID: 7066262958351435141}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -397,6 +398,7 @@ MonoBehaviour:
   - {fileID: 1512648656727364588}
   - {fileID: 2585913953807456479}
   player: {fileID: 0}
+  contextualPromptCanvas: {fileID: 7066262958351435146}
 --- !u!114 &-7676308693320649013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,7 +412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 778c089016a85dc45be5fc082672ae64, type: 3}
-  m_NotificationBehavior: 0
+  m_NotificationBehavior: 1
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -421,7 +423,67 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f2e82396-4e39-44a0-bb18-4118a15c2ac8
+    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c63f1806-8d15-4d17-9994-8af9d44572dc
+    m_ActionName: Player/ChangeColor[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: cae0df95-7f07-4282-81f4-a4092eeda9d0
+    m_ActionName: Player/PickUpFlashlight[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 511296bb-3b7c-467f-b023-c07d7d429cee
+    m_ActionName: Player/RotateCamera[/Keyboard/q,/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 12bac59d-b327-4bb8-8e00-acd8c9aa8171
+    m_ActionName: Player/CameraControl[/Keyboard/shift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c90c23f8-e95d-42cc-b1fb-44d4af3f081e
+    m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e25bcf56-5dbb-4b29-a7b7-9dbf247b240b
+    m_ActionName: UI/Submit[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 090c28cd-10a9-462b-bd15-2d3c3a2c9065
+    m_ActionName: UI/Cancel[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1924804a-3858-4ff9-96bb-42946beb9ec4
+    m_ActionName: UI/Point[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 914a9b9f-ad24-41c1-a943-2f8a05bef2ba
+    m_ActionName: UI/Click[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c42f7954-709f-4ee2-ab9c-b15fdb67433d
+    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1cf2bf56-0446-4439-be8f-70b2c1cfff87
+    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a91ad406-4652-4e4e-bd4e-c0d750109850
+    m_ActionName: UI/RightClick[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d1193f77-516f-4806-901a-bc5cd8078e76
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d536aca6-be2f-450c-b3db-597c1fffc7b0
+    m_ActionName: UI/TrackedDeviceOrientation
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -1107,4 +1169,115 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c2474f3687e1b9d44ad5930b0b4d8de0, type: 3}
   m_PrefabInstance: {fileID: 7692363753576738625}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8154708256362520073
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7692363752797861492}
+    m_Modifications:
+    - target: {fileID: 1385770910046690176, guid: 8fc0c1e49149b06479c9dd53d21b4cd0, type: 3}
+      propertyPath: m_Name
+      value: Flashlight Contextual
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385770910046690179, guid: 8fc0c1e49149b06479c9dd53d21b4cd0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385770910046690188, guid: 8fc0c1e49149b06479c9dd53d21b4cd0, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385770910046690188, guid: 8fc0c1e49149b06479c9dd53d21b4cd0, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385770910046690188, guid: 8fc0c1e49149b06479c9dd53d21b4cd0, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385770910046690188, guid: 8fc0c1e49149b06479c9dd53d21b4cd0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385770910046690188, guid: 8fc0c1e49149b06479c9dd53d21b4cd0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385770910046690188, guid: 8fc0c1e49149b06479c9dd53d21b4cd0, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385770910046690188, guid: 8fc0c1e49149b06479c9dd53d21b4cd0, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385770910046690188, guid: 8fc0c1e49149b06479c9dd53d21b4cd0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385770910046690188, guid: 8fc0c1e49149b06479c9dd53d21b4cd0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385770910046690188, guid: 8fc0c1e49149b06479c9dd53d21b4cd0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385770910046690188, guid: 8fc0c1e49149b06479c9dd53d21b4cd0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385770910046690188, guid: 8fc0c1e49149b06479c9dd53d21b4cd0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385770910046690188, guid: 8fc0c1e49149b06479c9dd53d21b4cd0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071079
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385770910046690188, guid: 8fc0c1e49149b06479c9dd53d21b4cd0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385770910046690188, guid: 8fc0c1e49149b06479c9dd53d21b4cd0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071057
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385770910046690188, guid: 8fc0c1e49149b06479c9dd53d21b4cd0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385770910046690188, guid: 8fc0c1e49149b06479c9dd53d21b4cd0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385770910046690188, guid: 8fc0c1e49149b06479c9dd53d21b4cd0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.794
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385770910046690188, guid: 8fc0c1e49149b06479c9dd53d21b4cd0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385770910046690188, guid: 8fc0c1e49149b06479c9dd53d21b4cd0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385770910046690188, guid: 8fc0c1e49149b06479c9dd53d21b4cd0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8fc0c1e49149b06479c9dd53d21b4cd0, type: 3}
+--- !u!224 &7066262958351435141 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1385770910046690188, guid: 8fc0c1e49149b06479c9dd53d21b4cd0, type: 3}
+  m_PrefabInstance: {fileID: 8154708256362520073}
+  m_PrefabAsset: {fileID: 0}
+--- !u!223 &7066262958351435146 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 1385770910046690179, guid: 8fc0c1e49149b06479c9dd53d21b4cd0, type: 3}
+  m_PrefabInstance: {fileID: 8154708256362520073}
   m_PrefabAsset: {fileID: 0}

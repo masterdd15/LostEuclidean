@@ -18,10 +18,14 @@ public class Flashlight : MonoBehaviour
     Transform[] volumetricMeshes = new Transform[3];
     [SerializeField]
     Transform player;
+    [SerializeField] Canvas contextualPromptCanvas;
+
+    private Light[] playerLights = new Light[3];
+    private Transform[] playerMasks = new Transform[3];
 
     private LightColor currentColor = LightColor.Off;
     private int currentColorIndex = 0;
-    private bool isHolding = true;
+    private bool isHolding = false;
     private List<ColorObject> colorObjList = new List<ColorObject>();
 
     private const float PICKUP_DISTANCE = 2.0f;
@@ -34,7 +38,31 @@ public class Flashlight : MonoBehaviour
         {
             player = GameObject.Find("Player").transform;
         }
+        Transform playerLightMask = player.Find("Light Masks");
+        playerLights[0] = playerLightMask.Find("Player_Light_Blue").GetComponent<Light>();
+        playerLights[1] = playerLightMask.Find("Player_Light_Red").GetComponent<Light>();
+        playerLights[2] = playerLightMask.Find("Player_Light_Green").GetComponent<Light>();
+
+        playerMasks[0] = playerLightMask.Find("Player_LightMask_Blue").transform;
+        playerMasks[1] = playerLightMask.Find("Player_LightMask_Red").transform;
+        playerMasks[2] = playerLightMask.Find("Player_LightMask_Green").transform;
+
         HOLD_ROTATION = Quaternion.Euler(new Vector3(0.0f, 90.0f, 0.0f));
+    }
+
+    private void Update()
+    {
+        if (!isHolding)
+        {
+            if ((player.position - transform.position).magnitude <= PICKUP_DISTANCE && !contextualPromptCanvas.enabled)
+            {
+                contextualPromptCanvas.enabled = true;
+            }
+            else if ((player.position - transform.position).magnitude > PICKUP_DISTANCE && contextualPromptCanvas.enabled)
+            {
+                contextualPromptCanvas.enabled = false;
+            }
+        }
     }
 
     private void TryPickUp(Transform holder)
@@ -45,6 +73,7 @@ public class Flashlight : MonoBehaviour
         transform.parent = holder;
         transform.localRotation = HOLD_ROTATION;
         transform.localPosition = HOLD_OFFSET;
+        UpdateLightColor();
     }
 
     private void TryDrop ()
@@ -53,6 +82,7 @@ public class Flashlight : MonoBehaviour
             return;
         isHolding = false;
         transform.parent = null;
+        UpdateLightColor();
     }
 
     public void OnChangeColor(InputValue value)
@@ -69,7 +99,7 @@ public class Flashlight : MonoBehaviour
             currentColorIndex = 0;
         }
         currentColor = lightModes[currentColorIndex];
-        ChangeLightColor();
+        UpdateLightColor();
     }
 
     public void OnPickUpFlashlight (InputValue value)
@@ -88,7 +118,7 @@ public class Flashlight : MonoBehaviour
         ChangeLightColor();
     }*/
 
-    private void ChangeLightColor()
+    private void UpdateLightColor()
     {
         for (int i = 0; i < lightMasks.Length; i++)
         {
@@ -97,12 +127,24 @@ public class Flashlight : MonoBehaviour
                 lightMasks[i].gameObject.SetActive(true);
                 lights[i].gameObject.SetActive(true);
                 volumetricMeshes[i].gameObject.SetActive(true);
+                if (isHolding)
+                {
+                    playerLights[i].gameObject.SetActive(true);
+                    playerMasks[i].gameObject.SetActive(true);
+                }
+                else
+                {
+                    playerLights[i].gameObject.SetActive(false);
+                    playerMasks[i].gameObject.SetActive(false);
+                }
             }
             else
             {
                 lightMasks[i].gameObject.SetActive(false);
                 lights[i].gameObject.SetActive(false);
                 volumetricMeshes[i].gameObject.SetActive(false);
+                playerLights[i].gameObject.SetActive(false);
+                playerMasks[i].gameObject.SetActive(false);
             }
         }
     }
