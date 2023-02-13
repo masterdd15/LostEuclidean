@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -186,6 +186,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room2_floor
       objectReference: {fileID: 0}
+    - target: {fileID: 5975726034359228817, guid: 7c74b33b2ef263846b553c65a6f1b60e, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5975726034359228819, guid: 7c74b33b2ef263846b553c65a6f1b60e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -301,7 +305,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh28524
+  m_Name: pb_Mesh28528
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3143,6 +3147,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room1_Ramp
       objectReference: {fileID: 0}
+    - target: {fileID: 5975726034359228817, guid: 7c74b33b2ef263846b553c65a6f1b60e, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5975726034359228819, guid: 7c74b33b2ef263846b553c65a6f1b60e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -4725,7 +4733,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &2127235526
 Light:
   m_ObjectHideFlags: 0
