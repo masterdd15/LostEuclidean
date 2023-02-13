@@ -157,6 +157,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    public bool PlayerMoving()
+    {
+        return moveVec != Vector3.zero;
+    }
+
     /*public void ChangeColor(InputAction.CallbackContext context)
     {
         if (context.performed)

@@ -148,4 +148,14 @@ public class CameraController : MonoBehaviour
 
         camRotating = false;
     }
+
+    public bool CameraMoving()
+    {
+        return moveVec != Vector3.zero;
+    }
+
+    public bool CameraRotating()
+    {
+        return camRotating;
+    }
 }
