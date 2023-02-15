@@ -8,9 +8,9 @@ Shader "Custom/LightMask"
     {
         Tags
         {
-            "RenderType"="Opaque"
+            "RenderType"="Transparent"
             "RenderPipeline" = "UniversalPipeline"
-            "Queue" = "Geometry"
+            "Queue" = "Transparent"
         }
         
         Pass

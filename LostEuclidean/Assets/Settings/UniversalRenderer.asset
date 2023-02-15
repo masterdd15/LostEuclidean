@@ -71,7 +71,7 @@ MonoBehaviour:
   m_Active: 1
   settings:
     passTag: LightObjectsGreen
-    Event: 300
+    Event: 500
     filterSettings:
       RenderQueueType: 0
       LayerMask:
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Active: 1
   settings:
     passTag: LightObjectsRed
-    Event: 300
+    Event: 500
     filterSettings:
       RenderQueueType: 0
       LayerMask:
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Active: 1
   settings:
     passTag: LightObjectsBlue
-    Event: 300
+    Event: 500
     filterSettings:
       RenderQueueType: 0
       LayerMask:
