@@ -438,7 +438,6 @@ GameObject:
   - component: {fileID: 5456669037527215690}
   - component: {fileID: 5394920508824728250}
   - component: {fileID: 222537353498574429}
-  - component: {fileID: 9094421011502055591}
   m_Layer: 0
   m_Name: Player_LightMask_Green
   m_TagString: Untagged
@@ -455,7 +454,7 @@ Transform:
   m_GameObject: {fileID: 5941883151885343931}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1056131491994445449}
@@ -468,7 +467,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5941883151885343931}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &222537353498574429
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -511,20 +510,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &9094421011502055591
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5941883151885343931}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.89
-  m_Height: 3.21
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6209512399608008538
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,7 +521,6 @@ GameObject:
   - component: {fileID: 6038080901714413143}
   - component: {fileID: 8442377456135317105}
   - component: {fileID: 2010392500119868614}
-  - component: {fileID: 8330314740366253234}
   m_Layer: 0
   m_Name: Player_LightMask_Red
   m_TagString: Untagged
@@ -553,7 +537,7 @@ Transform:
   m_GameObject: {fileID: 6209512399608008538}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1056131491994445449}
@@ -566,7 +550,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6209512399608008538}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &2010392500119868614
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -609,20 +593,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &8330314740366253234
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6209512399608008538}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.89
-  m_Height: 3.21
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7113759408027255623
 GameObject:
   m_ObjectHideFlags: 0
@@ -634,7 +604,6 @@ GameObject:
   - component: {fileID: 5051515035015631361}
   - component: {fileID: 3172669692575775866}
   - component: {fileID: 943814707060336385}
-  - component: {fileID: 3223419969171888419}
   m_Layer: 0
   m_Name: Player_LightMask_Blue
   m_TagString: Untagged
@@ -651,7 +620,7 @@ Transform:
   m_GameObject: {fileID: 7113759408027255623}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1056131491994445449}
@@ -664,7 +633,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7113759408027255623}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &943814707060336385
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -707,20 +676,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &3223419969171888419
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7113759408027255623}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.89
-  m_Height: 3.21
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8591279954292476054
 GameObject:
   m_ObjectHideFlags: 0
