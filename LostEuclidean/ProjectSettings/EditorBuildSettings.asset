@@ -6,7 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: d1c3109bdb54ad54c8a2b2838528e640
+    path: Assets/DylansFolder/ProtoMenu.unity
+    guid: 5fcb831723342c64c8915ecafb601ae7
+  - enabled: 1
+    path: Assets/DylansFolder/TutorialRoom.unity
+    guid: bcc5c281914b9da41b3ab281ff7ffc85
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 81ae31d39a50c9443878df0a7045a423, type: 2}
