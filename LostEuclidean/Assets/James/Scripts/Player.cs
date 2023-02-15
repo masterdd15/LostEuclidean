@@ -162,7 +162,7 @@ public class Player : MonoBehaviour
         return moveVec != Vector3.zero;
     }
 
-    /*public void ChangeColor(InputAction.CallbackContext context)
+    public void ChangeColor(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
@@ -170,8 +170,33 @@ public class Player : MonoBehaviour
 
             if (fl != null)
             {
-                fl.ChangeColorInput();
+                fl.OnChangeColor(null);
             }
         }
-    }*/
+    }
+
+    public void PickupFlashlight(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            GameObject[] flashlights = GameObject.FindGameObjectsWithTag("Flashlight");
+
+            if (flashlights.Length > 0)
+            {
+                Flashlight flashlight = flashlights[0].GetComponent<Flashlight>();
+                float dist = (flashlight.transform.position - transform.position).magnitude;
+
+                for (int i = 1; i < flashlights.Length; i++)
+                {
+                    if ((flashlights[i].transform.position - transform.position).magnitude < dist)
+                    {
+                        flashlight = flashlights[i].GetComponent<Flashlight>();
+                        dist = (flashlights[i].transform.position - transform.position).magnitude;
+                    }
+                }
+
+                flashlight.OnPickUpFlashlight(null);
+            }
+        }
+    }
 }
