@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wall
   - Flashlight
+  - Interactable
   layers:
   - Default
   - TransparentFX

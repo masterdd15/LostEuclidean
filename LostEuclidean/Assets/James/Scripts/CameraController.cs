@@ -119,7 +119,8 @@ public class CameraController : MonoBehaviour
                         {
                             wall.gameObject.layer = wallHiddenLayer;
 
-                            foreach (Transform child in wall)
+                            Transform[] allChildren = wall.GetComponentsInChildren<Transform>();
+                            foreach (Transform child in allChildren)
                             {
                                 child.gameObject.layer = wallHiddenLayer;
                             }
@@ -128,7 +129,8 @@ public class CameraController : MonoBehaviour
                         {
                             wall.gameObject.layer = wallLayer;
 
-                            foreach (Transform child in wall)
+                            Transform[] allChildren = wall.GetComponentsInChildren<Transform>();
+                            foreach (Transform child in allChildren)
                             {
                                 child.gameObject.layer = wallLayer;
                             }

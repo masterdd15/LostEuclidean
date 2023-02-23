@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    public float InteractionRange;
+    
     [SerializeField] Camera m_Camera;
     [SerializeField] LayerMask playerLookMask;
 
@@ -171,6 +173,37 @@ public class Player : MonoBehaviour
             if (fl != null)
             {
                 fl.OnChangeColor(null);
+            }
+        }
+    }
+
+    public void Interact(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            // Find the nearest interactable
+            GameObject[] interactables = GameObject.FindGameObjectsWithTag("Interactable");
+            if (interactables.Length > 0)
+            {
+                GameObject closest = interactables[0];
+                float minDist = (closest.transform.position - transform.position).magnitude;
+
+                for (int i = 1; i < interactables.Length; i++)
+                {
+                    float newDist = (interactables[i].transform.position - transform.position).magnitude;
+                    if (newDist < minDist)
+                    {
+                        minDist = newDist;
+                        closest = interactables[i];
+                    }
+                }
+
+                // If the closest interactable is close enough to be interacted with
+                if (minDist <= InteractionRange)
+                {
+                    Interactable interactable = closest.GetComponent<Interactable>();
+                    interactable.Interact();
+                }
             }
         }
     }
