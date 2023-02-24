@@ -30,7 +30,7 @@ public class Flashlight : MonoBehaviour
     private List<ColorObject> colorObjList = new List<ColorObject>();
 
     private const float PICKUP_DISTANCE = 2.0f;
-    private Vector3 HOLD_OFFSET = new Vector3(0.5f, 0.0f, 0.0f);
+    private Vector3 HOLD_OFFSET = new Vector3(0.5f, 1.0f, 0.0f);
     private Quaternion HOLD_ROTATION;
 
     void Awake()

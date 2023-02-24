@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    public float InteractionRange;
+    
     [SerializeField] Camera m_Camera;
     [SerializeField] LayerMask playerLookMask;
 
@@ -162,7 +164,7 @@ public class Player : MonoBehaviour
         return moveVec != Vector3.zero;
     }
 
-    /*public void ChangeColor(InputAction.CallbackContext context)
+    public void ChangeColor(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
@@ -170,8 +172,64 @@ public class Player : MonoBehaviour
 
             if (fl != null)
             {
-                fl.ChangeColorInput();
+                fl.OnChangeColor(null);
             }
         }
-    }*/
+    }
+
+    public void Interact(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            // Find the nearest interactable
+            GameObject[] interactables = GameObject.FindGameObjectsWithTag("Interactable");
+            if (interactables.Length > 0)
+            {
+                GameObject closest = interactables[0];
+                float minDist = (closest.transform.position - transform.position).magnitude;
+
+                for (int i = 1; i < interactables.Length; i++)
+                {
+                    float newDist = (interactables[i].transform.position - transform.position).magnitude;
+                    if (newDist < minDist)
+                    {
+                        minDist = newDist;
+                        closest = interactables[i];
+                    }
+                }
+
+                // If the closest interactable is close enough to be interacted with
+                if (minDist <= InteractionRange)
+                {
+                    Interactable interactable = closest.GetComponent<Interactable>();
+                    interactable.Interact();
+                }
+            }
+        }
+    }
+
+    public void PickupFlashlight(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            GameObject[] flashlights = GameObject.FindGameObjectsWithTag("Flashlight");
+
+            if (flashlights.Length > 0)
+            {
+                Flashlight flashlight = flashlights[0].GetComponent<Flashlight>();
+                float dist = (flashlight.transform.position - transform.position).magnitude;
+
+                for (int i = 1; i < flashlights.Length; i++)
+                {
+                    if ((flashlights[i].transform.position - transform.position).magnitude < dist)
+                    {
+                        flashlight = flashlights[i].GetComponent<Flashlight>();
+                        dist = (flashlights[i].transform.position - transform.position).magnitude;
+                    }
+                }
+
+                flashlight.OnPickUpFlashlight(null);
+            }
+        }
+    }
 }

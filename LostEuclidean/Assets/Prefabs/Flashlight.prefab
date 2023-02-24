@@ -244,7 +244,7 @@ GameObject:
   - component: {fileID: 8045019862614897986}
   m_Layer: 0
   m_Name: Flashlight
-  m_TagString: Untagged
+  m_TagString: Flashlight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -310,7 +310,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7692363752797861493}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
@@ -1258,23 +1258,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1385770910046690188, guid: 8fc0c1e49149b06479c9dd53d21b4cd0, type: 3}
   m_PrefabInstance: {fileID: 8154708256362520073}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &7066262958351435145 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1385770910046690176, guid: 8fc0c1e49149b06479c9dd53d21b4cd0, type: 3}
-  m_PrefabInstance: {fileID: 8154708256362520073}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4994315741300713280
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7066262958351435145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29cef7e0dc3db8d488b1419fc7248647, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!223 &7066262958351435146 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 1385770910046690179, guid: 8fc0c1e49149b06479c9dd53d21b4cd0, type: 3}
