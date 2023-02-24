@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,7 +29,12 @@ public class GameManager : MonoBehaviour
     IEnumerator LoadNewScene(string sceneName, string doorName, string color)
     {
         // Fade out
+        Image fadingImage = GameObject.Find("FadeImage").GetComponent<FullscreenFadeController>().FadeOut();
 
+        while (fadingImage.color.a < 1)
+        {
+            yield return null;
+        }
 
         // Load the new scene
         AsyncOperation newScene = SceneManager.LoadSceneAsync(sceneName);
@@ -38,11 +44,11 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
 
-        //// Place the player at the right door
-        //GameObject player = GameObject.FindGameObjectWithTag("Player");
-        //DoorController door = GameObject.Find(doorName).GetComponent<DoorController>();
+        // Place the player at the right door
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        DoorController door = GameObject.Find(doorName).GetComponent<DoorController>();
 
-        //player.transform.position = door.front.position;
+        player.transform.position = door.front.position;
 
         // Set the color
     }
