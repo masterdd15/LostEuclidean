@@ -21,12 +21,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void ChangeScene(string sceneName, string doorName, string color)
+    public void ChangeScene(string sceneName, string doorName, LightColor color)
     {
         StartCoroutine(LoadNewScene(sceneName, doorName, color));
     }
 
-    IEnumerator LoadNewScene(string sceneName, string doorName, string color)
+    IEnumerator LoadNewScene(string sceneName, string doorName, LightColor color)
     {
         // Fade out
         Image fadingImage = GameObject.Find("FadeImage").GetComponent<FullscreenFadeController>().FadeOut();
@@ -51,5 +51,10 @@ public class GameManager : MonoBehaviour
         player.transform.position = door.front.position;
 
         // Set the color
+        GameObject[] colorRooms = GameObject.FindGameObjectsWithTag("ColorRoom");
+        foreach (GameObject colorRoom in colorRooms)
+        {
+            colorRoom.GetComponent<ColorRoom>().roomColor = color;
+        }
     }
 }

@@ -13,7 +13,7 @@ public class DoorController : Interactable
     [Header("Destination Info")]
     [SerializeField] string sceneDestination;
     [SerializeField] string doorDestination;
-    [SerializeField] string colorDestination;
+    [SerializeField] LightColor colorDestination;
 
     // Start is called before the first frame update
     void Start()
