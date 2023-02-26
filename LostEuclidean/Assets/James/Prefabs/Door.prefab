@@ -424,8 +424,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f23aa2fae45b6284d90871f51d5749bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  front: {fileID: 3602887274841289480}
   contextualPrompt: {fileID: 3602887275857745655}
+  InteractionEnabled: 0
+  front: {fileID: 3602887274841289480}
+  doorMesh: {fileID: 3602887275652794524}
+  disabledMat: {fileID: 2100000, guid: 297fb467c214e904d81fd60b01206bdd, type: 2}
+  enabledMat: {fileID: 2100000, guid: db29999107c33154bbfdd30d1b8e57db, type: 2}
   sceneDestination: TutorialRoom
   doorDestination: 
   colorDestination: 

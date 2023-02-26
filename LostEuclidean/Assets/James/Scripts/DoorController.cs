@@ -6,7 +6,9 @@ public class DoorController : Interactable
 {
     [Header("Door Variables")]
     [SerializeField] public Transform front;
-    [SerializeField] GameObject contextualPrompt;
+    [SerializeField] GameObject doorMesh;
+    [SerializeField] Material disabledMat;
+    [SerializeField] Material enabledMat;
 
     [Header("Destination Info")]
     [SerializeField] string sceneDestination;
@@ -19,27 +21,25 @@ public class DoorController : Interactable
         
     }
 
-    private void Update()
-    {
-        Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-
-        float distToPlayer = (player.transform.position - transform.position).magnitude;
-
-        if (distToPlayer <= player.InteractionRange && !contextualPrompt.activeInHierarchy)
-        {
-            contextualPrompt.SetActive(true);
-        }
-        else if (distToPlayer >= player.InteractionRange && contextualPrompt.activeInHierarchy)
-        {
-            contextualPrompt.SetActive(false);
-        }
-    }
-
     public override void Interact()
     {
-        if (gameObject.layer != 12)
+        if (gameObject.layer != 12 && InteractionEnabled)
         {
             GameManager.Instance.ChangeScene(sceneDestination, doorDestination, colorDestination);
         }
+    }
+
+    public override void Enable()
+    {
+        InteractionEnabled = true;
+
+        doorMesh.GetComponent<MeshRenderer>().material = enabledMat;
+    }
+
+    public override void Disable()
+    {
+        InteractionEnabled = false;
+
+        doorMesh.GetComponent<MeshRenderer>().material = disabledMat;
     }
 }

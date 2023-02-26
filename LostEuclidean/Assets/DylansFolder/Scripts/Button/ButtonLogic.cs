@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class ButtonLogic : MonoBehaviour
 {
-    [SerializeField]private ButtonState localState; 
+    [SerializeField] private ButtonState localState;
+
+    [SerializeField] Interactable connectedInteractable;
+
     private void Awake()
     {
         //This button's collider is attached to the parent object. Note this in case any changes are made
@@ -28,12 +31,21 @@ public class ButtonLogic : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        localState = ButtonState.ON;
+        if (localState != ButtonState.ON)
+        {
+            localState = ButtonState.ON;
+
+            if (connectedInteractable != null)
+                connectedInteractable.Enable();
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
         localState = ButtonState.OFF;
+
+        if (connectedInteractable != null)
+            connectedInteractable.Disable();
     }
 
     //I'm creating a state machine for the button
