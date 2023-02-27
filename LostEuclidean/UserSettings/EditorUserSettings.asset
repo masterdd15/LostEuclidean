@@ -9,17 +9,12 @@ EditorUserSettings:
       value: 0700575554055059090c597611270a44154f19782e7a7e63757c4f6be7b66068
       flags: 0
     RecentlyUsedSceneGuid-1:
-      value: 510157545454505a54565d7411775944434e4a2f297c7e677c2d4d35b1b2356d
-      flags: 0
-    RecentlyUsedSceneGuid-2:
       value: 5005045e03035d0d0b5b0e2316265c4412161e797d2e27697e7b1c64b0e5626b
       flags: 0
-    RecentlyUsedSceneGuid-3:
-      value: 505700520304500c0c5e5b2648725c44414e497a7a7e25602b7f4865bab0606d
-      flags: 0
-    RecentlyUsedSceneGuid-4:
+    RecentlyUsedSceneGuid-2:
       value: 015257530607510a545f582049275e4447154b2b2e7a7e612b2f4a35e4e36c6d
       flags: 0
+<<<<<<< Updated upstream
     RecentlyUsedSceneGuid-5:
       value: 0006035550570f020f575a7247740644464e402b2a7a70327f2f1f35b1b5646b
       flags: 0
@@ -28,6 +23,25 @@ EditorUserSettings:
       flags: 0
     RecentlyUsedSceneGuid-7:
       value: 005705550003500859585f241126064445164f7a2f7c736429284935b4b46d3b
+=======
+    RecentlyUsedSceneGuid-3:
+      value: 005705550003500859585f241126064445164f7a2f7c736429284935b4b46d3b
+      flags: 0
+    RecentlyUsedSceneGuid-4:
+      value: 515401025450585d5d0a5477147a0e44124f1e797f7d25607f794e31b6b66569
+      flags: 0
+    RecentlyUsedSceneGuid-5:
+      value: 510157545454505a54565d7411775944434e4a2f297c7e677c2d4d35b1b2356d
+      flags: 0
+    RecentlyUsedSceneGuid-6:
+      value: 0006035550570f020f575a7247740644464e402b2a7a70327f2f1f35b1b5646b
+      flags: 0
+    RecentlyUsedSceneGuid-7:
+      value: 02080d535d565b595d0d5b7b48730a44154e19297c7f7635287e1b37e1b7646c
+      flags: 0
+    RecentlyUsedSceneGuid-8:
+      value: 505700520304500c0c5e5b2648725c44414e497a7a7e25602b7f4865bab0606d
+>>>>>>> Stashed changes
       flags: 0
     UnityEditor.ShaderGraph.Blackboard:
       value: 18135939215a0a5004000b0e15254b524c030a3f2964643d120d1230e9e93a3fd6e826abbd2e2d293c4ead313b08042de6030a0afa240c0d020be94c4baf5e435d8715fa32c70d15d11612dacc11fee5d3c5d1fe9ab1b3968889f6a4a2a6bba8a2a6f7abf3fcab8ce8a2c182a6d8c2869bd1f5dc8e9c9b97ea9c819ffcca90898d86d598899ac5

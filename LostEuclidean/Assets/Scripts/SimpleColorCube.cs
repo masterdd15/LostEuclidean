@@ -4,14 +4,6 @@ using UnityEngine;
 
 public class SimpleColorCube : ColorObject
 {
-    protected Rigidbody rigidBody;
-
-    protected override void Awake()
-    {
-        base.Awake();
-        rigidBody = GetComponent<Rigidbody>();
-    }
-
     protected void Start()
     {
         if (gameObject.layer == LayerMask.NameToLayer("Default"))
@@ -62,19 +54,4 @@ public class SimpleColorCube : ColorObject
         }
     }
 
-    protected void EnablePhysics()
-    {
-        if (rigidBody != null)
-        {
-            rigidBody.isKinematic = false;
-        }
-    }
-
-    protected void DisablePhysics()
-    {
-        if (rigidBody != null)
-        {
-            rigidBody.isKinematic = true;
-        }
-    }
 }
