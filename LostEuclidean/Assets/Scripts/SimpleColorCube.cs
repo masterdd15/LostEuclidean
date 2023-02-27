@@ -4,6 +4,28 @@ using UnityEngine;
 
 public class SimpleColorCube : ColorObject
 {
+    protected Rigidbody rigidBody;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        rigidBody = GetComponent<Rigidbody>();
+    }
+
+    protected void Start()
+    {
+        if (gameObject.layer == LayerMask.NameToLayer("Default"))
+        {
+            EnableCollider();
+            EnablePhysics();
+        }
+        else
+        {
+            DisableCollider();
+            DisablePhysics();
+        }
+    }
+
     public override void OnLightEnter(LightColor lightColor)
     {
         base.OnLightEnter(lightColor);
@@ -12,10 +34,12 @@ public class SimpleColorCube : ColorObject
         if (lightColor == baseColor)
         {
             EnableCollider();
+            EnablePhysics();
         }
         else
         {
             DisableCollider();
+            DisablePhysics();
         }
     }
 
@@ -25,6 +49,7 @@ public class SimpleColorCube : ColorObject
         if (!isLightActive)
             return;
         DisableCollider();
+        DisablePhysics();
     }
 
     protected override void OnEnable()
@@ -33,6 +58,23 @@ public class SimpleColorCube : ColorObject
         if (gameObject.layer == LayerMask.NameToLayer("Default"))
         {
             EnableCollider();
+            EnablePhysics();
+        }
+    }
+
+    protected void EnablePhysics()
+    {
+        if (rigidBody != null)
+        {
+            rigidBody.isKinematic = false;
+        }
+    }
+
+    protected void DisablePhysics()
+    {
+        if (rigidBody != null)
+        {
+            rigidBody.isKinematic = true;
         }
     }
 }
