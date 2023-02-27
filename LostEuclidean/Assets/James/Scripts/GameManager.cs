@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
         GameObject[] colorRooms = GameObject.FindGameObjectsWithTag("ColorRoom");
         foreach (GameObject colorRoom in colorRooms)
         {
-            colorRoom.GetComponent<ColorRoom>().roomColor = color;
+            colorRoom.GetComponent<ColorRoom>().ChangeRoomColor(color);
         }
     }
 }
