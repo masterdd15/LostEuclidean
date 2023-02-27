@@ -31,7 +31,7 @@ public class ButtonLogic : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (localState != ButtonState.ON)
+        if (localState != ButtonState.ON && other.gameObject.tag != "Flashlight")
         {
             localState = ButtonState.ON;
 
@@ -42,10 +42,13 @@ public class ButtonLogic : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        localState = ButtonState.OFF;
+        if (other.gameObject.tag != "Flashlight")
+        {
+            localState = ButtonState.OFF;
 
-        if (connectedInteractable != null)
-            connectedInteractable.Disable();
+            if (connectedInteractable != null)
+                connectedInteractable.Disable();
+        }
     }
 
     //I'm creating a state machine for the button

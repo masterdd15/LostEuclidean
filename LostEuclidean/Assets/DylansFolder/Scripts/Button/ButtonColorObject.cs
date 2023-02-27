@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SimpleColorCube : ColorObject
+public class ButtonColorObject : ColorObject
 {
     protected void Start()
     {
         if (gameObject.layer == LayerMask.NameToLayer("Default"))
         {
-            EnableCollider();
             EnablePhysics();
         }
         else
@@ -25,7 +24,6 @@ public class SimpleColorCube : ColorObject
             return;
         if (lightColor == baseColor)
         {
-            EnableCollider();
             EnablePhysics();
         }
         else
@@ -49,9 +47,7 @@ public class SimpleColorCube : ColorObject
         base.OnEnable();
         if (gameObject.layer == LayerMask.NameToLayer("Default"))
         {
-            EnableCollider();
             EnablePhysics();
         }
     }
-
 }

@@ -12,8 +12,22 @@ public class ColorObject : MonoBehaviour
 
     protected Collider col;
     protected ColorRoom room;
+    protected Rigidbody rigidBody;
+
     protected bool isLightActive = true;
     protected bool canInteract = false;
+
+    protected virtual void Awake()
+    {
+        col = GetComponent<Collider>();
+        room = GetComponentInParent<ColorRoom>();
+        rigidBody = GetComponent<Rigidbody>();
+    }
+
+    protected virtual void OnEnable()
+    {
+        UpdateColorLayer();
+    }
 
     public virtual void OnLightEnter(LightColor lightColor)
     {
@@ -27,7 +41,7 @@ public class ColorObject : MonoBehaviour
     }
     public virtual void Interact() { }
 
-
+    //Bunch of handy functions
     protected void EnableInteract()
     {
         canInteract = true;
@@ -49,7 +63,23 @@ public class ColorObject : MonoBehaviour
         col.isTrigger = true;
     }
 
+    protected void EnablePhysics()
+    {
+        if (rigidBody != null)
+        {
+            rigidBody.isKinematic = false;
+        }
+    }
 
+    protected void DisablePhysics()
+    {
+        if (rigidBody != null)
+        {
+            rigidBody.isKinematic = true;
+        }
+    }
+
+    //Put the object onto the right layer based on room color
     protected void UpdateColorLayer()
     {
         if (baseColor == room.roomColor)
@@ -72,16 +102,5 @@ public class ColorObject : MonoBehaviour
             gameObject.layer = LayerMask.NameToLayer("LightObject_Blue");
         }
         isLightActive = true;
-    }
-
-    protected virtual void Awake()
-    {
-        col = GetComponent<Collider>();
-        room = GetComponentInParent<ColorRoom>();
-    }
-
-    protected virtual void OnEnable()
-    {
-        UpdateColorLayer();
     }
 }
