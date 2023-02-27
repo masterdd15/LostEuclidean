@@ -9,6 +9,8 @@ public class ColorObject : MonoBehaviour
     protected LightColor baseColor;
     [SerializeField]
     protected bool interactable = false;
+    [SerializeField]
+    protected int colorObjectID = 0;
 
     protected Collider col;
     protected ColorRoom room;
@@ -20,7 +22,7 @@ public class ColorObject : MonoBehaviour
     protected virtual void Awake()
     {
         col = GetComponent<Collider>();
-        room = GetComponentInParent<ColorRoom>();
+        room = GetComponentInParent<ColorRoom>(); //TODO: support nested parents
         rigidBody = GetComponent<Rigidbody>();
     }
 
@@ -29,23 +31,14 @@ public class ColorObject : MonoBehaviour
         UpdateColorLayer();
     }
 
-    public virtual void OnLightEnter(LightColor lightColor)
-    {
-        if (!isLightActive)
-            return;
-    }
-    public virtual void OnLightExit(LightColor lightColor)
-    {
-        if (!isLightActive)
-            return;
-    }
+    public virtual void OnLightEnter(LightColor lightColor) { }
+    public virtual void OnLightExit(LightColor lightColor) { }
     public virtual void Interact() { }
 
     //Bunch of handy functions
     protected void EnableInteract()
     {
         canInteract = true;
-        
     }
 
     protected void DisableInteract()
@@ -102,5 +95,11 @@ public class ColorObject : MonoBehaviour
             gameObject.layer = LayerMask.NameToLayer("LightObject_Blue");
         }
         isLightActive = true;
+    }
+
+    //Handle for when the room changes color at runtime
+    public virtual void OnRoomColorChange()
+    {
+        UpdateColorLayer();
     }
 }
