@@ -23,7 +23,7 @@ public class DoorController : Interactable
 
     public override void Interact()
     {
-        if (gameObject.layer != 12 && InteractionEnabled)
+        if (gameObject.layer != 12 && InteractionEnabled && !hidden)
         {
             GameManager.Instance.ChangeScene(sceneDestination, doorDestination, colorDestination);
         }

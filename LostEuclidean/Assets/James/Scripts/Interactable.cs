@@ -8,6 +8,10 @@ public class Interactable : MonoBehaviour
 
     [SerializeField] public bool InteractionEnabled;
 
+    public bool hidden;
+
+    [SerializeField] Collider colliderMesh;
+
     private void Update()
     {
         if (contextualPrompt != null)
@@ -16,13 +20,25 @@ public class Interactable : MonoBehaviour
 
             float distToPlayer = (player.transform.position - transform.position).magnitude;
 
-            if (distToPlayer <= player.InteractionRange && !contextualPrompt.activeInHierarchy && InteractionEnabled)
+            if (distToPlayer <= player.InteractionRange && !contextualPrompt.activeInHierarchy && InteractionEnabled && !hidden)
             {
                 contextualPrompt.SetActive(true);
             }
             else if (distToPlayer >= player.InteractionRange && contextualPrompt.activeInHierarchy)
             {
                 contextualPrompt.SetActive(false);
+            }
+        }
+
+        if (colliderMesh != null)
+        {
+            if (colliderMesh.isTrigger)
+            {
+                hidden = true;
+            }
+            else
+            {
+                hidden = false;
             }
         }
     }
