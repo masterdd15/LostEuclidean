@@ -615,7 +615,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-65650
+  m_Name: pb_Mesh-23698
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1507,6 +1507,10 @@ PrefabInstance:
       propertyPath: baseColor
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7857300013283995133, guid: a4f2b5412792ae844b94bc74f33ecc5c, type: 3}
+      propertyPath: interactable
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4f2b5412792ae844b94bc74f33ecc5c, type: 3}
 --- !u!1001 &1643746773
@@ -1779,7 +1783,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-4656
+  m_Name: pb_Mesh-23680
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

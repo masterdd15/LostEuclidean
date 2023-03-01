@@ -102,4 +102,9 @@ public class ColorObject : MonoBehaviour
     {
         UpdateColorLayer();
     }
+
+    public bool CanInteract()
+    {
+        return canInteract;
+    }
 }

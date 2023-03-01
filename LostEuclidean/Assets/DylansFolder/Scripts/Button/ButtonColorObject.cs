@@ -25,11 +25,13 @@ public class ButtonColorObject : ColorObject
         if (lightColor == baseColor)
         {
             EnablePhysics();
+            EnableInteract();
         }
         else
         {
             DisableCollider();
             DisablePhysics();
+            DisableInteract();
         }
     }
 
@@ -40,6 +42,7 @@ public class ButtonColorObject : ColorObject
             return;
         DisableCollider();
         DisablePhysics();
+        DisableInteract();
     }
 
     protected override void OnEnable()
@@ -48,6 +51,7 @@ public class ButtonColorObject : ColorObject
         if (gameObject.layer == LayerMask.NameToLayer("Default"))
         {
             EnablePhysics();
+            EnableInteract();
         }
     }
 }

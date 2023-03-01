@@ -2043,6 +2043,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contextualPrompt: {fileID: 1714273589}
   InteractionEnabled: 1
+  hidden: 0
+  colliderMesh: {fileID: 1318961219}
   front: {fileID: 1892296566}
   doorMesh: {fileID: 1318961216}
   disabledMat: {fileID: 2100000, guid: 297fb467c214e904d81fd60b01206bdd, type: 2}
@@ -4921,6 +4923,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contextualPrompt: {fileID: 3602887273999223394}
   InteractionEnabled: 0
+  hidden: 0
+  colliderMesh: {fileID: 3602887274195719191}
   front: {fileID: 3602887275023298461}
   doorMesh: {fileID: 3602887274195719177}
   disabledMat: {fileID: 2100000, guid: 297fb467c214e904d81fd60b01206bdd, type: 2}
@@ -5470,6 +5474,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contextualPrompt: {fileID: 3602887274634581188}
   InteractionEnabled: 0
+  hidden: 0
+  colliderMesh: {fileID: 3602887274965453489}
   front: {fileID: 3602887275797066043}
   doorMesh: {fileID: 3602887274965453487}
   disabledMat: {fileID: 2100000, guid: 297fb467c214e904d81fd60b01206bdd, type: 2}
@@ -6095,6 +6101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contextualPrompt: {fileID: 4202127610834154883}
   InteractionEnabled: 1
+  hidden: 0
+  colliderMesh: {fileID: 4202127610637495286}
   front: {fileID: 4202127609839439996}
   doorMesh: {fileID: 4202127610637495272}
   disabledMat: {fileID: 2100000, guid: 297fb467c214e904d81fd60b01206bdd, type: 2}
