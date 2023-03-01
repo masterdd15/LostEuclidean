@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    //Temp boolean variable to show when the player has won the game
+    [SerializeField] bool hasWon = false;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -56,5 +59,22 @@ public class GameManager : MonoBehaviour
         {
             colorRoom.GetComponent<ColorRoom>().ChangeRoomColor(color);
         }
+    }
+
+    //Getter and Setter Methods to change the hasWon boolean
+    
+    public bool GethasWon()
+    {
+        return hasWon;
+    }
+    
+    public void HasWonOn()
+    {
+        hasWon = true;
+    }
+
+    public void HasWonOff()
+    {
+        hasWon = true;
     }
 }
