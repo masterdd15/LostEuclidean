@@ -619,7 +619,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-4048
+  m_Name: pb_Mesh-37600
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1486,6 +1486,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1546033916217890950, guid: a22a1484cfeada54a97ee2aec6c1053d, type: 3}
   m_PrefabInstance: {fileID: 593846014}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &597258940 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1898413746720190516, guid: a4f2b5412792ae844b94bc74f33ecc5c, type: 3}
+  m_PrefabInstance: {fileID: 1566943214}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &597258942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597258940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d2cbd251172c814bb89ef9e6d1ec857, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: 2
+  interactable: 0
+  colorObjectID: 0
 --- !u!224 &598196401 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2024617340807182160, guid: df02d59add2187b41a9b0ec4c6a3cae0, type: 3}
@@ -3613,7 +3633,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: db29999107c33154bbfdd30d1b8e57db, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4709,7 +4729,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-4030
+  m_Name: pb_Mesh-37582
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4904,9 +4924,9 @@ MonoBehaviour:
   front: {fileID: 3602887275023298461}
   doorMesh: {fileID: 3602887274195719177}
   disabledMat: {fileID: 2100000, guid: 297fb467c214e904d81fd60b01206bdd, type: 2}
-  enabledMat: {fileID: 2100000, guid: db29999107c33154bbfdd30d1b8e57db, type: 2}
-  sceneDestination: Isometric Test
-  doorDestination: Door
+  enabledMat: {fileID: 2100000, guid: 3a693d44107aa164aad0468886dba5ee, type: 2}
+  sceneDestination: Puzzle1_End
+  doorDestination: Door_South
   colorDestination: 2
 --- !u!4 &3602887273963399515
 Transform:
@@ -5892,7 +5912,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: db29999107c33154bbfdd30d1b8e57db, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
