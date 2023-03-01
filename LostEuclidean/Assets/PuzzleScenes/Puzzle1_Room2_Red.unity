@@ -4929,9 +4929,9 @@ MonoBehaviour:
   doorMesh: {fileID: 3602887274195719177}
   disabledMat: {fileID: 2100000, guid: 297fb467c214e904d81fd60b01206bdd, type: 2}
   enabledMat: {fileID: 2100000, guid: 3a693d44107aa164aad0468886dba5ee, type: 2}
-  sceneDestination: Puzzle1_End
-  doorDestination: Door_South
-  colorDestination: 2
+  sceneDestination: ProtoMenu
+  doorDestination: 
+  colorDestination: 3
 --- !u!4 &3602887273963399515
 Transform:
   m_ObjectHideFlags: 0
