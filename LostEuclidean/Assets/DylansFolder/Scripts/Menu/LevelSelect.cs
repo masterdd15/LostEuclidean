@@ -5,9 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class LevelSelect : MonoBehaviour
 {
+    GameManager gm;
     [SerializeField] string levelName;
-    
+
     // Start is called before the first frame update
+    private void Awake()
+    {
+        gm = GameManager.Instance;
+    }
+
     void Start()
     {
         
@@ -21,6 +27,7 @@ public class LevelSelect : MonoBehaviour
 
     public void OpenScene()
     {
+        gm.HasWonOn();
         SceneManager.LoadScene(levelName);
     }
 }

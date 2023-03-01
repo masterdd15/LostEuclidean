@@ -1289,6 +1289,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contextualPrompt: {fileID: 1897473149}
   InteractionEnabled: 1
+  hidden: 0
+  colliderMesh: {fileID: 0}
   front: {fileID: 2134544550}
   doorMesh: {fileID: 1625915346}
   disabledMat: {fileID: 2100000, guid: 297fb467c214e904d81fd60b01206bdd, type: 2}
@@ -4426,7 +4428,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-43626
+  m_Name: pb_Mesh-95096
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4629,13 +4631,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contextualPrompt: {fileID: 3602887273999223394}
   InteractionEnabled: 0
+  hidden: 0
+  colliderMesh: {fileID: 0}
   front: {fileID: 3602887275023298461}
   doorMesh: {fileID: 3602887274195719177}
   disabledMat: {fileID: 2100000, guid: 297fb467c214e904d81fd60b01206bdd, type: 2}
   enabledMat: {fileID: 2100000, guid: 3a693d44107aa164aad0468886dba5ee, type: 2}
-  sceneDestination: Puzzle1_End
-  doorDestination: Door_South
-  colorDestination: 2
+  sceneDestination: ProtoMenu
+  doorDestination: 
+  colorDestination: 3
 --- !u!4 &3602887273963399515
 Transform:
   m_ObjectHideFlags: 0
@@ -5178,6 +5182,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contextualPrompt: {fileID: 3602887274634581188}
   InteractionEnabled: 0
+  hidden: 0
+  colliderMesh: {fileID: 0}
   front: {fileID: 3602887275797066043}
   doorMesh: {fileID: 3602887274965453487}
   disabledMat: {fileID: 2100000, guid: 297fb467c214e904d81fd60b01206bdd, type: 2}
@@ -5803,6 +5809,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contextualPrompt: {fileID: 4202127610834154883}
   InteractionEnabled: 1
+  hidden: 0
+  colliderMesh: {fileID: 0}
   front: {fileID: 4202127609839439996}
   doorMesh: {fileID: 4202127610637495272}
   disabledMat: {fileID: 2100000, guid: 297fb467c214e904d81fd60b01206bdd, type: 2}
