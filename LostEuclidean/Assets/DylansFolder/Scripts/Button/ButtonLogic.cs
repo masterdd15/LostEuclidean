@@ -34,15 +34,21 @@ public class ButtonLogic : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        //Debug.Log(localState.ToString() + " - " + other.name);
+
         if (localState != ButtonState.ON && other.gameObject.tag != "Flashlight" && !other.isTrigger && buttonColorObject.CanInteract())
         {
+            //Debug.Log("TURNING ON: " + other.name);
+
             localState = ButtonState.ON;
 
             if (connectedInteractable != null)
                 connectedInteractable.Enable();
         }
-        else if (localState == ButtonState.ON && ((other.isTrigger && other.gameObject.tag != "Flashlight") || !buttonColorObject.CanInteract()))
+        else if (localState == ButtonState.ON && other.tag != "Flashlight" && (other.isTrigger || !buttonColorObject.CanInteract()))
         {
+            //Debug.Log("TURNING OFF: " + other.name);
+
             localState = ButtonState.OFF;
 
             if (connectedInteractable != null)
@@ -52,6 +58,8 @@ public class ButtonLogic : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        Debug.Log("EXITING" + other.name);
+
         if (other.gameObject.tag != "Flashlight")
         {
             localState = ButtonState.OFF;
