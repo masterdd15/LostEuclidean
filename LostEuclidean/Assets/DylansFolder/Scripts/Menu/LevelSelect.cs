@@ -11,12 +11,12 @@ public class LevelSelect : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        gm = GameManager.Instance;
+        
     }
 
     void Start()
     {
-        
+        gm = GameManager.Instance;
     }
 
     // Update is called once per frame

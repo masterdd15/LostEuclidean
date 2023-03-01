@@ -17,12 +17,17 @@ public class ProtoMenuLogic : MonoBehaviour
     [SerializeField] List<GameObject> menuScreens;
 
     //At the start of the menu, we should set every menu screen off, and turn on base
-    public void Awake()
+    void Awake()
+    {
+        
+    }
+
+    private void Start()
     {
         gm = GameManager.Instance;
-        
+
         //Goes through every item in a menu
-        if(gm.GethasWon()) //Player has already completed a level
+        if (gm.GethasWon()) //Player has already completed a level
         {
             menuScreens[0].SetActive(false);
             menuScreens[1].SetActive(true);

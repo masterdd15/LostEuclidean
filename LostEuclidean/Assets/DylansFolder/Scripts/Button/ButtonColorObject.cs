@@ -9,11 +9,13 @@ public class ButtonColorObject : ColorObject
         if (gameObject.layer == LayerMask.NameToLayer("Default"))
         {
             EnablePhysics();
+            EnableInteract();
         }
         else
         {
             DisableCollider();
             DisablePhysics();
+            DisableInteract();
         }
     }
 

@@ -34,39 +34,53 @@ public class ButtonLogic : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        //Debug.Log(localState.ToString() + " - " + other.name);
+        ColorObject colorObj = other.GetComponent<ColorObject>();
 
-        if (localState != ButtonState.ON && other.gameObject.tag != "Flashlight" && !other.isTrigger && buttonColorObject.CanInteract())
+        if (colorObj != null)
         {
-            //Debug.Log("TURNING ON: " + other.name);
+            //if (other.tag != "Flashlight")
+            //    Debug.Log(localState.ToString() + " - " + other.gameObject.name + " - " + colorObj.CanInteract() + " - " + buttonColorObject.CanInteract());
 
-            localState = ButtonState.ON;
+            if (colorObj.CanInteract() && buttonColorObject.CanInteract() && localState != ButtonState.ON)
+            {
+                localState = ButtonState.ON;
 
-            if (connectedInteractable != null)
-                connectedInteractable.Enable();
+                if (connectedInteractable != null)
+                    connectedInteractable.Enable();
+            }
         }
-        else if (localState == ButtonState.ON && other.tag != "Flashlight" && (other.isTrigger || !buttonColorObject.CanInteract()))
-        {
-            //Debug.Log("TURNING OFF: " + other.name);
 
-            localState = ButtonState.OFF;
+        //if (localState != ButtonState.ON && other.gameObject.tag != "Flashlight" && other.gameObject.tag != "Player" && !other.isTrigger && buttonColorObject.CanInteract())
+        //{
+        //    Debug.Log("TURNING ON: " + other.name);
 
-            if (connectedInteractable != null)
-                connectedInteractable.Disable();
-        }
+        //    localState = ButtonState.ON;
+
+        //    if (connectedInteractable != null)
+        //        connectedInteractable.Enable();
+        //}
+        //else if (localState == ButtonState.ON && other.tag != "Flashlight" && (other.isTrigger || !buttonColorObject.CanInteract()))
+        //{
+        //    //Debug.Log("TURNING OFF: " + other.name);
+
+        //    localState = ButtonState.OFF;
+
+        //    if (connectedInteractable != null)
+        //        connectedInteractable.Disable();
+        //}
     }
 
     private void OnTriggerExit(Collider other)
     {
         //Debug.Log("EXITING" + other.name);
 
-        if (other.gameObject.tag != "Flashlight")
-        {
-            localState = ButtonState.OFF;
+        //if (other.gameObject.tag != "Flashlight")
+        //{
+        //    localState = ButtonState.OFF;
 
-            if (connectedInteractable != null)
-                connectedInteractable.Disable();
-        }
+        //    if (connectedInteractable != null)
+        //        connectedInteractable.Disable();
+        //}
     }
 
     //I'm creating a state machine for the button
