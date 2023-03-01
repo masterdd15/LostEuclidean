@@ -58,7 +58,7 @@ public class ButtonLogic : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("EXITING" + other.name);
+        //Debug.Log("EXITING" + other.name);
 
         if (other.gameObject.tag != "Flashlight")
         {
