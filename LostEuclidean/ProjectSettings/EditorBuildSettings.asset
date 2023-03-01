@@ -25,7 +25,7 @@ EditorBuildSettings:
     guid: d5bf0ca2d83f3ce469e1c876f0fe58ca
   - enabled: 1
     path: Assets/PuzzleScenes/Puzzle1_Room2_Red.unity
-    guid: 55559ec332c045141abf6e0f5156c22d
+    guid: 09c8074682fea1c47b91f4662ad1d8e4
   - enabled: 1
     path: Assets/PuzzleScenes/Puzzle1_End.unity
     guid: 0d894a80330eb2e4eaf2d3032c27fcee
