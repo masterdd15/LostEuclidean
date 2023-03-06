@@ -3,16 +3,19 @@
 void PiecewiseFractalNoise_float (float2 input, float frequency, out float Out)
 {
 	float noise = 0;
-	
-	[Unroll]
-	for (int i = 1; i < 5; i++)
-	{
-		noise += 1 * cnoise(input * i) / (2^i) ;
-	}
+
+
+	noise += cnoise(input * 1) / (2^1) ;
+	noise += cnoise(input * 2) / (2^2) ;
+	noise += cnoise(input * 3) / (2^3) ;
+	noise += cnoise(input * 4) / (2^4) ;
+
+
+	noise = (cnoise(input) + 1) / 2;
 
 	noise *= frequency;
 	noise = floor(noise);
 	noise /= frequency;
 
-	Out = noise;
+	Out = noise - 0.5f;
 }

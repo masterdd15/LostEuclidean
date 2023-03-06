@@ -108,7 +108,8 @@ Material:
     - _EnvironmentReflections: 1
     - _GlitchFrequency: 3
     - _GlitchSwitch: 1
-    - _Glitch_Amplitude: 0.1
+    - _Glitch_Amplitude: 0.15
+    - _Glitch_Frequency: 3
     - _Glitch_Speed: 5
     - _GlossMapScale: 0
     - _Glossiness: 0
