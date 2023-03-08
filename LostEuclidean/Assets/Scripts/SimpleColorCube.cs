@@ -22,6 +22,7 @@ public class SimpleColorCube : ColorObject
 
     public override void OnLightEnter(LightColor lightColor)
     {
+        Debug.Log(gameObject.name + " OnLightEnter");
         base.OnLightEnter(lightColor);
         if (!isLightActive)
             return;
@@ -41,6 +42,7 @@ public class SimpleColorCube : ColorObject
 
     public override void OnLightExit(LightColor lightColor)
     {
+        Debug.Log(gameObject.name + " OnLightExit");
         base.OnLightExit(lightColor);
         if (!isLightActive)
             return;
