@@ -31,20 +31,23 @@ public class GameManager : MonoBehaviour
 
     IEnumerator LoadNewScene(string sceneName, string doorName, LightColor color)
     {
-        // Fade out
-        Image fadingImage = GameObject.Find("FadeImage").GetComponent<FullscreenFadeController>().FadeOut();
-
-        while (fadingImage.color.a < 1)
+        if (sceneName != SceneManager.GetActiveScene().name)
         {
-            yield return null;
-        }
+            // Fade out
+            Image fadingImage = GameObject.Find("FadeImage").GetComponent<FullscreenFadeController>().FadeOut();
 
-        // Load the new scene
-        AsyncOperation newScene = SceneManager.LoadSceneAsync(sceneName);
+            while (fadingImage.color.a < 1)
+            {
+                yield return null;
+            }
 
-        while (!newScene.isDone)
-        {
-            yield return null;
+            // Load the new scene if necessary
+            AsyncOperation newScene = SceneManager.LoadSceneAsync(sceneName);
+
+            while (!newScene.isDone)
+            {
+                yield return null;
+            }
         }
 
         // Place the player at the right door
