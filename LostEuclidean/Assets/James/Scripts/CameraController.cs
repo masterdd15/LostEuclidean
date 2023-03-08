@@ -10,6 +10,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] int wallHiddenLayer;
     [SerializeField] Camera m_Camera;
     [SerializeField] int startingLeftWall;
+    [SerializeField] GameObject camTarget;
 
     [Header("Other Variables")]
     [SerializeField] GameObject wallParent;
@@ -27,6 +28,8 @@ public class CameraController : MonoBehaviour
         camRotating = false;
 
         moveVec = Vector3.zero;
+
+        //gameObject.transform.LookAt(camParent.transform);
     }
 
     private void Update()
@@ -84,9 +87,9 @@ public class CameraController : MonoBehaviour
             bool revealed = false;
             while (deg < 90f)
             {
-                if (rotatePoint != Vector3.zero)
+                if (rotatePoint != Vector3.zero && camTarget != null)
                 {
-                    m_Camera.transform.RotateAround(rotatePoint, Vector3.up, 2 * dir);
+                    m_Camera.transform.RotateAround(camTarget.transform.position, Vector3.up, 2 * dir);
                 }
 
                 // Reveal and hide walls as necessary
