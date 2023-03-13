@@ -100,7 +100,7 @@ public class Flashlight : MonoBehaviour
             return;
         for (int i = 0; i < colorObjList.Count; i++)
         {
-            RemoveColorObject(colorObjList[0]);
+            colorObjList[i].OnLightExit(currentColor);
         }
         currentColorIndex++;
         if (currentColorIndex >= lightModes.Length)
@@ -108,6 +108,10 @@ public class Flashlight : MonoBehaviour
             currentColorIndex = 0;
         }
         currentColor = lightModes[currentColorIndex];
+        for (int i = 0; i < colorObjList.Count; i++)
+        {
+            colorObjList[i].OnLightEnter(currentColor);
+        }
         UpdateLightColor();
     }
 
