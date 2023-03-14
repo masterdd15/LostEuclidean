@@ -81,16 +81,13 @@ public class CameraController : MonoBehaviour
             rotatePoint = hit.point;
         }
 
-        if (rotatePoint != Vector3.zero)
+        if (camTarget != null)
         {
             float deg = 0f;
             bool revealed = false;
             while (deg < 90f)
             {
-                if (rotatePoint != Vector3.zero && camTarget != null)
-                {
-                    m_Camera.transform.RotateAround(camTarget.transform.position, Vector3.up, 2 * dir);
-                }
+                m_Camera.transform.RotateAround(camTarget.transform.position, Vector3.up, 2 * dir);
 
                 // Reveal and hide walls as necessary
                 if (deg > 45f && !revealed)

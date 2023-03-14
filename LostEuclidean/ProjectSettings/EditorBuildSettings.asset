@@ -29,5 +29,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/PuzzleScenes/Puzzle1_End.unity
     guid: 0d894a80330eb2e4eaf2d3032c27fcee
+  - enabled: 1
+    path: Assets/PuzzleScenes/Puzzle_1/Puzzle_1_1.unity
+    guid: cd2c2be41d488354d8c880c672bafe11
+  - enabled: 1
+    path: Assets/PuzzleScenes/Puzzle_1/Puzzle_1_2.unity
+    guid: 2d1f2095b67d65649ad44e8a2666269f
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 81ae31d39a50c9443878df0a7045a423, type: 2}
