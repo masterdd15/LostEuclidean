@@ -15,10 +15,33 @@ public class DoorController : Interactable
     [SerializeField] string doorDestination;
     [SerializeField] LightColor colorDestination;
 
+    Material[] doorMats;
+    int materialIndex;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        doorMats = doorMesh.GetComponent<MeshRenderer>().materials;
+        for (int i = 0; i < doorMats.Length; i++)
+        {
+            if (doorMats[i].name.Contains("Indicator"))
+            {
+                materialIndex = i;
+            }
+        }
+
+        Debug.Log(materialIndex);
+
+        if (InteractionEnabled)
+        {
+            doorMats[materialIndex] = enabledMat;
+            doorMesh.GetComponent<MeshRenderer>().materials = doorMats;
+        }
+        else
+        {
+            doorMats[materialIndex] = disabledMat;
+            doorMesh.GetComponent<MeshRenderer>().materials = doorMats;
+        }
     }
 
     public override void Interact()
@@ -33,13 +56,15 @@ public class DoorController : Interactable
     {
         InteractionEnabled = true;
 
-        doorMesh.GetComponent<MeshRenderer>().material = enabledMat;
+        doorMats[materialIndex] = enabledMat;
+        doorMesh.GetComponent<MeshRenderer>().materials = doorMats;
     }
 
     public override void Disable()
     {
         InteractionEnabled = false;
 
-        doorMesh.GetComponent<MeshRenderer>().material = disabledMat;
+        doorMats[materialIndex] = disabledMat;
+        doorMesh.GetComponent<MeshRenderer>().materials = doorMats;
     }
 }
