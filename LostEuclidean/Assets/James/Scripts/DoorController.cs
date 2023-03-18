@@ -30,7 +30,7 @@ public class DoorController : Interactable
             }
         }
 
-        Debug.Log(materialIndex);
+        //Debug.Log(materialIndex);
 
         if (InteractionEnabled)
         {

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1898413746720190512}
   - component: {fileID: 1898413746720190513}
   - component: {fileID: 1898413746720190518}
+  - component: {fileID: 5882492058338629580}
   m_Layer: 0
   m_Name: Button_Bottom
   m_TagString: Untagged
@@ -726,6 +727,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &5882492058338629580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1898413746720190516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d2cbd251172c814bb89ef9e6d1ec857, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: 0
+  interactable: 0
+  colorObjectID: 0
 --- !u!1 &1898413747913617793
 GameObject:
   m_ObjectHideFlags: 0
@@ -1483,3 +1499,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseColor: 0
   interactable: 0
+  colorObjectID: 0

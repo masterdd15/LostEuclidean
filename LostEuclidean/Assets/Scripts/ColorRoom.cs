@@ -12,12 +12,20 @@ public class ColorRoom : MonoBehaviour
     {
         //adds all its children color objects to the list
         //TODO: support nested children
-        for (int i = 0; i < transform.childCount; i++)
+        //for (int i = 0; i < transform.childCount; i++)
+        //{
+        //    ColorObject child = transform.GetChild(i).GetComponent<ColorObject>();
+        //    if (child != null && !objectsInRoom.Contains(child))
+        //    {
+        //        objectsInRoom.Add(child);
+        //    }
+        //}
+
+        foreach (ColorObject colorChild in transform.GetComponentsInChildren<ColorObject>())
         {
-            ColorObject child = transform.GetChild(i).GetComponent<ColorObject>();
-            if (child != null && !objectsInRoom.Contains(child))
+            if (!objectsInRoom.Contains(colorChild))
             {
-                objectsInRoom.Add(child);
+                objectsInRoom.Add(colorChild);
             }
         }
     }

@@ -78,10 +78,17 @@ public class ColorObject : MonoBehaviour
         if (baseColor == room.roomColor)
         {
             gameObject.layer = LayerMask.NameToLayer("Default");
+
+            EnableCollider();
+            EnablePhysics();
+
             isLightActive = false;
             return;
         }
-        
+
+        DisableCollider();
+        DisablePhysics();
+
         if (baseColor == LightColor.Red)
         {
             gameObject.layer = LayerMask.NameToLayer("LightObject_Red");
