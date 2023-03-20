@@ -191,7 +191,6 @@ public class Flashlight : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        //Debug.Log(other.gameObject.name + " flashlight exit");
         ColorObject obj = other.GetComponent<ColorObject>();
         if (obj != null)
         {

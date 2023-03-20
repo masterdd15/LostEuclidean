@@ -34,9 +34,9 @@ public class SimpleColorCube : ColorObject
         }
         else
         {
-            DisableCollider();
-            DisablePhysics();
-            DisableInteract();
+            //DisableCollider();
+            //DisablePhysics();
+            //DisableInteract();
         }
     }
 

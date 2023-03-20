@@ -26,7 +26,7 @@ public class ColorObject : MonoBehaviour
 
     public bool isRevealed = false; //true if visible
     protected bool isLightActive = true; //true if on a LightColor layer
-    protected bool canInteract = false;
+    [SerializeField] protected bool canInteract = false;
     protected bool isGlitching = false;
 
     protected List<ColorObject> glitchersTouching = new List<ColorObject>();
