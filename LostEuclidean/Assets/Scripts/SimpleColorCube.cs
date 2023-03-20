@@ -16,7 +16,7 @@ public class SimpleColorCube : ColorObject
         {
             DisableCollider();
             DisablePhysics();
-            //DisableInteract();
+            DisableInteract();
         }
     }
 
@@ -36,7 +36,7 @@ public class SimpleColorCube : ColorObject
         {
             DisableCollider();
             DisablePhysics();
-            //DisableInteract();
+            DisableInteract();
         }
     }
 
@@ -48,7 +48,7 @@ public class SimpleColorCube : ColorObject
             return;
         DisableCollider();
         DisablePhysics();
-        //DisableInteract();
+        DisableInteract();
     }
 
     protected override void OnEnable()
