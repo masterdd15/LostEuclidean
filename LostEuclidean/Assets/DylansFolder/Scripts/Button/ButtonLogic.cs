@@ -48,6 +48,13 @@ public class ButtonLogic : MonoBehaviour
                 if (connectedInteractable != null)
                     connectedInteractable.Enable();
             }
+            else if ((!colorObj.CanInteract() || !buttonColorObject.CanInteract()) && localState == ButtonState.ON)
+            {
+                localState = ButtonState.OFF;
+
+                if (connectedInteractable != null)
+                    connectedInteractable.Disable();
+            }
         }
 
         //if (localState != ButtonState.ON && other.gameObject.tag != "Flashlight" && other.gameObject.tag != "Player" && !other.isTrigger && buttonColorObject.CanInteract())
@@ -72,15 +79,15 @@ public class ButtonLogic : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        //Debug.Log("EXITING" + other.name);
+        if (other.gameObject.tag != "Flashlight")
+        {
+            //Debug.Log("EXITING: " + other.name);
 
-        //if (other.gameObject.tag != "Flashlight")
-        //{
-        //    localState = ButtonState.OFF;
+            localState = ButtonState.OFF;
 
-        //    if (connectedInteractable != null)
-        //        connectedInteractable.Disable();
-        //}
+            if (connectedInteractable != null)
+                connectedInteractable.Disable();
+        }
     }
 
     //I'm creating a state machine for the button
