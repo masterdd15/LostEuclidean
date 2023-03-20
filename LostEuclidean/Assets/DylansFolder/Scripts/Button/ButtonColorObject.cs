@@ -55,5 +55,14 @@ public class ButtonColorObject : ColorObject
             EnablePhysics();
             EnableInteract();
         }
+
+        DisableCollider();
+    }
+
+    public override void OnRoomColorChange()
+    {
+        base.OnRoomColorChange();
+
+        DisableCollider();
     }
 }
