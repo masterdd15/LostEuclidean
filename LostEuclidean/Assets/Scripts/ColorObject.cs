@@ -21,7 +21,6 @@ public class ColorObject : MonoBehaviour
     protected ColorRoom room;
     protected Rigidbody rigidBody;
     protected MeshRenderer meshRenderer;
-    [SerializeField]
     protected ParticleSystem glitchParticles; //component of direct child object
 
     public bool isRevealed = false; //true if visible
