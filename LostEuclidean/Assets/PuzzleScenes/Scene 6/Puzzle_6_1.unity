@@ -6623,7 +6623,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3602887275893257679, guid: 2414f87c8ff1cb14494cc37c826e654b, type: 3}
       propertyPath: sceneDestination
-      value: Puzzle_6
+      value: Puzzle_6_1
       objectReference: {fileID: 0}
     - target: {fileID: 3602887275893257679, guid: 2414f87c8ff1cb14494cc37c826e654b, type: 3}
       propertyPath: InteractionEnabled
@@ -7096,7 +7096,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3602887275893257679, guid: 2414f87c8ff1cb14494cc37c826e654b, type: 3}
       propertyPath: sceneDestination
-      value: Puzzle_6
+      value: Puzzle_6_1
       objectReference: {fileID: 0}
     - target: {fileID: 3602887275893257679, guid: 2414f87c8ff1cb14494cc37c826e654b, type: 3}
       propertyPath: InteractionEnabled
