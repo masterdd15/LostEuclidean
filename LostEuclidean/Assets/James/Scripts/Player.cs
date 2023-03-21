@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     
     [SerializeField] Camera m_Camera;
     [SerializeField] LayerMask playerLookMask;
+    [SerializeField] PlayerInput playerInput;
 
     [Header("Player Controller Variables")]
     [SerializeField] Rigidbody rb;
@@ -38,8 +39,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Look at the mouse
-        LookAtMouse();
+        if (playerInput.currentControlScheme == "Keyboard&Mouse")
+        {
+            // Look at the mouse
+            LookAtMouse();
+        }
 
         // Move the character
         if (ramp != 0)
@@ -234,6 +238,26 @@ public class Player : MonoBehaviour
 
                 flashlight.OnPickUpFlashlight(null);
             }
+        }
+    }
+
+    public void GamepadLook(InputAction.CallbackContext context)
+    {
+        if (context.performed && context.ReadValue<Vector2>() != Vector2.zero)
+        {
+            Vector2 inputLook = context.ReadValue<Vector2>();
+
+            Vector3 lookVec = new Vector3(inputLook.x, 0f, inputLook.y);
+
+            // Rotate the moveVec to correspond to the camera
+            Vector3 cameraRotation = m_Camera.transform.rotation.eulerAngles;
+
+            // Get the direction of the player's forward
+            cameraRotation = new Vector3(0f, cameraRotation.y, 0f);
+
+            lookVec = Quaternion.Euler(0f, cameraRotation.y - 90f, 0f) * lookVec;
+
+            transform.rotation = Quaternion.LookRotation(lookVec);
         }
     }
 
