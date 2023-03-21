@@ -35,7 +35,10 @@ public class GameUIManager : MonoBehaviour
 
         //We need to decide if our pause menu is on or off, and set it active accordingly
 
-        //This means our dark background is off
+        //This sets the dark background to it's opposite state (kind of like an on/off switch)
         gameUIScreens[0].SetActive(!gameUIScreens[0].activeSelf);
+
+        //This sets the pause menu UI to it's opposite state (kind of like an on/off switch)
+        gameUIScreens[1].SetActive(!gameUIScreens[1].activeSelf);
     }
 }
