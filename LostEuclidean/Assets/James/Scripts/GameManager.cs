@@ -11,6 +11,11 @@ public class GameManager : MonoBehaviour
     //Temp boolean variable to show when the player has won the game
     [SerializeField] bool hasWon = false;
 
+    //We are going to have a bool that keeps track of if the game is paused or not
+    [SerializeField] bool isPaused = false;
+
+    //Find the current pauseMenu screen
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -79,5 +84,33 @@ public class GameManager : MonoBehaviour
     public void HasWonOff()
     {
         hasWon = true;
+    }
+
+    /*This starts the sequence of events to pause the game
+     * Later on, we may have cutscenes or transitions were we DON'T want the player to pause
+     * This gateway will help us implement checks later on
+     */
+    public void HandlePause()
+    {
+        GameObject UICheck = GameObject.Find("GameUI_Manager");
+        if (UICheck != null)
+        {
+            isPaused = !isPaused; //Flip isPaused on or off depending on what it is currently
+            UICheck.GetComponent<GameUIManager>().TriggerPause();
+
+            //If true, we need to stop all time in the game to fully be paused
+            if (isPaused)
+            {
+                Time.timeScale = 0.0f;
+            }
+            else //If false, we need to resume the timescale to it's normal values
+            {
+                Time.timeScale = 1.0f;
+            }
+        }
+        else
+        {
+            Debug.Log("GAMEMANAGER ERROR: INGAME UI NOT FOUND");
+        }
     }
 }

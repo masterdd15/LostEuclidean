@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] GameManager gm;
+
     public float InteractionRange;
     
     [SerializeField] Camera m_Camera;
@@ -29,6 +31,8 @@ public class Player : MonoBehaviour
         moving = false;
         ramp = 0f;
         moveVec = Vector3.zero;
+
+        gm = GameManager.Instance;
     }
 
     // Update is called once per frame
@@ -231,5 +235,18 @@ public class Player : MonoBehaviour
                 flashlight.OnPickUpFlashlight(null);
             }
         }
+    }
+
+    /*This script sends a single that the Pause Menu should be opened or closed
+     * Currently, it links directly to the GameManager, where it is checked if the Pause menu can be opened
+     */
+    public void TogglePause(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            //Debug.Log("We did it Joe");
+            gm.HandlePause();
+        }
+
     }
 }
