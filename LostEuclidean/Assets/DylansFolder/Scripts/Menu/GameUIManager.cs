@@ -24,4 +24,18 @@ public class GameUIManager : MonoBehaviour
         
     }
     
+    /*
+     * Handles setting up the Pause menu (turns on if off, and off if on)
+     * We trigger this in the GameManager, which in turn is triggered through a player controller event
+     * We should make sure no other priority is active (transition between doors, cutscene, etc.) before pausing
+     */
+    public void TriggerPause()
+    {
+        Debug.Log("MADE IT TO THE PAUSE OBJECT");
+
+        //We need to decide if our pause menu is on or off, and set it active accordingly
+
+        //This means our dark background is off
+        gameUIScreens[0].SetActive(!gameUIScreens[0].activeSelf);
+    }
 }
