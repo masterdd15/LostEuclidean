@@ -244,7 +244,7 @@ public class Player : MonoBehaviour
     {
         if(context.performed)
         {
-            Debug.Log("We did it Joe");
+            //Debug.Log("We did it Joe");
             gm.HandlePause();
         }
 

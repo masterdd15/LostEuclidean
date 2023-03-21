@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameUIManager : MonoBehaviour
 {
@@ -23,6 +24,18 @@ public class GameUIManager : MonoBehaviour
     {
         
     }
+
+    public void HandleMainMenu()
+    {
+        SceneManager.LoadScene("ProtoMenu");
+    }
+
+    public void HandleQuit()
+    {
+        Application.Quit();
+    }
+
+
     
     /*
      * Handles setting up the Pause menu (turns on if off, and off if on)
@@ -31,7 +44,7 @@ public class GameUIManager : MonoBehaviour
      */
     public void TriggerPause()
     {
-        Debug.Log("MADE IT TO THE PAUSE OBJECT");
+        //Debug.Log("MADE IT TO THE PAUSE OBJECT");
 
         //We need to decide if our pause menu is on or off, and set it active accordingly
 
