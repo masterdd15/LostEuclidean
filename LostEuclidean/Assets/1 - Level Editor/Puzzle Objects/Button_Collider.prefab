@@ -721,10 +721,10 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1898413746720190516}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
 --- !u!114 &5882492058338629580
@@ -747,7 +747,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  glitchParticles: {fileID: 0}
   isRevealed: 0
   canInteract: 0
 --- !u!1 &1898413747913617793
@@ -1514,7 +1513,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  glitchParticles: {fileID: 0}
   isRevealed: 0
   canInteract: 0
 --- !u!54 &-5548685859695840731

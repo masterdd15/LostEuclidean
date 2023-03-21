@@ -129,7 +129,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-135916
+  m_Name: pb_Mesh-91504
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -477,11 +477,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5882492058338629580, guid: a4f2b5412792ae844b94bc74f33ecc5c, type: 3}
       propertyPath: baseColor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7857300013283995133, guid: a4f2b5412792ae844b94bc74f33ecc5c, type: 3}
       propertyPath: baseColor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7857300013283995133, guid: a4f2b5412792ae844b94bc74f33ecc5c, type: 3}
       propertyPath: interactable
@@ -1262,7 +1262,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-47296
+  m_Name: pb_Mesh-91524
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

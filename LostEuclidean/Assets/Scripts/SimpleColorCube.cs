@@ -9,13 +9,13 @@ public class SimpleColorCube : ColorObject
         if (gameObject.layer == LayerMask.NameToLayer("Default"))
         {
             EnableCollider();
-            EnablePhysics();
+            //EnablePhysics();
             EnableInteract();
         }
         else
         {
             DisableCollider();
-            DisablePhysics();
+            //DisablePhysics();
             DisableInteract();
         }
     }
@@ -29,7 +29,7 @@ public class SimpleColorCube : ColorObject
         if (lightColor == baseColor)
         {
             EnableCollider();
-            EnablePhysics();
+            //EnablePhysics();
             EnableInteract();
         }
         else
@@ -47,7 +47,7 @@ public class SimpleColorCube : ColorObject
         if (!isLightActive)
             return;
         DisableCollider();
-        DisablePhysics();
+        //DisablePhysics();
         DisableInteract();
     }
 
@@ -57,7 +57,7 @@ public class SimpleColorCube : ColorObject
         if (gameObject.layer == LayerMask.NameToLayer("Default"))
         {
             EnableCollider();
-            EnablePhysics();
+            //EnablePhysics();
             EnableInteract();
         }
     }

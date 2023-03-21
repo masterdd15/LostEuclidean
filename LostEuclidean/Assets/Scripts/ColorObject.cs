@@ -146,8 +146,9 @@ public class ColorObject : MonoBehaviour
         {
             gameObject.layer = LayerMask.NameToLayer("Default");
 
+            EnableInteract();
             EnableCollider();
-            EnablePhysics();
+            //EnablePhysics();
 
             isLightActive = false;
             isRevealed = true;
@@ -155,7 +156,8 @@ public class ColorObject : MonoBehaviour
         }
 
         DisableCollider();
-        DisablePhysics();
+        DisableInteract();
+        //DisablePhysics();
 
         if (baseColor == LightColor.Red)
         {

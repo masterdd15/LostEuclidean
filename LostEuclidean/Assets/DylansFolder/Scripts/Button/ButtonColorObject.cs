@@ -8,13 +8,13 @@ public class ButtonColorObject : ColorObject
     {
         if (gameObject.layer == LayerMask.NameToLayer("Default"))
         {
-            EnablePhysics();
+            //EnablePhysics();
             EnableInteract();
         }
         else
         {
             DisableCollider();
-            DisablePhysics();
+            //DisablePhysics();
             DisableInteract();
         }
     }
@@ -26,13 +26,13 @@ public class ButtonColorObject : ColorObject
             return;
         if (lightColor == baseColor)
         {
-            EnablePhysics();
+            //EnablePhysics();
             EnableInteract();
         }
         else
         {
-            DisableCollider();
-            DisablePhysics();
+            //DisableCollider();
+            //DisablePhysics();
             DisableInteract();
         }
     }
@@ -43,7 +43,7 @@ public class ButtonColorObject : ColorObject
         if (!isLightActive)
             return;
         DisableCollider();
-        DisablePhysics();
+        //DisablePhysics();
         DisableInteract();
     }
 
@@ -52,7 +52,7 @@ public class ButtonColorObject : ColorObject
         base.OnEnable();
         if (gameObject.layer == LayerMask.NameToLayer("Default"))
         {
-            EnablePhysics();
+            //EnablePhysics();
             EnableInteract();
         }
 

@@ -62,7 +62,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -138,5 +138,6 @@ MonoBehaviour:
   wallHiddenLayer: 12
   m_Camera: {fileID: 2915566448870680950}
   startingLeftWall: 1
+  camTarget: {fileID: 0}
   wallParent: {fileID: 0}
   cameraSpeed: 5
