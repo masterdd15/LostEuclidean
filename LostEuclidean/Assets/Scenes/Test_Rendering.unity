@@ -5133,7 +5133,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1899476111
 Transform:
   m_ObjectHideFlags: 0
@@ -9985,6 +9985,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 78f7c8b5c205390438ba7e81a738b407, type: 2}
   - {fileID: 2100000, guid: 996d955063c755c4e8862871d14cb457, type: 2}
   glitchParticles: {fileID: 0}
+  isRevealed: 0
 --- !u!135 &2094302564
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -10018,7 +10019,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 250c1f2785b54e241b64b6405dcb71d3, type: 2}
+  - {fileID: 2100000, guid: 0be03c371b92fd5438b23eaf302400e4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10266,7 +10267,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &8164078558238759429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10288,6 +10289,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 78f7c8b5c205390438ba7e81a738b407, type: 2}
   - {fileID: 2100000, guid: 996d955063c755c4e8862871d14cb457, type: 2}
   glitchParticles: {fileID: 0}
+  isRevealed: 0
 --- !u!135 &8164078558238759430
 SphereCollider:
   m_ObjectHideFlags: 0
