@@ -122,6 +122,8 @@ MonoBehaviour:
   - {fileID: 0}
   isRevealed: 0
   canInteract: 0
+  isGlitching: 0
+  glitchersTouching: []
 --- !u!114 &-7435762541219103235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,7 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slowdown: 0.3
-  rb_Cube: {fileID: 1670282855656833841}
+  colorCube: {fileID: -4280950177337262410}
 --- !u!54 &1670282855656833841
 Rigidbody:
   m_ObjectHideFlags: 0

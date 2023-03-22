@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerInput.currentControlScheme == "Keyboard&Mouse")
+        if (playerInput.currentControlScheme == "Keyboard&Mouse" && playerInput.currentActionMap == playerInput.actions.FindActionMap("Player"))
         {
             // Look at the mouse
             LookAtMouse();

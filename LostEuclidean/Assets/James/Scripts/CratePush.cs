@@ -5,6 +5,7 @@ using UnityEngine;
 public class CratePush : MonoBehaviour
 {
     [SerializeField] float slowdown;
+    [SerializeField] SimpleColorCube colorCube;
     //[SerializeField] Rigidbody rb_Cube;
 
     Vector3 moveVec;
@@ -23,7 +24,7 @@ public class CratePush : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && colorCube.CanInteract())
         {
             Vector3 pos = transform.InverseTransformPoint(collision.transform.position);
 
