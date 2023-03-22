@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 [RequireComponent(typeof(Collider))]
+[RequireComponent(typeof(Rigidbody))]
 public class ColorObject : MonoBehaviour
 {
     [SerializeField]
@@ -37,6 +39,14 @@ public class ColorObject : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
         meshRenderer = GetComponent<MeshRenderer>();
         glitchParticles = GetComponentInChildren<ParticleSystem>();
+
+        //fallback glitch materials if they are not manually assigned
+        if (glitchMaterials[0] == null)
+            glitchMaterials[0] = (Material)AssetDatabase.LoadAssetAtPath("Assets/Materials/Mat_Glitch/Mat_GlitchRed.mat", typeof(Material));
+        if (glitchMaterials[1] == null)
+            glitchMaterials[1] = (Material)AssetDatabase.LoadAssetAtPath("Assets/Materials/Mat_Glitch/Mat_GlitchGreen.mat", typeof(Material));
+        if (glitchMaterials[2] == null)
+            glitchMaterials[2] = (Material)AssetDatabase.LoadAssetAtPath("Assets/Materials/Mat_Glitch/Mat_GlitchBlue.mat", typeof(Material));
     }
 
     protected virtual void OnEnable()
