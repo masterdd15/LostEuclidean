@@ -27,6 +27,8 @@ public class GameUIManager : MonoBehaviour
 
     public void HandleMainMenu()
     {
+        //We need to unpause the game
+        gm.HandlePause();
         SceneManager.LoadScene("ProtoMenu");
     }
 

@@ -96,17 +96,20 @@ public class GameManager : MonoBehaviour
         if (UICheck != null)
         {
             isPaused = !isPaused; //Flip isPaused on or off depending on what it is currently
-            UICheck.GetComponent<GameUIManager>().TriggerPause();
-
+            
             //If true, we need to stop all time in the game to fully be paused
             if (isPaused)
             {
+                Debug.Log("Setting time scale to 0");
                 Time.timeScale = 0.0f;
             }
             else //If false, we need to resume the timescale to it's normal values
             {
+                Debug.Log("Setting time scale to 1");
                 Time.timeScale = 1.0f;
             }
+
+            UICheck.GetComponent<GameUIManager>().TriggerPause();
         }
         else
         {
