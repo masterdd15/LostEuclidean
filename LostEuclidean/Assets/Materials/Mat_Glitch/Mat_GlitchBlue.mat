@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mat_GlitchGreen
+  m_Name: Mat_GlitchBlue
   m_Shader: {fileID: -6465566751694194690, guid: c86c18404c261504cb6718fedadd30df, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -93,15 +93,15 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnvironmentReflections: 1
-    - _Glitch_Amplitude: 0.1
+    - _Glitch_Amplitude: 0.15
     - _Glitch_Frequency: 3
-    - _Glitch_Speed: 3
+    - _Glitch_Speed: 5
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _Offset: 0
+    - _Offset: 2
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -117,9 +117,9 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Default_Color: {r: 0.17157853, g: 1, b: 0, a: 0}
+    - _Default_Color: {r: 0.764151, g: 0.616303, b: 0.58873266, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Mask: {r: 0, g: 0, b: 0, a: 0}
+    - _Mask: {r: 0, g: 0, b: 1, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &5447583908645060633
