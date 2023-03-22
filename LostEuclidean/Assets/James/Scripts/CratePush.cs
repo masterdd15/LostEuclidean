@@ -5,6 +5,9 @@ using UnityEngine;
 public class CratePush : MonoBehaviour
 {
     [SerializeField] float slowdown;
+    //[SerializeField] Rigidbody rb_Cube;
+
+    Vector3 moveVec;
 
     // Start is called before the first frame update
     void Start()
@@ -15,7 +18,7 @@ public class CratePush : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnCollisionStay(Collision collision)
@@ -33,10 +36,12 @@ public class CratePush : MonoBehaviour
             {
                 if (forwardBack < 0f)
                 {
+                    //moveVec = transform.forward * collision.gameObject.GetComponent<Player>().speed * slowdown;
                     transform.Translate(transform.forward * collision.gameObject.GetComponent<Player>().speed * slowdown * Time.deltaTime, Space.World);
                 }
                 else if (forwardBack > 0f)
                 {
+                    //moveVec = -transform.forward * collision.gameObject.GetComponent<Player>().speed * slowdown;
                     transform.Translate(-transform.forward * collision.gameObject.GetComponent<Player>().speed * slowdown * Time.deltaTime, Space.World);
                 }
             }
@@ -44,13 +49,23 @@ public class CratePush : MonoBehaviour
             {
                 if (leftRight < 0f)
                 {
+                    //moveVec = transform.right * collision.gameObject.GetComponent<Player>().speed * slowdown;
                     transform.Translate(transform.right * collision.gameObject.GetComponent<Player>().speed * slowdown * Time.deltaTime, Space.World);
                 }
                 else if (leftRight > 0f)
                 {
+                    //moveVec = -transform.right * collision.gameObject.GetComponent<Player>().speed * slowdown;
                     transform.Translate(-transform.right * collision.gameObject.GetComponent<Player>().speed * slowdown * Time.deltaTime, Space.World);
                 }
             }
         }
     }
+
+    //private void OnCollisionExit(Collision collision)
+    //{
+    //    if (collision.gameObject.tag == "Player")
+    //    {
+    //        moveVec = Vector3.zero;
+    //    }
+    //}
 }

@@ -268,8 +268,20 @@ public class Player : MonoBehaviour
     {
         if(context.performed)
         {
-            //Debug.Log("We did it Joe");
-            gm.HandlePause();
+            if (playerInput.currentActionMap == playerInput.actions.FindActionMap("Player"))
+            {
+                playerInput.SwitchCurrentActionMap("Menu");
+
+                //Debug.Log("We did it Joe");
+                gm.HandlePause();
+            }
+            else if (playerInput.currentActionMap == playerInput.actions.FindActionMap("Menu"))
+            {
+                playerInput.SwitchCurrentActionMap("Player");
+
+                //Debug.Log("We did it Joe");
+                gm.HandlePause();
+            }
         }
 
     }

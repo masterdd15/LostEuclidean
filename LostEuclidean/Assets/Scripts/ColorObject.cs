@@ -28,8 +28,9 @@ public class ColorObject : MonoBehaviour
     public bool isRevealed = false; //true if visible
     protected bool isLightActive = true; //true if on a LightColor layer
     [SerializeField] protected bool canInteract = false;
-    protected bool isGlitching = false;
+    [SerializeField] protected bool isGlitching = false;
 
+    [SerializeField]
     protected List<ColorObject> glitchersTouching = new List<ColorObject>();
 
     protected virtual void Awake()
@@ -115,8 +116,9 @@ public class ColorObject : MonoBehaviour
     {
         if (isGlitching || !canGlitch)
             return;
+        Debug.Log(gameObject.name + " Start Glitch");
         isGlitching = true;
-        canInteract = false;
+        DisableInteract();
         Material[] materials = meshRenderer.materials;
         Material[] newMaterials = new Material[materials.Length + 3];
         for (int i = 0; i < materials.Length; i++)
@@ -136,8 +138,9 @@ public class ColorObject : MonoBehaviour
     {
         if (!isGlitching)
             return;
+        Debug.Log("Stop glitching");
         isGlitching = false;
-        canInteract = true;
+        EnableInteract();
         Material[] materials = meshRenderer.materials;
         Material[] newMaterials = new Material[materials.Length - 3];
         for (int i = 0; i < newMaterials.Length; i++)
@@ -216,10 +219,11 @@ public class ColorObject : MonoBehaviour
 
     protected void OnTriggerExit(Collider other)
     {
+        Debug.Log(gameObject.name + " Trigger Exit");
         ColorObject co = other.GetComponent<ColorObject>();
         if (co != null)
         {
-            if (glitchersTouching.Contains(co))
+            if ((col.isTrigger || co.GetComponent<Collider>().isTrigger) && glitchersTouching.Contains(co))
             {
                 glitchersTouching.Remove(co);
             }
@@ -229,6 +233,10 @@ public class ColorObject : MonoBehaviour
 
     protected void UpdateGlitchState ()
     {
+        if (isGlitching)
+        {
+            DisableInteract();
+        }
         if ((isRevealed || baseColor == room.roomColor) && glitchersTouching.Count > 0)
         {
             foreach (ColorObject glitcher in glitchersTouching)
