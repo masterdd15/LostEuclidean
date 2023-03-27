@@ -334,7 +334,7 @@ MonoBehaviour:
   front: {fileID: 3602887274841289480}
   doorMesh: {fileID: 814915779396757265}
   disabledMat: {fileID: 2100000, guid: a340053cc39cf664ea2f11de2cfbb5b7, type: 2}
-  enabledMat: {fileID: 2100000, guid: 97e7ad5ce1ff4df4796598dbfe9b8f60, type: 2}
+  enabledMat: {fileID: 2100000, guid: 81bad36583975b944ae6469b40fc09ee, type: 2}
   sceneDestination: TutorialRoom
   doorDestination: 
   colorDestination: 0

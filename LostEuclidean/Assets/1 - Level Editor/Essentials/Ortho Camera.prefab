@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2915566448870680951}
   - component: {fileID: 2915566448870680944}
   - component: {fileID: 2915566448870680947}
+  - component: {fileID: -6470936469879922278}
   m_Layer: 0
   m_Name: Ortho Camera
   m_TagString: MainCamera
@@ -109,7 +110,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -141,3 +142,20 @@ MonoBehaviour:
   camTarget: {fileID: 0}
   wallParent: {fileID: 0}
   cameraSpeed: 5
+--- !u!114 &-6470936469879922278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2915566448870680948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 3591315b11ab9b349999b16256e567db, type: 2}

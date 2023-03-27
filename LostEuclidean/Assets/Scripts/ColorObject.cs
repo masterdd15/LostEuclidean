@@ -219,7 +219,7 @@ public class ColorObject : MonoBehaviour
 
     protected void OnTriggerExit(Collider other)
     {
-        Debug.Log(gameObject.name + " Trigger Exit");
+        //Debug.Log(gameObject.name + " Trigger Exit");
         ColorObject co = other.GetComponent<ColorObject>();
         if (co != null)
         {

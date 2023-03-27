@@ -334,7 +334,7 @@ MonoBehaviour:
   front: {fileID: 3602887274841289480}
   doorMesh: {fileID: 8514501802553389609}
   disabledMat: {fileID: 2100000, guid: a340053cc39cf664ea2f11de2cfbb5b7, type: 2}
-  enabledMat: {fileID: 2100000, guid: 97e7ad5ce1ff4df4796598dbfe9b8f60, type: 2}
+  enabledMat: {fileID: 2100000, guid: 28c4c8ba31bcbe24f8556b3e19b0298f, type: 2}
   sceneDestination: TutorialRoom
   doorDestination: 
   colorDestination: 1
@@ -400,6 +400,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 31eb41ce81ba4f0488a42faec05b89fd, type: 3}
   m_PrefabInstance: {fileID: 8856609690970427256}
   m_PrefabAsset: {fileID: 0}
+--- !u!54 &2952691561163052282
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8514501802553389609}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &8417868924074896095
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -435,22 +451,8 @@ MonoBehaviour:
   - {fileID: 0}
   isRevealed: 0
   canInteract: 0
---- !u!54 &2952691561163052282
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8514501802553389609}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  isGlitching: 0
+  glitchersTouching: []
 --- !u!4 &9034861779975301267 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 31eb41ce81ba4f0488a42faec05b89fd, type: 3}
