@@ -78,6 +78,25 @@ public class GameManager : MonoBehaviour
 
             if (chrome != null)
             {
+                // Place the player at the right door
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                DoorController door = GameObject.Find(doorName).GetComponent<DoorController>();
+
+                player.transform.position = door.front.position;
+
+                // Determine if we need to rotate the room at all
+                CameraController mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
+                bool camIn180 = 0 <= mainCamera.transform.rotation.eulerAngles.y && mainCamera.transform.rotation.eulerAngles.y <= 180f;
+                bool doorIn180 = 0 <= door.transform.rotation.eulerAngles.y && door.transform.rotation.eulerAngles.y <= 180f;
+
+                Vector3 doorToCam = (mainCamera.transform.position - door.transform.position).normalized;
+                float direction = Vector3.Dot(doorToCam, door.transform.forward);
+
+                if (direction < 0)
+                {
+                    mainCamera.Rotate180Degrees();
+                }
+
                 float intensity = 0f;
                 while (intensity < 1)
                 {
@@ -88,12 +107,6 @@ public class GameManager : MonoBehaviour
                 }
 
                 chrome.intensity.value = 1f;
-
-                // Place the player at the right door
-                GameObject player = GameObject.FindGameObjectWithTag("Player");
-                DoorController door = GameObject.Find(doorName).GetComponent<DoorController>();
-
-                player.transform.position = door.front.position;
 
                 // Set the color
                 GameObject[] colorRooms = GameObject.FindGameObjectsWithTag("ColorRoom");
@@ -112,9 +125,51 @@ public class GameManager : MonoBehaviour
 
                 chrome.intensity.value = 0f;
             }
-        }
+        }        
+    }
 
-        
+    public void ChangeRoomColor(LightColor color)
+    {
+        StartCoroutine(ChangeRoomColorCoroutine(color));
+    }
+
+    IEnumerator ChangeRoomColorCoroutine(LightColor color)
+    {
+        Volume volume = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Volume>();
+
+        ChromaticAberration chrome;
+        volume.profile.TryGet<ChromaticAberration>(out chrome);
+
+        if (chrome != null)
+        {
+            float intensity = 0f;
+            while (intensity < 1)
+            {
+                chrome.intensity.value = intensity;
+
+                intensity += 7 * Time.deltaTime;
+                yield return new WaitForSeconds(0.01f);
+            }
+
+            chrome.intensity.value = 1f;
+
+            // Set the color
+            GameObject[] colorRooms = GameObject.FindGameObjectsWithTag("ColorRoom");
+            foreach (GameObject colorRoom in colorRooms)
+            {
+                colorRoom.GetComponent<ColorRoom>().ChangeRoomColor(color);
+            }
+
+            while (intensity > 0)
+            {
+                chrome.intensity.value = intensity;
+
+                intensity -= 10 * Time.deltaTime;
+                yield return new WaitForSeconds(0.01f);
+            }
+
+            chrome.intensity.value = 0f;
+        }
     }
 
     //Getter and Setter Methods to change the hasWon boolean

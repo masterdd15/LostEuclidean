@@ -29,7 +29,7 @@ public class LightColorObject : ColorObject
 
     public override void OnLightEnter(LightColor lightColor)
     {
-        Debug.Log(gameObject.name + " OnLightEnter");
+        //Debug.Log(gameObject.name + " OnLightEnter");
         base.OnLightEnter(lightColor);
         if (!isLightActive)
             return;
@@ -62,6 +62,22 @@ public class LightColorObject : ColorObject
         {
             EnableCollider();
             EnableLamp();
+        }
+    }
+
+    public override void OnRoomColorChange()
+    {
+        base.OnRoomColorChange();
+
+        if (room.roomColor == baseColor)
+        {
+            EnableCollider();
+            EnableLamp();
+        }
+        else
+        {
+            DisableCollider();
+            DisableLamp();
         }
     }
 
