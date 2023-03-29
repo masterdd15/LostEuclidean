@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Mat_Wall_Red
-  m_Shader: {fileID: -6465566751694194690, guid: d77f3c5530b9515408abd171f4efed9e, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 2d4c84e830393e14cba8efe31698ddf2, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -42,7 +42,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_97C8EC94:
-        m_Texture: {fileID: 2800000, guid: 15cbbde1453d6944e887673b1db34105, type: 3}
+        m_Texture: {fileID: 2800000, guid: 677182ff3a4988649b9ef565f8b2a3d4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_DB342F0C:
@@ -139,13 +139,14 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
+    - _Tile_Size: 0.04
     - _Tiling: 0.1
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
     - Color_6A162E48: {r: 1, g: 1, b: 1, a: 0}
     - Color_6C9C775A: {r: 1, g: 1, b: 1, a: 0}
-    - Color_9A9462B: {r: 0, g: 0, b: 0, a: 0}
+    - Color_9A9462B: {r: 0.1, g: 0.1, b: 0.1, a: 0}
     - Color_D2A04608: {r: 1, g: 1, b: 1, a: 0}
     - Color_D840FCE7: {r: 1, g: 1, b: 1, a: 0}
     - Toon_Ramp_Tint: {r: 0.49056596, g: 0.49056596, b: 0.49056596, a: 1}

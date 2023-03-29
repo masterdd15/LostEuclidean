@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4542717059979071934}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Lamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 3046229335647645863}
   - component: {fileID: 3405274357765500339}
   - component: {fileID: 1193260429224491383}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Line06_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160,7 +160,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 0.7018868, g: 0.7597296, b: 1, a: 1}
-  m_Intensity: 19.43
+  m_Intensity: 30
   m_Range: 21.35
   m_SpotAngle: 54.774406
   m_InnerSpotAngle: 41.78013
@@ -275,7 +275,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 0.6563339, g: 1, b: 0.6264151, a: 1}
-  m_Intensity: 19.43
+  m_Intensity: 30
   m_Range: 21.35
   m_SpotAngle: 54.774406
   m_InnerSpotAngle: 41.78013
@@ -567,7 +567,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 0.28608167, b: 0.2584905, a: 1}
-  m_Intensity: 19.43
+  m_Intensity: 30
   m_Range: 21.35
   m_SpotAngle: 54.774406
   m_InnerSpotAngle: 41.78013
