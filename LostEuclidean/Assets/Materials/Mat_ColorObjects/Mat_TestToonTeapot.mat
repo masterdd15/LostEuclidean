@@ -111,9 +111,9 @@ Material:
     - Rim_Power: 3.35
     - Toon_Ramp_Offset: 0.595
     - Toon_Ramp_Smoothness: 0
-    - Vector1_1DEF9DF4: 20
+    - Vector1_1DEF9DF4: 0
     - Vector1_3C3B6420: -1
-    - Vector1_9605CCA4: 10
+    - Vector1_9605CCA4: 0
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -142,19 +142,19 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_6A162E48: {r: 0.9056604, g: 0.33891058, b: 0.33891058, a: 1}
+    - Color_6A162E48: {r: 0.4811321, g: 0.36493415, b: 0.36493415, a: 1}
     - Color_6C9C775A: {r: 1, g: 1, b: 1, a: 1}
     - Color_9A9462B: {r: 0, g: 0, b: 0, a: 1}
-    - Color_D2A04608: {r: 1, g: 1, b: 1, a: 0}
+    - Color_D2A04608: {r: 0, g: 0, b: 0, a: 0}
     - Color_D840FCE7: {r: 1, g: 1, b: 1, a: 0}
     - Toon_Ramp_Tint: {r: 0.49056596, g: 0.49056596, b: 0.49056596, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 0.6132076, g: 0.5476445, b: 0.5476445, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_color: {r: 1.7592503, g: 1.4416192, b: 0.57535213, a: 0.7140416}
+    - _L1_color: {r: 1, g: 1, b: 1, a: 1}
     - _L1_dir: {r: -0.88332826, g: 0.38741702, b: 0.26389232, a: 0}
-    - _L2_color: {r: 1, g: 0.95686275, b: 0.8392157, a: 0.99}
-    - _L2_dir: {r: 0.3213938, g: 0.76604444, b: -0.5566705, a: 0}
+    - _L2_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L2_dir: {r: 0, g: 0, b: 0, a: 0}
     - _L3_color: {r: 0, g: 0, b: 0, a: 1}
     - _L3_dir: {r: 0, g: 1, b: 0, a: 0}
     - _L4_color: {r: 0, g: 0, b: 0, a: 1}

@@ -934,7 +934,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _L1_color: {r: 1.74, g: 1.6649412, b: 1.4602354, a: 0.99}
-    - _L1_dir: {r: -0.6424707, g: 0.76604414, b: 0.020193085, a: 0}
+    - _L1_dir: {r: -0.50870454, g: 0.8607043, b: 0.020192264, a: 0}
     - _L2_color: {r: 0, g: 0, b: 0, a: 1}
     - _L2_dir: {r: 0, g: 1, b: 0, a: 0}
     - _L3_color: {r: 0, g: 0, b: 0, a: 1}
@@ -1353,7 +1353,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _L1_color: {r: 1.74, g: 1.6649412, b: 1.4602354, a: 0.99}
-    - _L1_dir: {r: -0.6424707, g: 0.76604414, b: 0.020193085, a: 0}
+    - _L1_dir: {r: -0.50870454, g: 0.8607043, b: 0.020192264, a: 0}
     - _L2_color: {r: 0, g: 0, b: 0, a: 1}
     - _L2_dir: {r: 0, g: 1, b: 0, a: 0}
     - _L3_color: {r: 0, g: 0, b: 0, a: 1}
@@ -2503,7 +2503,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _L1_color: {r: 1.74, g: 1.6649412, b: 1.4602354, a: 0.99}
-    - _L1_dir: {r: -0.6424707, g: 0.76604414, b: 0.020193085, a: 0}
+    - _L1_dir: {r: -0.50870454, g: 0.8607043, b: 0.020192264, a: 0}
     - _L2_color: {r: 0, g: 0, b: 0, a: 1}
     - _L2_dir: {r: 0, g: 1, b: 0, a: 0}
     - _L3_color: {r: 0, g: 0, b: 0, a: 1}
@@ -2604,14 +2604,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1352884128}
-  m_LocalRotation: {x: 0.29410484, y: 0.65084475, z: -0.3034936, w: 0.63071}
+  m_LocalRotation: {x: 0.3464536, y: 0.62455267, z: -0.35416138, w: 0.60371655}
   m_LocalPosition: {x: -2.61, y: 3, z: -11.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 50, y: 91.8, z: 0}
+  m_LocalEulerAnglesHint: {x: 59.396, y: 92.273, z: 0.577}
 --- !u!114 &1352884131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2981,7 +2981,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _L1_color: {r: 1.74, g: 1.6649412, b: 1.4602354, a: 0.99}
-    - _L1_dir: {r: -0.6424707, g: 0.76604414, b: 0.020193085, a: 0}
+    - _L1_dir: {r: -0.50870454, g: 0.8607043, b: 0.020192264, a: 0}
     - _L2_color: {r: 0, g: 0, b: 0, a: 1}
     - _L2_dir: {r: 0, g: 1, b: 0, a: 0}
     - _L3_color: {r: 0, g: 0, b: 0, a: 1}
@@ -3537,7 +3537,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _L1_color: {r: 1.74, g: 1.6649412, b: 1.4602354, a: 0.99}
-    - _L1_dir: {r: -0.6424707, g: 0.76604414, b: 0.020193085, a: 0}
+    - _L1_dir: {r: -0.50870454, g: 0.8607043, b: 0.020192264, a: 0}
     - _L2_color: {r: 0, g: 0, b: 0, a: 1}
     - _L2_dir: {r: 0, g: 1, b: 0, a: 0}
     - _L3_color: {r: 0, g: 0, b: 0, a: 1}
