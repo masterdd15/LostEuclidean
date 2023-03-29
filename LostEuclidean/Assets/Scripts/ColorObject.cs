@@ -62,6 +62,7 @@ public class ColorObject : MonoBehaviour
         if (lightColor != baseColor)
             return;
         isRevealed = true;
+        meshRenderer.enabled = true;
     }
 
     public virtual void OnLightExit(LightColor lightColor)
@@ -71,6 +72,7 @@ public class ColorObject : MonoBehaviour
         if (!isRevealed)
             return;
         isRevealed = false;
+        meshRenderer.enabled = false;
     }
 
     public virtual void Interact() { }
@@ -165,12 +167,15 @@ public class ColorObject : MonoBehaviour
 
             isLightActive = false;
             isRevealed = true;
+            meshRenderer.enabled = true;
             return;
         }
 
         DisableCollider();
         DisableInteract();
         //DisablePhysics();
+        isRevealed = false;
+        meshRenderer.enabled = false;
 
         if (baseColor == LightColor.Red)
         {
