@@ -486,7 +486,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8935579362227224144, guid: 18f4ef9ba333c994d9d2dad7b58a0c06, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8935579362227224144, guid: 18f4ef9ba333c994d9d2dad7b58a0c06, type: 3}
       propertyPath: m_LocalPosition.x
@@ -813,6 +813,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a34defe71ee85e04fad803995f1c189c, type: 3}
+--- !u!1001 &325705775
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1613668609}
+    m_Modifications:
+    - target: {fileID: 3909633044232555223, guid: b7e058cb8e359aa41a4dca9a8f91da61, type: 3}
+      propertyPath: m_Name
+      value: Floor Lamp_Red
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398361137744973933, guid: b7e058cb8e359aa41a4dca9a8f91da61, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398361137744973933, guid: b7e058cb8e359aa41a4dca9a8f91da61, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.5306735
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398361137744973933, guid: b7e058cb8e359aa41a4dca9a8f91da61, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398361137744973933, guid: b7e058cb8e359aa41a4dca9a8f91da61, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.9547687
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398361137744973933, guid: b7e058cb8e359aa41a4dca9a8f91da61, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398361137744973933, guid: b7e058cb8e359aa41a4dca9a8f91da61, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398361137744973933, guid: b7e058cb8e359aa41a4dca9a8f91da61, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398361137744973933, guid: b7e058cb8e359aa41a4dca9a8f91da61, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398361137744973933, guid: b7e058cb8e359aa41a4dca9a8f91da61, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398361137744973933, guid: b7e058cb8e359aa41a4dca9a8f91da61, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398361137744973933, guid: b7e058cb8e359aa41a4dca9a8f91da61, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b7e058cb8e359aa41a4dca9a8f91da61, type: 3}
 --- !u!1 &492309156
 GameObject:
   m_ObjectHideFlags: 0
@@ -1292,7 +1349,7 @@ PrefabInstance:
       objectReference: {fileID: 2023048425}
     - target: {fileID: 1990308870574399718, guid: 95e69907bef7049479adc2320b10da3a, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1990308870574399718, guid: 95e69907bef7049479adc2320b10da3a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1513,7 +1570,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7340790340623683020, guid: fc265c59d21699947a9c4f2550b9e162, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7340790340623683020, guid: fc265c59d21699947a9c4f2550b9e162, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1688,7 +1745,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.05
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208

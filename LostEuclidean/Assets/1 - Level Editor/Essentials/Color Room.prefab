@@ -45,3 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomColor: 3
+  greenDirectionalLight: {r: 0.6825817, g: 1, b: 0.5801887, a: 0}
+  redDirectionalLight: {r: 1, g: 0.5971654, b: 0.5803922, a: 0}
+  blueDirectionalLight: {r: 0.5803922, g: 0.8024897, b: 1, a: 0}

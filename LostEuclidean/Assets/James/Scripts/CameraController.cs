@@ -67,6 +67,11 @@ public class CameraController : MonoBehaviour
         StartCoroutine(CameraRotatingCoroutine(direction));
     }
 
+    public void Rotate180Degrees()
+    {
+        StartCoroutine(Rotate180Coroutine());
+    }
+
     IEnumerator CameraRotatingCoroutine(float dir)
     {
         camRotating = true;
@@ -143,6 +148,109 @@ public class CameraController : MonoBehaviour
                 }
 
                 deg += 2;
+
+                yield return new WaitForSeconds(0.01f);
+            }
+        }
+
+        camRotating = false;
+    }
+
+    IEnumerator Rotate180Coroutine()
+    {
+        camRotating = true;
+
+        if (camTarget != null)
+        {
+            // Rotate the camera the first 90 degrees
+            float deg = 0f;
+            bool revealedOne = false;
+            bool revealedTwo = false;
+            while (deg < 180f)
+            {
+                m_Camera.transform.RotateAround(camTarget.transform.position, Vector3.up, -4);
+
+                // Reveal and hide walls as necessary
+                if (deg > 45f && !revealedOne)
+                {
+                    leftWall++;
+
+                    if (leftWall > wallParent.transform.childCount - 1)
+                        leftWall = 0;
+
+                    int rightWall = leftWall + 1;
+                    if (rightWall > wallParent.transform.childCount - 1)
+                        rightWall = 0;
+
+                    int i = 0;
+                    foreach (Transform wall in wallParent.transform)
+                    {
+                        if (i == leftWall || i == rightWall)
+                        {
+                            wall.gameObject.layer = wallHiddenLayer;
+
+                            Transform[] allChildren = wall.GetComponentsInChildren<Transform>();
+                            foreach (Transform child in allChildren)
+                            {
+                                child.gameObject.layer = wallHiddenLayer;
+                            }
+                        }
+                        else
+                        {
+                            wall.gameObject.layer = wallLayer;
+
+                            Transform[] allChildren = wall.GetComponentsInChildren<Transform>();
+                            foreach (Transform child in allChildren)
+                            {
+                                child.gameObject.layer = wallLayer;
+                            }
+                        }
+
+                        i++;
+                    }
+                    revealedOne = true;
+                }
+                else if (deg > 135f && !revealedTwo)
+                {
+                    leftWall++;
+
+                    if (leftWall > wallParent.transform.childCount - 1)
+                        leftWall = 0;
+
+                    int rightWall = leftWall + 1;
+                    if (rightWall > wallParent.transform.childCount - 1)
+                        rightWall = 0;
+
+                    int i = 0;
+                    foreach (Transform wall in wallParent.transform)
+                    {
+                        if (i == leftWall || i == rightWall)
+                        {
+                            wall.gameObject.layer = wallHiddenLayer;
+
+                            Transform[] allChildren = wall.GetComponentsInChildren<Transform>();
+                            foreach (Transform child in allChildren)
+                            {
+                                child.gameObject.layer = wallHiddenLayer;
+                            }
+                        }
+                        else
+                        {
+                            wall.gameObject.layer = wallLayer;
+
+                            Transform[] allChildren = wall.GetComponentsInChildren<Transform>();
+                            foreach (Transform child in allChildren)
+                            {
+                                child.gameObject.layer = wallLayer;
+                            }
+                        }
+
+                        i++;
+                    }
+                    revealedTwo = true;
+                }
+
+                deg += 4;
 
                 yield return new WaitForSeconds(0.01f);
             }

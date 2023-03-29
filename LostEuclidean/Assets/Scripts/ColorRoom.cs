@@ -6,6 +6,11 @@ public class ColorRoom : MonoBehaviour
 {
     public LightColor roomColor = LightColor.Blue;
 
+    Light directionalLight;
+    [SerializeField] Color greenDirectionalLight;
+    [SerializeField] Color redDirectionalLight;
+    [SerializeField] Color blueDirectionalLight;
+
     private List<ColorObject> objectsInRoom = new List<ColorObject>();
 
     void Start()
@@ -21,6 +26,21 @@ public class ColorRoom : MonoBehaviour
         //    }
         //}
 
+        directionalLight = GameObject.Find("Directional Light").GetComponent<Light>();
+
+        if (roomColor == LightColor.Green)
+        {
+            directionalLight.color = greenDirectionalLight;
+        }
+        else if (roomColor == LightColor.Red)
+        {
+            directionalLight.color = redDirectionalLight;
+        }
+        else if (roomColor == LightColor.Blue)
+        {
+            directionalLight.color = blueDirectionalLight;
+        }
+
         foreach (ColorObject colorChild in transform.GetComponentsInChildren<ColorObject>())
         {
             if (!objectsInRoom.Contains(colorChild))
@@ -33,6 +53,20 @@ public class ColorRoom : MonoBehaviour
     public void ChangeRoomColor(LightColor color)
     {
         roomColor = color;
+
+        if (roomColor == LightColor.Green)
+        {
+            directionalLight.color = greenDirectionalLight;
+        }
+        else if (roomColor == LightColor.Red)
+        {
+            directionalLight.color = redDirectionalLight;
+        }
+        else if (roomColor == LightColor.Blue)
+        {
+            directionalLight.color = blueDirectionalLight;
+        }
+
         foreach (ColorObject colorObject in objectsInRoom)
         {
             colorObject.OnRoomColorChange();

@@ -42,12 +42,12 @@ public class ColorObject : MonoBehaviour
         glitchParticles = GetComponentInChildren<ParticleSystem>();
 
         //fallback glitch materials if they are not manually assigned
-        if (glitchMaterials[0] == null)
-            glitchMaterials[0] = (Material)AssetDatabase.LoadAssetAtPath("Assets/Materials/Mat_Glitch/Mat_GlitchRed.mat", typeof(Material));
-        if (glitchMaterials[1] == null)
-            glitchMaterials[1] = (Material)AssetDatabase.LoadAssetAtPath("Assets/Materials/Mat_Glitch/Mat_GlitchGreen.mat", typeof(Material));
-        if (glitchMaterials[2] == null)
-            glitchMaterials[2] = (Material)AssetDatabase.LoadAssetAtPath("Assets/Materials/Mat_Glitch/Mat_GlitchBlue.mat", typeof(Material));
+        //if (glitchMaterials[0] == null)
+        //    glitchMaterials[0] = (Material)AssetDatabase.LoadAssetAtPath("Assets/Materials/Mat_Glitch/Mat_GlitchRed.mat", typeof(Material));
+        //if (glitchMaterials[1] == null)
+        //    glitchMaterials[1] = (Material)AssetDatabase.LoadAssetAtPath("Assets/Materials/Mat_Glitch/Mat_GlitchGreen.mat", typeof(Material));
+        //if (glitchMaterials[2] == null)
+        //    glitchMaterials[2] = (Material)AssetDatabase.LoadAssetAtPath("Assets/Materials/Mat_Glitch/Mat_GlitchBlue.mat", typeof(Material));
     }
 
     protected virtual void OnEnable()
@@ -62,6 +62,7 @@ public class ColorObject : MonoBehaviour
         if (lightColor != baseColor)
             return;
         isRevealed = true;
+        meshRenderer.enabled = true;
     }
 
     public virtual void OnLightExit(LightColor lightColor)
@@ -71,6 +72,7 @@ public class ColorObject : MonoBehaviour
         if (!isRevealed)
             return;
         isRevealed = false;
+        meshRenderer.enabled = false;
     }
 
     public virtual void Interact() { }
@@ -165,12 +167,15 @@ public class ColorObject : MonoBehaviour
 
             isLightActive = false;
             isRevealed = true;
+            meshRenderer.enabled = true;
             return;
         }
 
         DisableCollider();
         DisableInteract();
         //DisablePhysics();
+        isRevealed = false;
+        meshRenderer.enabled = false;
 
         if (baseColor == LightColor.Red)
         {
@@ -219,7 +224,7 @@ public class ColorObject : MonoBehaviour
 
     protected void OnTriggerExit(Collider other)
     {
-        Debug.Log(gameObject.name + " Trigger Exit");
+        //Debug.Log(gameObject.name + " Trigger Exit");
         ColorObject co = other.GetComponent<ColorObject>();
         if (co != null)
         {

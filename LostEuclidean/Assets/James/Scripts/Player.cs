@@ -22,7 +22,6 @@ public class Player : MonoBehaviour
     bool moving;
     Vector3 moveVec;
     float ramp;
-    bool camRotating;
     bool controlCamera;
 
     // Start is called before the first frame update
@@ -136,7 +135,7 @@ public class Player : MonoBehaviour
 
     public void RotateCamera(InputAction.CallbackContext context)
     {
-        if (context.performed && !camRotating)
+        if (context.performed && !m_Camera.gameObject.GetComponent<CameraController>().CameraRotating())
         {
             if (context.ReadValue<float>() < 0)
             {
