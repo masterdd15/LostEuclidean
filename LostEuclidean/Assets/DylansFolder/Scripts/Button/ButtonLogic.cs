@@ -6,7 +6,9 @@ public class ButtonLogic : MonoBehaviour
 {
     [SerializeField] private ButtonState localState;
 
-    [SerializeField] Interactable connectedInteractable;
+    [SerializeField] List<Interactable> connectedInteractables;
+
+    //[SerializeField] Interactable connectedInteractable;
 
     ColorObject buttonColorObject;
 
@@ -45,15 +47,20 @@ public class ButtonLogic : MonoBehaviour
             {
                 localState = ButtonState.ON;
 
-                if (connectedInteractable != null)
-                    connectedInteractable.Enable();
+                foreach (Interactable connected in connectedInteractables)
+                {
+                    connected.Enable();
+                }
+                    
             }
             else if ((!colorObj.CanInteract() || !buttonColorObject.CanInteract()) && localState == ButtonState.ON)
             {
                 localState = ButtonState.OFF;
 
-                if (connectedInteractable != null)
-                    connectedInteractable.Disable();
+                foreach (Interactable connected in connectedInteractables)
+                {
+                    connected.Disable();
+                }
             }
         }
 
@@ -85,8 +92,10 @@ public class ButtonLogic : MonoBehaviour
 
             localState = ButtonState.OFF;
 
-            if (connectedInteractable != null)
-                connectedInteractable.Disable();
+            foreach (Interactable connected in connectedInteractables)
+            {
+                connected.Disable();
+            }
         }
     }
 
