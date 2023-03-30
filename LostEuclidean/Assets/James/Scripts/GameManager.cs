@@ -85,17 +85,17 @@ public class GameManager : MonoBehaviour
                 player.transform.position = door.front.position;
 
                 // Determine if we need to rotate the room at all
-                CameraController mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
-                bool camIn180 = 0 <= mainCamera.transform.rotation.eulerAngles.y && mainCamera.transform.rotation.eulerAngles.y <= 180f;
-                bool doorIn180 = 0 <= door.transform.rotation.eulerAngles.y && door.transform.rotation.eulerAngles.y <= 180f;
+                //CameraController mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
+                //bool camIn180 = 0 <= mainCamera.transform.rotation.eulerAngles.y && mainCamera.transform.rotation.eulerAngles.y <= 180f;
+                //bool doorIn180 = 0 <= door.transform.rotation.eulerAngles.y && door.transform.rotation.eulerAngles.y <= 180f;
 
-                Vector3 doorToCam = (mainCamera.transform.position - door.transform.position).normalized;
-                float direction = Vector3.Dot(doorToCam, door.transform.forward);
+                //Vector3 doorToCam = (mainCamera.transform.position - door.transform.position).normalized;
+                //float direction = Vector3.Dot(doorToCam, door.transform.forward);
 
-                if (direction < 0)
-                {
-                    mainCamera.Rotate180Degrees();
-                }
+                //if (direction < 0)
+                //{
+                //    mainCamera.Rotate180Degrees();
+                //}
 
                 float intensity = 0f;
                 while (intensity < 1)

@@ -129,7 +129,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-79754
+  m_Name: pb_Mesh-117316
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -405,6 +405,14 @@ PrefabInstance:
       objectReference: {fileID: 1066070505}
     - target: {fileID: 1898413747913617792, guid: a4f2b5412792ae844b94bc74f33ecc5c, type: 3}
       propertyPath: connectedInteractable
+      value: 
+      objectReference: {fileID: 959966782}
+    - target: {fileID: 1898413747913617792, guid: a4f2b5412792ae844b94bc74f33ecc5c, type: 3}
+      propertyPath: connectedInteractables.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1898413747913617792, guid: a4f2b5412792ae844b94bc74f33ecc5c, type: 3}
+      propertyPath: connectedInteractables.Array.data[0]
       value: 
       objectReference: {fileID: 959966782}
     - target: {fileID: 1898413747913617793, guid: a4f2b5412792ae844b94bc74f33ecc5c, type: 3}
@@ -1399,7 +1407,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-79772
+  m_Name: pb_Mesh-117336
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
