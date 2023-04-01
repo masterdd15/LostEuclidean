@@ -2012,6 +2012,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crate
       objectReference: {fileID: 0}
+    - target: {fileID: 5238734299993449136, guid: 6df960b1c5c2d1642bda4d3cd3669468, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3a693d44107aa164aad0468886dba5ee, type: 2}
     - target: {fileID: 5238734299993449138, guid: 6df960b1c5c2d1642bda4d3cd3669468, type: 3}
       propertyPath: m_RootOrder
       value: 3
