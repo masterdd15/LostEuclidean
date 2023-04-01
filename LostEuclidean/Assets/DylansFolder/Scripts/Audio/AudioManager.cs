@@ -37,6 +37,21 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    //When we start a scene, this function will make sure that all of our sounds are set up properly
+    private void Start()
+    {
+        if(_BackgroundSource.clip == null)
+        {
+            SetBackground(greenDimensionMusic);
+        }
+    }
+
+    private void SetBackground(AudioClip music)
+    {
+        _BackgroundSource.clip = music;
+        _BackgroundSource.Play();
+    }
+
     public void PlaySound(AudioClip clip)
     {
 
