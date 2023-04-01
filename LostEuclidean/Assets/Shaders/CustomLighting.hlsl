@@ -7,6 +7,8 @@ struct CustomLightingData
 	float3 worldNormal;
 	float3 viewDirection;
 	float4 shadowCoord;
+	float roughness;
+	float metallic;
 	UnityTexture2D rampTex;
 	UnitySamplerState samplerState;
 };
@@ -21,12 +23,32 @@ float ToonRamp(CustomLightingData data, float intensity)
 
 #ifndef SHADERGRAPH_PREVIEW
 
+float SpecularStrength (CustomLightingData data, Light light)
+{
+	float3 h = normalize(light.direction + data.viewDirection);
+	float nh2 = pow((saturate(dot(data.worldNormal, h))), 2);
+	float lh2 = pow((saturate(dot(light.direction, h))), 2);
+	float r2 = pow(data.roughness, 2);
+	float d2 = pow(nh2 * (r2 - 1.0) + 1.00001, 2);
+	float normalization = data.roughness * 4.0 + 2.0;
+	return r2 / (d2 * max(0.1, lh2) * normalization);
+}
+
 float3 CustomLightHandling(CustomLightingData data, Light light)
 {
 	float3 radiance = light.color * (light.distanceAttenuation * light.shadowAttenuation);
-	float3 diffuse = saturate(dot(data.worldNormal, light.direction));
-	diffuse = ToonRamp(data, diffuse);
-	return diffuse * radiance;
+
+	float3 baseColor = saturate(dot(data.worldNormal, light.direction));
+
+	float3 diffuse = baseColor * (1 - data.metallic);
+	float3 specular = lerp(0, baseColor, data.metallic);
+
+	float specularStrength = SpecularStrength(data, light);
+
+	float3 color = specularStrength * specular + diffuse;
+
+	float3 toonColor = ToonRamp(data, color);
+	return toonColor * radiance;
 }
 
 float3 CalculateLighting(CustomLightingData data)
@@ -46,12 +68,15 @@ float3 CalculateLighting(CustomLightingData data)
 }
 #endif
 
-void CustomShading_float(float3 Position, float3 Normal, float3 ViewDirection, UnityTexture2D RampTexture, UnitySamplerState SS, out float3 Out)
+void CustomShading_float(float3 Position, float3 Normal, float3 ViewDirection, UnityTexture2D RampTexture,
+						 UnitySamplerState SS, float Roughness, float Metallic, float3 UnpackedNormal, out float3 Out)
 {
 	CustomLightingData data;
 	data.worldPos = Position;
-	data.worldNormal = Normal;
+	data.worldNormal = normalize(Normal + UnpackedNormal);
 	data.viewDirection = ViewDirection;
+	data.roughness = Roughness;
+	data.metallic = Metallic;
 	data.rampTex = RampTexture;
 	data.samplerState = SS;
 
