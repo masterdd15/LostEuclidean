@@ -54,6 +54,9 @@ public class ColorRoom : MonoBehaviour
     {
         roomColor = color;
 
+        //Checks if we need to switch the music or not
+        AudioManager.Instance.HandleCurrentDimension(roomColor);
+
         if (roomColor == LightColor.Green)
         {
             directionalLight.color = greenDirectionalLight;

@@ -103,6 +103,59 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    //This will trigger when Color Room changes the room color
+    //We will need to detect if this is different from the current rooms color, and if so, transition our music
+    public void HandleCurrentDimension(LightColor detectedColor)
+    {
+        //We see if they are not the same
+        if(currentDimension != detectedColor)
+        {
+            StartCoroutine(TransitionMusic(detectedColor));
+        }
+
+        //We only need to change something if we detect a differnce. If not, we just let our current dimensions music stay
+    }
+
+    IEnumerator TransitionMusic(LightColor newColor)
+    {
+        //Lets find our old audio source, and our new one
+        AudioSource oldSource;
+        AudioSource newSource;
+
+        //Old Dimension we are transitioning out of
+        switch(currentDimension)
+        {
+            case LightColor.Green:
+                oldSource = _MusicGreenSource;
+                break;
+            case LightColor.Red:
+                oldSource = _MusicRedSource;
+                break;
+            case LightColor.Blue:
+                oldSource = _MusicRedSource;
+                break;
+        }
+
+        //New Dimension we are transitioning into
+        switch (newColor)
+        {
+            case LightColor.Green:
+                newSource = _MusicGreenSource;
+                break;
+            case LightColor.Red:
+                newSource = _MusicRedSource;
+                break;
+            case LightColor.Blue:
+                newSource = _MusicRedSource;
+                break;
+        }
+
+        //Testing if this even works logically
+        oldSource.volume = 0;
+        newSource.volume = 0;
+
+    }
+
     public void PlaySound(AudioClip clip)
     {
 
