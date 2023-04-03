@@ -109,11 +109,14 @@ public class AudioManager : MonoBehaviour
     //We will need to detect if this is different from the current rooms color, and if so, transition our music
     public void HandleCurrentDimension(LightColor detectedColor)
     {
+        Debug.Log("We reached out Handle Dimension");
+        
         //We see if they are not the same
         if(currentDimension != detectedColor)
         {
+            Debug.Log("We are changing our music");
             //Making sure we don't intrupt something else
-            StopAllCoroutines();
+            //StopAllCoroutines();
 
             StartCoroutine(TransitionMusic(detectedColor));
         }
@@ -126,6 +129,8 @@ public class AudioManager : MonoBehaviour
         //Lets find our old audio source, and our new one
         AudioSource oldSource;
         AudioSource newSource;
+
+        Debug.Log("We are inside our transition music coroutine");
 
         //We need to keep track of how much time has passed
         float timeElapsed = 0;
