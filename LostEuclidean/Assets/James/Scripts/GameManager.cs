@@ -149,6 +149,9 @@ public class GameManager : MonoBehaviour
         ChromaticAberration chrome;
         volume.profile.TryGet<ChromaticAberration>(out chrome);
 
+        //Checks if we need to switch the music or not
+        AudioManager.Instance.HandleCurrentDimension(color);
+
         if (chrome != null)
         {
             float intensity = 0f;

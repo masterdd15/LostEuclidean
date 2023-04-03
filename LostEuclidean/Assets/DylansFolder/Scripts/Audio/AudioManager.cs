@@ -27,7 +27,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioClip redDimensionMusic;
     [SerializeField] AudioClip blueDimensionMusic;
 
-    [Header("Button FX")]
+    [Header("Sound FX")]
     [SerializeField] AudioClip buttonActivate;
     [SerializeField] AudioClip buttonDeactivate;
 
@@ -112,6 +112,9 @@ public class AudioManager : MonoBehaviour
         //We see if they are not the same
         if(currentDimension != detectedColor)
         {
+            //Making sure we don't intrupt something else
+            StopAllCoroutines();
+
             StartCoroutine(TransitionMusic(detectedColor));
         }
 

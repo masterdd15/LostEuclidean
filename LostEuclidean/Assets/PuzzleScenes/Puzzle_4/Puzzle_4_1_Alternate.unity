@@ -3525,7 +3525,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8002470727156587780, guid: 72c23ce26aaf0f64fad9284782d582dc, type: 3}
       propertyPath: timeToFade
-      value: 1
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 8002470727156587780, guid: 72c23ce26aaf0f64fad9284782d582dc, type: 3}
       propertyPath: _MusicRedSource
