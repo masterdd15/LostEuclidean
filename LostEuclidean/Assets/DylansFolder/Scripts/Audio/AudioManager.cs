@@ -14,6 +14,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource _MusicBlueSource;
     [SerializeField] private LightColor currentDimension;
 
+    [Header("Transition Modifiers")]
+    [SerializeField] private float timeToFade;
+
     //These will be composed of ur sound effect sources
     [Header("FX Sources")]
     [SerializeField] private AudioSource _FXSource;
@@ -54,7 +57,6 @@ public class AudioManager : MonoBehaviour
 
         //Now, we can handle the volume for what dimension should be playing
         HandleColorMusic(currentColor);
-
 
     }
 
@@ -122,6 +124,9 @@ public class AudioManager : MonoBehaviour
         AudioSource oldSource;
         AudioSource newSource;
 
+        //We need to keep track of how much time has passed
+        float timeElapsed = 0;
+
         //Old Dimension we are transitioning out of
         switch(currentDimension)
         {
@@ -133,6 +138,10 @@ public class AudioManager : MonoBehaviour
                 break;
             case LightColor.Blue:
                 oldSource = _MusicRedSource;
+                break;
+            default:
+                Debug.Log("ERROR WITH TRANSITION MUSIC OLD SOURCE");
+                oldSource = _MusicGreenSource;
                 break;
         }
 
@@ -148,11 +157,25 @@ public class AudioManager : MonoBehaviour
             case LightColor.Blue:
                 newSource = _MusicRedSource;
                 break;
+            default:
+                Debug.Log("ERROR WITH TRANSITION MUSIC NEW SOURCE");
+                newSource = _MusicGreenSource;
+                break;
         }
 
-        //Testing if this even works logically
-        oldSource.volume = 0;
-        newSource.volume = 0;
+        //We will include variables to control the speed at which the transition occurs
+        while(timeElapsed < timeToFade)
+        {
+            oldSource.volume = Mathf.Lerp(1, 0, timeElapsed / timeToFade);
+            newSource.volume = Mathf.Lerp(0, 1, timeElapsed / timeToFade);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        //Finally, we have to update our current color to the new color now that we have transitioned
+        currentDimension = newColor;
+
+        yield return null;
 
     }
 
