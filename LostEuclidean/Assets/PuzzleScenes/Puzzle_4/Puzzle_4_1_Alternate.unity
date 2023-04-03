@@ -3104,22 +3104,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8002470727156587780, guid: 72c23ce26aaf0f64fad9284782d582dc, type: 3}
-      propertyPath: sfxSounds.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8002470727156587780, guid: 72c23ce26aaf0f64fad9284782d582dc, type: 3}
-      propertyPath: sfxSounds.Array.data[2].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 456620125c2d044469893e354f7d2e01, type: 3}
-    - target: {fileID: 8002470727156587780, guid: 72c23ce26aaf0f64fad9284782d582dc, type: 3}
-      propertyPath: sfxSounds.Array.data[2].name
-      value: Door_Unlock
-      objectReference: {fileID: 0}
-    - target: {fileID: 8002470727156587780, guid: 72c23ce26aaf0f64fad9284782d582dc, type: 3}
-      propertyPath: sfxSounds.Array.data[3].name
-      value: Door_Transition
-      objectReference: {fileID: 0}
     - target: {fileID: 8002470727156587781, guid: 72c23ce26aaf0f64fad9284782d582dc, type: 3}
       propertyPath: m_Name
       value: Audio Manager

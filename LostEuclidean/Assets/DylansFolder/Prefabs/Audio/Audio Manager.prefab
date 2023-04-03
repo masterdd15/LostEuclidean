@@ -607,3 +607,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: df01845efeb36504b84430a3db5f5428, type: 3}
   - name: But_Deact
     clip: {fileID: 0}
+  - name: Door_Unlock
+    clip: {fileID: 8300000, guid: 456620125c2d044469893e354f7d2e01, type: 3}
+  - name: Door_Transition
+    clip: {fileID: 0}
