@@ -129,7 +129,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-38460
+  m_Name: pb_Mesh-8362
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1362,7 +1362,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-38480
+  m_Name: pb_Mesh-8382
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2004,6 +2004,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1613668609}
     m_Modifications:
+    - target: {fileID: -7435762541219103235, guid: 6df960b1c5c2d1642bda4d3cd3669468, type: 3}
+      propertyPath: grabDistance
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -4280950177337262410, guid: 6df960b1c5c2d1642bda4d3cd3669468, type: 3}
       propertyPath: baseColor
       value: 2
@@ -2012,13 +2016,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crate
       objectReference: {fileID: 0}
+    - target: {fileID: 5238734299993449135, guid: 6df960b1c5c2d1642bda4d3cd3669468, type: 3}
+      propertyPath: m_Size.x
+      value: 1.16
+      objectReference: {fileID: 0}
     - target: {fileID: 5238734299993449138, guid: 6df960b1c5c2d1642bda4d3cd3669468, type: 3}
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5238734299993449138, guid: 6df960b1c5c2d1642bda4d3cd3669468, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.46
+      value: -0.46000004
       objectReference: {fileID: 0}
     - target: {fileID: 5238734299993449138, guid: 6df960b1c5c2d1642bda4d3cd3669468, type: 3}
       propertyPath: m_LocalPosition.y
