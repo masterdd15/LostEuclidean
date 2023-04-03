@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class AudioManager : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class AudioManager : MonoBehaviour
 
     //These will be composed of ur sound effect sources
     [Header("FX Sources")]
-    [SerializeField] private AudioSource _FXSource;
+    [SerializeField] private AudioSource _SFXSource;
 
     //We need to organize our sound clip variables, as to not confuse them for other references
     [Header("Background Audio")]
@@ -28,8 +29,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioClip blueDimensionMusic;
 
     [Header("Sound FX")]
-    [SerializeField] AudioClip buttonActivate;
-    [SerializeField] AudioClip buttonDeactivate;
+    [SerializeField] SFX[] sfxSounds;
 
     private void Awake()
     {
@@ -57,6 +57,9 @@ public class AudioManager : MonoBehaviour
 
         //Now, we can handle the volume for what dimension should be playing
         HandleColorMusic(currentColor);
+
+        //We link the SFX audio sourcec by linking it manually. We can create a line of code later would be code.
+
 
     }
 
@@ -187,8 +190,21 @@ public class AudioManager : MonoBehaviour
 
     }
 
-    public void PlaySound(AudioClip clip)
+    public void PlaySFX(string name)
     {
+        //This line is to see if this name exists in our array
+        SFX s = Array.Find(sfxSounds, x => x.name == name);
+
+        if(s == null)
+        {
+            Debug.Log("Sound not found");
+        }
+        else
+        {
+            //Sound Effect is set
+            _SFXSource.PlayOneShot(s.clip);
+        }
+
 
     }
 
