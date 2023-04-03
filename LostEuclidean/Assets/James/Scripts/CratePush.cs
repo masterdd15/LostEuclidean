@@ -1,72 +1,78 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CratePush : MonoBehaviour
 {
-    [SerializeField] float slowdown;
     [SerializeField] SimpleColorCube colorCube;
-    //[SerializeField] Rigidbody rb_Cube;
+    [SerializeField] float grabDistance = 2f;
 
-    Vector3 moveVec;
+    private bool isGrabbed = false;
+    private Transform playerTransform;
+    private Rigidbody playerRigidbody;
+    private FixedJoint fixedJoint;
+    private Collider crateCollider;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        // Get the collider component of the crate
+        crateCollider = GetComponent<Collider>();
     }
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag == "Player" && colorCube.CanInteract())
+        if (collision.gameObject.CompareTag("Player") && colorCube.CanInteract())
         {
-            Vector3 pos = transform.InverseTransformPoint(collision.transform.position);
-
-            Vector3 toPlayer = collision.transform.position - transform.position;
-
-            float forwardBack = Vector3.Dot(transform.forward, toPlayer.normalized);
-            float leftRight = Vector3.Dot(transform.right, toPlayer.normalized);
-
-            if (Mathf.Abs(forwardBack) > Mathf.Abs(leftRight))
+            if (Keyboard.current.spaceKey.wasPressedThisFrame)
             {
-                if (forwardBack < 0f)
+                if (isGrabbed)
                 {
-                    //moveVec = transform.forward * collision.gameObject.GetComponent<Player>().speed * slowdown;
-                    transform.Translate(transform.forward * collision.gameObject.GetComponent<Player>().speed * slowdown * Time.deltaTime, Space.World);
+                    Debug.Log("RELEASING");
+
+                    // Release the crate from the player
+                    isGrabbed = false;
+                    playerTransform = null;
+                    playerRigidbody = null;
+
+                    // Destroy the fixed joint and reset the parent
+                     Destroy(fixedJoint);
+                  
+                    transform.SetParent(null);
+
+                    // Enable the crate's rigidbody 
+                    GetComponent<Rigidbody>().isKinematic = false;
                 }
-                else if (forwardBack > 0f)
+
+                else
                 {
-                    //moveVec = -transform.forward * collision.gameObject.GetComponent<Player>().speed * slowdown;
-                    transform.Translate(-transform.forward * collision.gameObject.GetComponent<Player>().speed * slowdown * Time.deltaTime, Space.World);
-                }
-            }
-            else
-            {
-                if (leftRight < 0f)
-                {
-                    //moveVec = transform.right * collision.gameObject.GetComponent<Player>().speed * slowdown;
-                    transform.Translate(transform.right * collision.gameObject.GetComponent<Player>().speed * slowdown * Time.deltaTime, Space.World);
-                }
-                else if (leftRight > 0f)
-                {
-                    //moveVec = -transform.right * collision.gameObject.GetComponent<Player>().speed * slowdown;
-                    transform.Translate(-transform.right * collision.gameObject.GetComponent<Player>().speed * slowdown * Time.deltaTime, Space.World);
+                    // Get the player's transform and rigidbody
+                    playerTransform = collision.gameObject.transform;
+                    playerRigidbody = playerTransform.gameObject.GetComponent<Rigidbody>();
+
+                    // Calculate the distance between the player and the crate
+                    float distance = Vector3.Distance(playerTransform.position, transform.position);
+
+
+                    // Check if the player is within grabbing distance
+                    if (distance <= grabDistance)
+                    {
+                        // Attach the crate to the player using a fixed joint
+                        fixedJoint = gameObject.AddComponent<FixedJoint>();
+                        fixedJoint.connectedBody = playerRigidbody;
+                        fixedJoint.breakForce = Mathf.Infinity;
+
+                        // Make the crate a child of the player
+                        transform.parent = playerTransform;
+
+                        // Disable the crate's rigidbody so it follows the player without physics simulation
+                        GetComponent<Rigidbody>().isKinematic = true;
+
+                        isGrabbed = true;
+                    }
                 }
             }
         }
     }
 
-    //private void OnCollisionExit(Collision collision)
-    //{
-    //    if (collision.gameObject.tag == "Player")
-    //    {
-    //        moveVec = Vector3.zero;
-    //    }
-    //}
 }
