@@ -17,6 +17,7 @@ public class AudioManager : MonoBehaviour
 
     [Header("Transition Modifiers")]
     [SerializeField] private float timeToFade;
+    [SerializeField] private float maxVolume;
 
     //These will be composed of ur sound effect sources
     [Header("FX Sources")]
@@ -88,17 +89,17 @@ public class AudioManager : MonoBehaviour
         switch(roomColor)
         {
             case LightColor.Green:
-                _MusicGreenSource.volume = 1;
+                _MusicGreenSource.volume = maxVolume;
                 _MusicRedSource.volume = 0;
                 _MusicBlueSource.volume = 0;
                 break;
             case LightColor.Red:
-                _MusicRedSource.volume = 1;
+                _MusicRedSource.volume = maxVolume;
                 _MusicGreenSource.volume = 0;
                 _MusicBlueSource.volume = 0;
                 break;
             case LightColor.Blue:
-                _MusicBlueSource.volume = 1;
+                _MusicBlueSource.volume = maxVolume;
                 _MusicGreenSource.volume = 0;
                 _MusicRedSource.volume = 0;
                 break;
@@ -177,8 +178,8 @@ public class AudioManager : MonoBehaviour
         //We will include variables to control the speed at which the transition occurs
         while(timeElapsed < timeToFade)
         {
-            oldSource.volume = Mathf.Lerp(1, 0, timeElapsed / timeToFade);
-            newSource.volume = Mathf.Lerp(0, 1, timeElapsed / timeToFade);
+            oldSource.volume = Mathf.Lerp(maxVolume, 0, timeElapsed / timeToFade);
+            newSource.volume = Mathf.Lerp(0, maxVolume, timeElapsed / timeToFade);
             timeElapsed += Time.deltaTime;
             yield return null;
         }
@@ -194,6 +195,8 @@ public class AudioManager : MonoBehaviour
     {
         //This line is to see if this name exists in our array
         SFX s = Array.Find(sfxSounds, x => x.name == name);
+        Debug.Log(s.name);
+        Debug.Log(s.clip.name);
 
         if(s == null)
         {
@@ -201,10 +204,10 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
+            Debug.Log("We are playing one shot");
             //Sound Effect is set
             _SFXSource.PlayOneShot(s.clip);
         }
-
 
     }
 

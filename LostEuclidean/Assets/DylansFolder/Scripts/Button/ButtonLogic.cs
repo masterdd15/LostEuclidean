@@ -5,6 +5,7 @@ using UnityEngine;
 public class ButtonLogic : MonoBehaviour
 {
     [SerializeField] private ButtonState localState;
+    [SerializeField] private bool onPlayed; //We are using on trigger stay, so we need a bool to keep track of this
 
     [SerializeField] List<Interactable> connectedInteractables;
 
@@ -42,10 +43,19 @@ public class ButtonLogic : MonoBehaviour
         {
             //if (other.tag != "Flashlight")
             //    Debug.Log(localState.ToString() + " - " + other.gameObject.name + " - " + colorObj.CanInteract() + " - " + buttonColorObject.CanInteract());
-
+            //If we can interact, and the button hasn't been turned on yet
             if (colorObj.CanInteract() && buttonColorObject.CanInteract() && localState != ButtonState.ON)
             {
                 localState = ButtonState.ON;
+
+                if(!onPlayed)
+                {
+                    Debug.Log("We are triggering the audio");
+                    //We trigger the sound effect in the Audio Manager
+                    AudioManager.Instance.PlaySFX("But_Act");
+                    //We then flip the bool, so we don't trigger again until exit
+                    onPlayed = true;
+                }
 
                 foreach (Interactable connected in connectedInteractables)
                 {
@@ -56,6 +66,7 @@ public class ButtonLogic : MonoBehaviour
             else if ((!colorObj.CanInteract() || !buttonColorObject.CanInteract()) && localState == ButtonState.ON)
             {
                 localState = ButtonState.OFF;
+                onPlayed = false;
 
                 foreach (Interactable connected in connectedInteractables)
                 {
@@ -91,6 +102,7 @@ public class ButtonLogic : MonoBehaviour
             //Debug.Log("EXITING: " + other.name);
 
             localState = ButtonState.OFF;
+            onPlayed = false;
 
             foreach (Interactable connected in connectedInteractables)
             {
