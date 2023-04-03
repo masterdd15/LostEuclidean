@@ -12,7 +12,7 @@ public class Interactable : MonoBehaviour
 
     [SerializeField] Collider colliderMesh;
 
-    private void Update()
+    public virtual void Update()
     {
         if (contextualPrompt != null)
         {
