@@ -112,7 +112,7 @@ Material:
     m_Floats:
     - Vector1_1DEF9DF4: 20
     - Vector1_3C3B6420: -1
-    - Vector1_9605CCA4: 10
+    - Vector1_9605CCA4: 30
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -128,7 +128,7 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Height_Intensity: 0
-    - _Metallic: 0.301
+    - _Metallic: 0.358
     - _Normal_Intensity: 1
     - _Normal_Scale: 0
     - _OcclusionStrength: 1
@@ -136,7 +136,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Roughness: 1
+    - _Roughness: 0.505
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
