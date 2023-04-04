@@ -9,9 +9,11 @@ public class CratePush : Interactable
     Vector3 playerOffset;
     GameObject player;
 
+    bool colliding;
+
     private void Start()
     {
-
+        colliding = false;
     }
 
     public override void Update()
@@ -26,6 +28,18 @@ public class CratePush : Interactable
         {
             isGrabbed = false;
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag != "Player" && collision.gameObject.tag != "Floor")
+            colliding = true;
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag != "Player" && collision.gameObject.tag != "Floor")
+            colliding = false;
     }
 
     public override void Interact()
