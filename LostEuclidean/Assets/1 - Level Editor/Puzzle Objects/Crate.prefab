@@ -253,10 +253,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contextualPrompt: {fileID: 394655437821606635}
   InteractionEnabled: 1
+  InteractionRange: 2
   hidden: 0
   colliderMesh: {fileID: 5238734299993449135}
   colorCube: {fileID: -4280950177337262410}
   grabDistance: 2
+  crateCollider: {fileID: 5238734299993449135}
 --- !u!54 &1670282855656833841
 Rigidbody:
   m_ObjectHideFlags: 0

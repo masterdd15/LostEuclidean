@@ -4,16 +4,16 @@ public class CratePush : Interactable
 {
     [SerializeField] SimpleColorCube colorCube;
     [SerializeField] float grabDistance = 2f;
+    [SerializeField] Collider crateCollider;
 
     private bool isGrabbed = false;
     Vector3 playerOffset;
     GameObject player;
-
-    bool colliding;
+    BoxCollider playerBox;
 
     private void Start()
     {
-        colliding = false;
+        
     }
 
     public override void Update()
@@ -27,19 +27,10 @@ public class CratePush : Interactable
         else if (isGrabbed && (!colorCube.CanInteract() || !InteractionEnabled))
         {
             isGrabbed = false;
+            playerBox.enabled = false;
+            crateCollider.enabled = true;
+            player.GetComponent<Player>().IsHolding = false;
         }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag != "Player" && collision.gameObject.tag != "Floor")
-            colliding = true;
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.tag != "Player" && collision.gameObject.tag != "Floor")
-            colliding = false;
     }
 
     public override void Interact()
@@ -47,6 +38,9 @@ public class CratePush : Interactable
         if (isGrabbed)
         {
             isGrabbed = false;
+            playerBox.enabled = false;
+            crateCollider.enabled = true;
+            player.GetComponent<Player>().IsHolding = false;
         }
         else if (!isGrabbed && colorCube.CanInteract() && InteractionEnabled)
         {
@@ -67,12 +61,12 @@ public class CratePush : Interactable
                 if (forwardBack < 0f)
                 {
                     transform.Translate(transform.forward * player.GetComponent<Player>().speed * Time.deltaTime, Space.World);
-                    zOff = -0.2f;
+                    zOff = -0.1f;
                 }
                 else if (forwardBack > 0f)
                 {
                     transform.Translate(-transform.forward * player.gameObject.GetComponent<Player>().speed * Time.deltaTime, Space.World);
-                    zOff = 0.2f;
+                    zOff = 0.1f;
                 }
             }
             else
@@ -80,16 +74,27 @@ public class CratePush : Interactable
                 if (leftRight < 0f)
                 {
                     transform.Translate(transform.right * player.gameObject.GetComponent<Player>().speed * Time.deltaTime, Space.World);
-                    xOff = -0.2f;
+                    xOff = -0.1f;
                 }
                 else if (leftRight > 0f)
                 {
                     transform.Translate(-transform.right * player.gameObject.GetComponent<Player>().speed * Time.deltaTime, Space.World);
-                    xOff = 0.2f;
+                    xOff = 0.1f;
                 }
             }
 
             playerOffset += new Vector3(xOff, 0f, zOff);
+
+            // Make the player look at the cube
+            player.transform.LookAt(transform);
+            Vector3 playerRot = player.transform.rotation.eulerAngles;
+            playerRot = new Vector3(0f, playerRot.y - 90f, 0f);
+            player.transform.rotation = Quaternion.Euler(playerRot);
+            player.GetComponent<Player>().IsHolding = true;
+
+            playerBox = player.GetComponent<BoxCollider>();
+            playerBox.enabled = true;
+            crateCollider.enabled = false;
         }
 
         //if (isGrabbed)

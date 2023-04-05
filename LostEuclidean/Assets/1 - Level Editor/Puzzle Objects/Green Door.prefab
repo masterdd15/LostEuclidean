@@ -329,6 +329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contextualPrompt: {fileID: 3602887275857745655}
   InteractionEnabled: 0
+  InteractionRange: 2.5
   hidden: 0
   colliderMesh: {fileID: 6762710894007023398}
   front: {fileID: 3602887274841289480}

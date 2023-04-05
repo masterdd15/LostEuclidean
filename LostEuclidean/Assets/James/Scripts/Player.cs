@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     Vector3 moveVec;
     float ramp;
     bool controlCamera;
+    public bool IsHolding;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,7 @@ public class Player : MonoBehaviour
         moving = false;
         ramp = 0f;
         moveVec = Vector3.zero;
+        IsHolding = false;
 
         gm = GameManager.Instance;
     }
@@ -38,7 +40,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerInput.currentControlScheme == "Keyboard&Mouse" && playerInput.currentActionMap == playerInput.actions.FindActionMap("Player"))
+        if (playerInput.currentControlScheme == "Keyboard&Mouse" && playerInput.currentActionMap == playerInput.actions.FindActionMap("Player") && !IsHolding)
         {
             // Look at the mouse
             LookAtMouse();
@@ -206,9 +208,9 @@ public class Player : MonoBehaviour
                 }
 
                 // If the closest interactable is close enough to be interacted with
-                if (minDist <= InteractionRange)
+                Interactable interactable = closest.GetComponent<Interactable>();
+                if (minDist <= interactable.InteractionRange)
                 {
-                    Interactable interactable = closest.GetComponent<Interactable>();
                     interactable.Interact();
                 }
             }
@@ -242,7 +244,7 @@ public class Player : MonoBehaviour
 
     public void GamepadLook(InputAction.CallbackContext context)
     {
-        if (context.performed && context.ReadValue<Vector2>() != Vector2.zero)
+        if (context.performed && context.ReadValue<Vector2>() != Vector2.zero && !IsHolding)
         {
             Vector2 inputLook = context.ReadValue<Vector2>();
 
