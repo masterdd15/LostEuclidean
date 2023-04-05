@@ -134,8 +134,6 @@ public class AudioManager : MonoBehaviour
         AudioSource oldSource;
         AudioSource newSource;
 
-        Debug.Log("We are inside our transition music coroutine");
-
         //We need to keep track of how much time has passed
         float timeElapsed = 0;
 
@@ -204,7 +202,6 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("We are playing one shot");
             //Sound Effect is set
             _SFXSource.PlayOneShot(s.clip);
         }
