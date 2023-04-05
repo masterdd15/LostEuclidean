@@ -83,7 +83,7 @@ public class CratePush : Interactable
                 }
             }
 
-            playerOffset += new Vector3(xOff, 0f, zOff);
+            //playerOffset += new Vector3(xOff, 0f, zOff);
 
             // Make the player look at the cube
             player.transform.LookAt(transform);
