@@ -3173,6 +3173,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 683580952, guid: 72c23ce26aaf0f64fad9284782d582dc, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 984560127, guid: 72c23ce26aaf0f64fad9284782d582dc, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000169032, guid: 72c23ce26aaf0f64fad9284782d582dc, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8002470727156587780, guid: 72c23ce26aaf0f64fad9284782d582dc, type: 3}
+      propertyPath: redDimensionMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 3c063f61a7e9a8346a9dd7346d212688, type: 3}
+    - target: {fileID: 8002470727156587780, guid: 72c23ce26aaf0f64fad9284782d582dc, type: 3}
+      propertyPath: sfxSounds.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8002470727156587780, guid: 72c23ce26aaf0f64fad9284782d582dc, type: 3}
+      propertyPath: sfxSounds.Array.data[4].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 71d83c7f699e95748b18a5906e096eca, type: 3}
+    - target: {fileID: 8002470727156587780, guid: 72c23ce26aaf0f64fad9284782d582dc, type: 3}
+      propertyPath: sfxSounds.Array.data[4].name
+      value: Lantern_Switch
+      objectReference: {fileID: 0}
     - target: {fileID: 8002470727156587781, guid: 72c23ce26aaf0f64fad9284782d582dc, type: 3}
       propertyPath: m_Name
       value: Audio Manager

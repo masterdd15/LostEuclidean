@@ -98,6 +98,9 @@ public class Flashlight : MonoBehaviour
     {
         if (!isHolding)
             return;
+        //Sound queue for flashlight
+        AudioManager.Instance.PlaySFX("Lantern_Switch");
+
         for (int i = 0; i < colorObjList.Count; i++)
         {
             colorObjList[i].OnLightExit(currentColor);
