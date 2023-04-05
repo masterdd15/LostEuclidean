@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] Camera m_Camera;
     [SerializeField] LayerMask playerLookMask;
     [SerializeField] PlayerInput playerInput;
+    [SerializeField] Animator playerAnimator;
 
     [Header("Player Controller Variables")]
     [SerializeField] Rigidbody rb;
@@ -30,6 +31,7 @@ public class Player : MonoBehaviour
     {
         controlCamera = false;
         moving = false;
+        playerAnimator.SetBool("IsMoving", moving);
         ramp = 0f;
         moveVec = Vector3.zero;
         IsHolding = false;
@@ -107,6 +109,8 @@ public class Player : MonoBehaviour
 
                 moveVec = new Vector3(inputMove.x, 0f, inputMove.y);
                 moving = true;
+                playerAnimator.SetBool("IsMoving", true);
+                Debug.Log("Set value to true");
 
                 // Rotate the moveVec to correspond to the camera
                 Vector3 cameraRotation = m_Camera.transform.rotation.eulerAngles;
@@ -119,6 +123,7 @@ public class Player : MonoBehaviour
             else
             {
                 moving = false;
+                playerAnimator.SetBool("IsMoving", false);
                 //moveVec = Vector3.zero;
             }
         }

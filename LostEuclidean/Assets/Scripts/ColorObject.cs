@@ -157,7 +157,7 @@ public class ColorObject : MonoBehaviour
     }
 
     //Put the object onto the right layer based on room color
-    protected void UpdateColorLayer()
+    virtual protected void UpdateColorLayer()
     {
         if (baseColor == room.roomColor)
         {

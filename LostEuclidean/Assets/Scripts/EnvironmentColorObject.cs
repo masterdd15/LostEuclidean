@@ -7,9 +7,9 @@ public class EnvironmentColorObject : ColorObject
     [SerializeField]
     protected bool enableCollider = false;
 
-    protected override void OnEnable()
+    protected override void UpdateColorLayer()
     {
-        base.OnEnable();
+        base.UpdateColorLayer();
         if (!enableCollider)
             DisableCollider();
     }

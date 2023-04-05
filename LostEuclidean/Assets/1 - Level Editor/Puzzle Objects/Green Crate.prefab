@@ -251,7 +251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contextualPrompt: {fileID: 4613313920808345111}
   InteractionEnabled: 1
-  InteractionRange: 1.5
+  InteractionRange: 2
   hidden: 0
   colliderMesh: {fileID: 5238734299993449135}
   colorCube: {fileID: -4280950177337262410}
