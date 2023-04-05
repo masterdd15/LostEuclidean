@@ -8,6 +8,7 @@ TagManager:
   - Flashlight
   - Interactable
   - ColorRoom
+  - Floor
   layers:
   - Default
   - TransparentFX

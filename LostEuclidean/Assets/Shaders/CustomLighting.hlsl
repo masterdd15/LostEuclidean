@@ -73,7 +73,7 @@ void CustomShading_float(float3 Position, float3 Normal, float3 ViewDirection, U
 {
 	CustomLightingData data;
 	data.worldPos = Position;
-	data.worldNormal = normalize(Normal + UnpackedNormal);
+	data.worldNormal = normalize(Normal - UnpackedNormal);
 	data.viewDirection = ViewDirection;
 	data.roughness = Roughness;
 	data.metallic = Metallic;
