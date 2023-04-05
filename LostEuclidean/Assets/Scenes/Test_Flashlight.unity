@@ -5015,7 +5015,7 @@ PrefabInstance:
     - target: {fileID: 1924918766038209984, guid: 95e69907bef7049479adc2320b10da3a, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1350147835}
+      objectReference: {fileID: 1990308870023045116}
     - target: {fileID: 1924918766038209984, guid: 95e69907bef7049479adc2320b10da3a, type: 3}
       propertyPath: lightModes.Array.size
       value: 2
@@ -5192,7 +5192,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1.4
+  m_Intensity: 0.31
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -10255,11 +10255,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1350147835 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1990308870574399718, guid: 95e69907bef7049479adc2320b10da3a, type: 3}
-  m_PrefabInstance: {fileID: 552419098}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1379851697
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10912,3 +10907,8 @@ MonoBehaviour:
   canInteract: 0
   isGlitching: 0
   glitchersTouching: []
+--- !u!4 &1990308870023045116 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1990308870574399718, guid: 95e69907bef7049479adc2320b10da3a, type: 3}
+  m_PrefabInstance: {fileID: 552419098}
+  m_PrefabAsset: {fileID: 0}

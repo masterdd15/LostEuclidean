@@ -111,7 +111,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1898413747913617793}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 1.5
   m_Height: 1.5845249
@@ -129,7 +129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5138aae8ce881424eb0c1d62d2e97b4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localState: 0
+  localState: 1
+  onPlayed: 0
   connectedInteractables: []
 --- !u!114 &7857300013283995133
 MonoBehaviour:
