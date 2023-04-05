@@ -389,6 +389,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 31eb41ce81ba4f0488a42faec05b89fd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5937e42485a6ad640b5ea10080b854ae, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 31eb41ce81ba4f0488a42faec05b89fd, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: d47a5e04e4f2b5b4b88e4b095b36eb7e, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 31eb41ce81ba4f0488a42faec05b89fd, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 91ff6352156a9d147935b791a87a8594, type: 2}
     - target: {fileID: 919132149155446097, guid: 31eb41ce81ba4f0488a42faec05b89fd, type: 3}
       propertyPath: m_Name
       value: Red Door

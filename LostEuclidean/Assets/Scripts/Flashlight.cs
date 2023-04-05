@@ -8,12 +8,12 @@ public enum LightColor { Blue = 0, Red, Green, Off}
 public class Flashlight : MonoBehaviour
 {
     [SerializeField]
+    Color[] lightColors = new Color[3];
+    [SerializeField]
     LightColor[] lightModes = { LightColor.Off };
 
     [Space(10), Header("Dependencies"), SerializeField]
     Transform[] lightMasks = new Transform[3];
-    [SerializeField]
-    Light[] lights = new Light[3];
     [SerializeField]
     Transform[] volumetricMeshes = new Transform[3];
     [SerializeField]
@@ -21,7 +21,8 @@ public class Flashlight : MonoBehaviour
     [SerializeField] Canvas contextualPromptCanvas;
     [SerializeField] GameObject buttonText;
 
-    private Light[] playerLights = new Light[3];
+    private Light light;
+    private Light playerLight;
     private Transform[] playerMasks = new Transform[3];
 
     private LightColor currentColor = LightColor.Off;
@@ -40,9 +41,8 @@ public class Flashlight : MonoBehaviour
             player = GameObject.Find("Player").transform;
         }
         Transform playerLightMask = player.Find("Light Masks");
-        playerLights[0] = playerLightMask.Find("Player_Light_Blue").GetComponent<Light>();
-        playerLights[1] = playerLightMask.Find("Player_Light_Red").GetComponent<Light>();
-        playerLights[2] = playerLightMask.Find("Player_Light_Green").GetComponent<Light>();
+        light = GetComponentInChildren<Light>();
+        playerLight = playerLightMask.Find("Player_Light").GetComponent<Light>();
 
         playerMasks[0] = playerLightMask.Find("Player_LightMask_Blue").transform;
         playerMasks[1] = playerLightMask.Find("Player_LightMask_Red").transform;
@@ -133,30 +133,30 @@ public class Flashlight : MonoBehaviour
 
     private void UpdateLightColor()
     {
+        light.color = Color.black;
+        playerLight.color = Color.black;
         for (int i = 0; i < lightMasks.Length; i++)
         {
             if (i == (int)currentColor)
             {
                 lightMasks[i].gameObject.SetActive(true);
-                lights[i].gameObject.SetActive(true);
+                light.color = lightColors[(int)currentColor];
                 volumetricMeshes[i].gameObject.SetActive(true);
                 if (isHolding)
                 {
-                    playerLights[i].gameObject.SetActive(true);
+                    playerLight.color = lightColors[(int)currentColor];
                     playerMasks[i].gameObject.SetActive(true);
                 }
                 else
                 {
-                    playerLights[i].gameObject.SetActive(false);
+                    playerLight.color = Color.black;
                     playerMasks[i].gameObject.SetActive(false);
                 }
             }
             else
             {
                 lightMasks[i].gameObject.SetActive(false);
-                lights[i].gameObject.SetActive(false);
                 volumetricMeshes[i].gameObject.SetActive(false);
-                playerLights[i].gameObject.SetActive(false);
                 playerMasks[i].gameObject.SetActive(false);
             }
         }
