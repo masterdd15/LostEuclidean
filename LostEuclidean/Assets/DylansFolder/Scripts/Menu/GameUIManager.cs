@@ -13,16 +13,20 @@ public class GameUIManager : MonoBehaviour
     //1 = PauseMenuUI
     [SerializeField] List<GameObject> gameUIScreens;
 
+    private bool isReadingDocument;
+
     // Start is called before the first frame update
     void Start()
     {
         gm = GameManager.Instance;
+
+        isReadingDocument = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 
     public void HandleMainMenu()
@@ -55,5 +59,12 @@ public class GameUIManager : MonoBehaviour
 
         //This sets the pause menu UI to it's opposite state (kind of like an on/off switch)
         gameUIScreens[1].SetActive(!gameUIScreens[1].activeSelf);
+    }
+
+    public void DocumentInteract()
+    {
+        gameUIScreens[2].SetActive(true);
+        isReadingDocument = true;
+
     }
 }
