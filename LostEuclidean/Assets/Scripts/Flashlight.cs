@@ -162,23 +162,28 @@ public class Flashlight : MonoBehaviour
                 {
                     playerLight.color = lightColors[(int)currentColor];
                     playerMasks[i].gameObject.SetActive(true);
+
+                    //I am seeing if the controller color can be changed
+                    //Current color should represent the flashlight color now?
+                    ChangeLightBar(lightColors[(int)currentColor]);
                 }
                 else
                 {
                     playerLight.color = Color.black;
                     playerMasks[i].gameObject.SetActive(false);
                 }
-
-                //I am seeing if the controller color can be changed
-                //Current color should represent the flashlight color now?
-                ChangeLightBar(lightColors[(int)currentColor]);
             }
             else
             {
                 lightMasks[i].gameObject.SetActive(false);
                 volumetricMeshes[i].gameObject.SetActive(false);
                 playerMasks[i].gameObject.SetActive(false);
+                
             }
+        }
+        if (currentColor == LightColor.Off)
+        {
+            ChangeLightBar(Color.black);
         }
     }
 
