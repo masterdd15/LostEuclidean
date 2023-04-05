@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.DualShock;
 
 public enum LightColor { Blue = 0, Red, Green, Off}
 
@@ -49,6 +50,8 @@ public class Flashlight : MonoBehaviour
         playerMasks[2] = playerLightMask.Find("Player_LightMask_Green").transform;
 
         HOLD_ROTATION = Quaternion.Euler(new Vector3(0.0f, 90.0f, 0.0f));
+
+        ChangeLightBar(Color.black);
     }
 
     private void Update()
@@ -115,7 +118,17 @@ public class Flashlight : MonoBehaviour
         {
             colorObjList[i].OnLightEnter(currentColor);
         }
+
         UpdateLightColor();
+    }
+
+    private void ChangeLightBar(Color newColor)
+    {
+        var sonyGamepad = DualShockGamepad.current;
+        if(sonyGamepad != null)
+        {
+            sonyGamepad.SetLightBarColor(newColor);
+        }
     }
 
     public void OnPickUpFlashlight (InputValue value)
@@ -155,6 +168,10 @@ public class Flashlight : MonoBehaviour
                     playerLight.color = Color.black;
                     playerMasks[i].gameObject.SetActive(false);
                 }
+
+                //I am seeing if the controller color can be changed
+                //Current color should represent the flashlight color now?
+                ChangeLightBar(lightColors[(int)currentColor]);
             }
             else
             {
