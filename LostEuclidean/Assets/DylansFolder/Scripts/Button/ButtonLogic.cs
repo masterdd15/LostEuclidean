@@ -39,7 +39,7 @@ public class ButtonLogic : MonoBehaviour
     {
         ColorObject colorObj = other.GetComponent<ColorObject>();
 
-        if (colorObj != null || other.tag == "Player")
+        if ((colorObj != null && other.tag == "Interactable") || other.tag == "Player")
         {
             //if (other.tag != "Flashlight")
             //    Debug.Log(localState.ToString() + " - " + other.gameObject.name + " - " + colorObj.CanInteract() + " - " + buttonColorObject.CanInteract());
@@ -97,7 +97,7 @@ public class ButtonLogic : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag != "Flashlight")
+        if (other.gameObject.tag == "Player" || other.tag == "Interactable")
         {
             //Debug.Log("EXITING: " + other.name);
 
