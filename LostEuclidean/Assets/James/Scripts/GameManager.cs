@@ -94,10 +94,13 @@ public class GameManager : MonoBehaviour
 
                 Vector3 doorToCam = (mainCamera.transform.position - door.transform.position).normalized;
                 float direction = Vector3.Dot(doorToCam, door.transform.forward);
-                
+
+                bool xOpposite = (mainCamera.transform.position.x < 0 && door.transform.position.x > 0) || (mainCamera.transform.position.x > 0 && door.transform.position.x < 0);
+                bool zOpposite = (mainCamera.transform.position.z < 0 && door.transform.position.z > 0) || (mainCamera.transform.position.z > 0 && door.transform.position.z < 0);
+
                 if (direction < 0)
                 {
-                    Debug.Log(mainCamera.transform.rotation.eulerAngles.y + " - " + door.transform.rotation.eulerAngles.y);
+                    //Debug.Log(mainCamera.transform.rotation.eulerAngles.y + " - " + door.transform.rotation.eulerAngles.y);
                     if (mainCamera.transform.rotation.eulerAngles.y > door.transform.rotation.eulerAngles.y)
                     {
                         mainCamera.RotateCamera(1f);
@@ -108,6 +111,64 @@ public class GameManager : MonoBehaviour
                     }
                     //mainCamera.Rotate180Degrees();
                 }
+
+                //if (xOpposite && zOpposite)
+                //{
+                //    mainCamera.Rotate180Degrees();
+                //}
+                //else if (!xOpposite && !zOpposite)
+                //{
+                //    // Do nothing
+                //}
+                //else
+                //{
+                //    float angle = Vector3.Angle(mainCamera.transform.forward, doorToCam);
+                //    Vector3 cross = Vector3.Cross(mainCamera.transform.forward, doorToCam);
+
+                //    if (cross.y < 0)
+                //        angle = -angle;
+
+                //    if (direction < 0)
+                //    {
+                //        if (angle < 0)
+                //        {
+                //            mainCamera.RotateCamera(-1f);
+                //        }
+                //        else
+                //        {
+                //            mainCamera.RotateCamera(1f);
+                //        }
+
+                //        //if (mainCamera.transform.rotation.eulerAngles.y > door.transform.rotation.eulerAngles.y)
+                //        //{
+                //        //    mainCamera.RotateCamera(1f);
+                //        //}
+                //        //else
+                //        //{
+                //        //    mainCamera.RotateCamera(-1f);
+                //        //}
+                //    }
+                //    else
+                //    {
+                //        if (angle < 0)
+                //        {
+                //            mainCamera.RotateCamera(1f);
+                //        }
+                //        else
+                //        {
+                //            mainCamera.RotateCamera(-1f);
+                //        }
+
+                //        //if (mainCamera.transform.rotation.eulerAngles.y > door.transform.rotation.eulerAngles.y)
+                //        //{
+                //        //    mainCamera.RotateCamera(-1f);
+                //        //}
+                //        //else
+                //        //{
+                //        //    mainCamera.RotateCamera(1f);
+                //        //}
+                //    }
+                //}
 
                 float intensity = 0f;
                 while (intensity < 1)

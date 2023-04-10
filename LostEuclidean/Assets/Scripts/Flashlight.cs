@@ -2,18 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.DualShock;
 
 public enum LightColor { Blue = 0, Red, Green, Off}
 
 public class Flashlight : MonoBehaviour
 {
     [SerializeField]
+    Color[] lightColors = new Color[3];
+    [SerializeField]
     LightColor[] lightModes = { LightColor.Off };
 
     [Space(10), Header("Dependencies"), SerializeField]
     Transform[] lightMasks = new Transform[3];
-    [SerializeField]
-    Light[] lights = new Light[3];
     [SerializeField]
     Transform[] volumetricMeshes = new Transform[3];
     [SerializeField]
@@ -21,7 +22,8 @@ public class Flashlight : MonoBehaviour
     [SerializeField] Canvas contextualPromptCanvas;
     [SerializeField] GameObject buttonText;
 
-    private Light[] playerLights = new Light[3];
+    private Light light;
+    private Light playerLight;
     private Transform[] playerMasks = new Transform[3];
 
     private LightColor currentColor = LightColor.Off;
@@ -40,15 +42,16 @@ public class Flashlight : MonoBehaviour
             player = GameObject.Find("Player").transform;
         }
         Transform playerLightMask = player.Find("Light Masks");
-        playerLights[0] = playerLightMask.Find("Player_Light_Blue").GetComponent<Light>();
-        playerLights[1] = playerLightMask.Find("Player_Light_Red").GetComponent<Light>();
-        playerLights[2] = playerLightMask.Find("Player_Light_Green").GetComponent<Light>();
+        light = GetComponentInChildren<Light>();
+        playerLight = playerLightMask.Find("Player_Light").GetComponent<Light>();
 
         playerMasks[0] = playerLightMask.Find("Player_LightMask_Blue").transform;
         playerMasks[1] = playerLightMask.Find("Player_LightMask_Red").transform;
         playerMasks[2] = playerLightMask.Find("Player_LightMask_Green").transform;
 
         HOLD_ROTATION = Quaternion.Euler(new Vector3(0.0f, 90.0f, 0.0f));
+
+        ChangeLightBar(Color.black);
     }
 
     private void Update()
@@ -98,6 +101,9 @@ public class Flashlight : MonoBehaviour
     {
         if (!isHolding)
             return;
+        //Sound queue for flashlight
+        AudioManager.Instance.PlaySFX("Lantern_Switch");
+
         for (int i = 0; i < colorObjList.Count; i++)
         {
             colorObjList[i].OnLightExit(currentColor);
@@ -112,7 +118,17 @@ public class Flashlight : MonoBehaviour
         {
             colorObjList[i].OnLightEnter(currentColor);
         }
+
         UpdateLightColor();
+    }
+
+    private void ChangeLightBar(Color newColor)
+    {
+        var sonyGamepad = DualShockGamepad.current;
+        if(sonyGamepad != null)
+        {
+            sonyGamepad.SetLightBarColor(newColor);
+        }
     }
 
     public void OnPickUpFlashlight (InputValue value)
@@ -133,32 +149,41 @@ public class Flashlight : MonoBehaviour
 
     private void UpdateLightColor()
     {
+        light.color = Color.black;
+        playerLight.color = Color.black;
         for (int i = 0; i < lightMasks.Length; i++)
         {
             if (i == (int)currentColor)
             {
                 lightMasks[i].gameObject.SetActive(true);
-                lights[i].gameObject.SetActive(true);
+                light.color = lightColors[(int)currentColor];
                 volumetricMeshes[i].gameObject.SetActive(true);
                 if (isHolding)
                 {
-                    playerLights[i].gameObject.SetActive(true);
+                    playerLight.color = lightColors[(int)currentColor];
                     playerMasks[i].gameObject.SetActive(true);
+
+                    //I am seeing if the controller color can be changed
+                    //Current color should represent the flashlight color now?
+                    ChangeLightBar(lightColors[(int)currentColor]);
                 }
                 else
                 {
-                    playerLights[i].gameObject.SetActive(false);
+                    playerLight.color = Color.black;
                     playerMasks[i].gameObject.SetActive(false);
                 }
             }
             else
             {
                 lightMasks[i].gameObject.SetActive(false);
-                lights[i].gameObject.SetActive(false);
                 volumetricMeshes[i].gameObject.SetActive(false);
-                playerLights[i].gameObject.SetActive(false);
                 playerMasks[i].gameObject.SetActive(false);
+                
             }
+        }
+        if (currentColor == LightColor.Off)
+        {
+            ChangeLightBar(Color.black);
         }
     }
 

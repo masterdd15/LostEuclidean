@@ -10,6 +10,8 @@ public class ColorObject : MonoBehaviour
     [SerializeField]
     protected LightColor baseColor;
     [SerializeField]
+    protected bool canBeRevealed = true;
+    [SerializeField]
     protected bool interactable = false;
     [SerializeField]
     protected bool canGlitch = false;
@@ -25,12 +27,12 @@ public class ColorObject : MonoBehaviour
     protected MeshRenderer meshRenderer;
     protected ParticleSystem glitchParticles; //component of direct child object
 
+    [HideInInspector]
     public bool isRevealed = false; //true if visible
     protected bool isLightActive = true; //true if on a LightColor layer
-    [SerializeField] protected bool canInteract = false;
-    [SerializeField] protected bool isGlitching = false;
+    protected bool canInteract = false;
+    protected bool isGlitching = false;
 
-    [SerializeField]
     protected List<ColorObject> glitchersTouching = new List<ColorObject>();
 
     protected virtual void Awake()
@@ -155,7 +157,7 @@ public class ColorObject : MonoBehaviour
     }
 
     //Put the object onto the right layer based on room color
-    protected void UpdateColorLayer()
+    virtual protected void UpdateColorLayer()
     {
         if (baseColor == room.roomColor)
         {
@@ -165,7 +167,7 @@ public class ColorObject : MonoBehaviour
             EnableCollider();
             //EnablePhysics();
 
-            isLightActive = false;
+            isLightActive = false && canBeRevealed;
             isRevealed = true;
             meshRenderer.enabled = true;
             return;
@@ -189,7 +191,7 @@ public class ColorObject : MonoBehaviour
         {
             gameObject.layer = LayerMask.NameToLayer("LightObject_Blue");
         }
-        isLightActive = true;
+        isLightActive = true && canBeRevealed;
     }
 
     //Handle for when the room changes color at runtime

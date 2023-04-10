@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] Camera m_Camera;
     [SerializeField] LayerMask playerLookMask;
     [SerializeField] PlayerInput playerInput;
+    [SerializeField] Animator playerAnimator;
 
     [Header("Player Controller Variables")]
     [SerializeField] Rigidbody rb;
@@ -23,14 +24,17 @@ public class Player : MonoBehaviour
     Vector3 moveVec;
     float ramp;
     bool controlCamera;
+    public bool IsHolding;
 
     // Start is called before the first frame update
     void Start()
     {
         controlCamera = false;
         moving = false;
+        playerAnimator.SetBool("IsMoving", moving);
         ramp = 0f;
         moveVec = Vector3.zero;
+        IsHolding = false;
 
         gm = GameManager.Instance;
     }
@@ -38,7 +42,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerInput.currentControlScheme == "Keyboard&Mouse" && playerInput.currentActionMap == playerInput.actions.FindActionMap("Player"))
+        if (playerInput.currentControlScheme == "Keyboard&Mouse" && playerInput.currentActionMap == playerInput.actions.FindActionMap("Player") && !IsHolding)
         {
             // Look at the mouse
             LookAtMouse();
@@ -105,6 +109,8 @@ public class Player : MonoBehaviour
 
                 moveVec = new Vector3(inputMove.x, 0f, inputMove.y);
                 moving = true;
+                playerAnimator.SetBool("IsMoving", true);
+                Debug.Log("Set value to true");
 
                 // Rotate the moveVec to correspond to the camera
                 Vector3 cameraRotation = m_Camera.transform.rotation.eulerAngles;
@@ -117,6 +123,7 @@ public class Player : MonoBehaviour
             else
             {
                 moving = false;
+                playerAnimator.SetBool("IsMoving", false);
                 //moveVec = Vector3.zero;
             }
         }
@@ -206,9 +213,9 @@ public class Player : MonoBehaviour
                 }
 
                 // If the closest interactable is close enough to be interacted with
-                if (minDist <= InteractionRange)
+                Interactable interactable = closest.GetComponent<Interactable>();
+                if (minDist <= interactable.InteractionRange)
                 {
-                    Interactable interactable = closest.GetComponent<Interactable>();
                     interactable.Interact();
                 }
             }
@@ -242,7 +249,7 @@ public class Player : MonoBehaviour
 
     public void GamepadLook(InputAction.CallbackContext context)
     {
-        if (context.performed && context.ReadValue<Vector2>() != Vector2.zero)
+        if (context.performed && context.ReadValue<Vector2>() != Vector2.zero && !IsHolding)
         {
             Vector2 inputLook = context.ReadValue<Vector2>();
 

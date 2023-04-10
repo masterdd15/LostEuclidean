@@ -39,12 +39,12 @@ public class ButtonLogic : MonoBehaviour
     {
         ColorObject colorObj = other.GetComponent<ColorObject>();
 
-        if (colorObj != null)
+        if ((colorObj != null && other.tag == "Interactable") || other.tag == "Player")
         {
             //if (other.tag != "Flashlight")
             //    Debug.Log(localState.ToString() + " - " + other.gameObject.name + " - " + colorObj.CanInteract() + " - " + buttonColorObject.CanInteract());
             //If we can interact, and the button hasn't been turned on yet
-            if (colorObj.CanInteract() && buttonColorObject.CanInteract() && localState != ButtonState.ON)
+            if ((other.tag == "Player" || colorObj.CanInteract()) && buttonColorObject.CanInteract() && localState != ButtonState.ON)
             {
                 localState = ButtonState.ON;
 
@@ -63,7 +63,7 @@ public class ButtonLogic : MonoBehaviour
                 }
                     
             }
-            else if ((!colorObj.CanInteract() || !buttonColorObject.CanInteract()) && localState == ButtonState.ON)
+            else if (other.tag != "Player" && (!colorObj.CanInteract() || !buttonColorObject.CanInteract()) && localState == ButtonState.ON)
             {
                 localState = ButtonState.OFF;
                 onPlayed = false;
@@ -97,7 +97,7 @@ public class ButtonLogic : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag != "Flashlight")
+        if (other.gameObject.tag == "Player" || other.tag == "Interactable")
         {
             //Debug.Log("EXITING: " + other.name);
 

@@ -58,6 +58,9 @@ public class DoorController : Interactable
 
         doorMats[materialIndex] = enabledMat;
         doorMesh.GetComponent<MeshRenderer>().materials = doorMats;
+
+        //The door is enabled, so we can play a sound effect to show it has unlocked
+        AudioManager.Instance.PlaySFX("Door_Unlock");
     }
 
     public override void Disable()
