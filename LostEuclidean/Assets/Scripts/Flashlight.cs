@@ -97,7 +97,7 @@ public class Flashlight : MonoBehaviour
         buttonText.SetActive(false);
     }
 
-    public void OnChangeColor(InputValue value)
+    public void OnChangeColor(float direction)
     {
         if (!isHolding)
             return;
@@ -108,11 +108,25 @@ public class Flashlight : MonoBehaviour
         {
             colorObjList[i].OnLightExit(currentColor);
         }
-        currentColorIndex++;
-        if (currentColorIndex >= lightModes.Length)
+
+        Debug.Log(direction);
+        if (direction < 0)
         {
-            currentColorIndex = 0;
+            currentColorIndex--;
+            if (currentColorIndex < 0)
+            {
+                currentColorIndex = lightModes.Length - 1;
+            }
         }
+        else
+        {
+            currentColorIndex++;
+            if (currentColorIndex >= lightModes.Length)
+            {
+                currentColorIndex = 0;
+            }
+        }
+
         currentColor = lightModes[currentColorIndex];
         for (int i = 0; i < colorObjList.Count; i++)
         {

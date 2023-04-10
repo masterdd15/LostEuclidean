@@ -110,7 +110,7 @@ public class Player : MonoBehaviour
                 moveVec = new Vector3(inputMove.x, 0f, inputMove.y);
                 moving = true;
                 playerAnimator.SetBool("IsMoving", true);
-                Debug.Log("Set value to true");
+                //Debug.Log("Set value to true");
 
                 // Rotate the moveVec to correspond to the camera
                 Vector3 cameraRotation = m_Camera.transform.rotation.eulerAngles;
@@ -186,7 +186,14 @@ public class Player : MonoBehaviour
 
             if (fl != null)
             {
-                fl.OnChangeColor(null);
+                if (context.ReadValue<float>() < 0)
+                {
+                    fl.OnChangeColor(-1);
+                }
+                else
+                {
+                    fl.OnChangeColor(1);
+                }
             }
         }
     }
