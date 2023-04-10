@@ -10931,6 +10931,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1613668609}
     m_Modifications:
+    - target: {fileID: 3602887275857745652, guid: 3ca33be0fc7870e4a8d6e7925859fcb7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.051
+      objectReference: {fileID: 0}
+    - target: {fileID: 3602887275857745652, guid: 3ca33be0fc7870e4a8d6e7925859fcb7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1.118
+      objectReference: {fileID: 0}
     - target: {fileID: 3602887275893257673, guid: 3ca33be0fc7870e4a8d6e7925859fcb7, type: 3}
       propertyPath: m_Name
       value: Exit
@@ -10945,7 +10953,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3602887275893257678, guid: 3ca33be0fc7870e4a8d6e7925859fcb7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.23
+      value: 2.21
       objectReference: {fileID: 0}
     - target: {fileID: 3602887275893257678, guid: 3ca33be0fc7870e4a8d6e7925859fcb7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -16741,6 +16749,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1729260431}
     m_Modifications:
+    - target: {fileID: 6122945601706268429, guid: cda165dc0cf1b88419f46bf4a6ea2d36, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6122945601882677266, guid: cda165dc0cf1b88419f46bf4a6ea2d36, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6122945602649536116, guid: cda165dc0cf1b88419f46bf4a6ea2d36, type: 3}
       propertyPath: m_Name
       value: GameUI_Manager
@@ -24503,7 +24519,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0

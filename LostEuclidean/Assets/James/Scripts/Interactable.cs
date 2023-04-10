@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    [SerializeField] GameObject contextualPrompt;
+    [SerializeField] GameObject controllerPrompt;
+    [SerializeField] GameObject keyboardPrompt;
 
     [SerializeField] public bool InteractionEnabled;
 
@@ -16,10 +17,23 @@ public class Interactable : MonoBehaviour
 
     public virtual void Update()
     {
+        GameObject contextualPrompt = null;
+        Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        if (player.GetInputScheme() == "Gamepad")
+        {
+            contextualPrompt = controllerPrompt;
+            keyboardPrompt.SetActive(false);
+        }
+        else
+        {
+            contextualPrompt = keyboardPrompt;
+            controllerPrompt.SetActive(false);
+        }
+
+        if (player)
+
         if (contextualPrompt != null)
         {
-            Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-
             float distToPlayer = (player.transform.position - transform.position).magnitude;
 
             if (distToPlayer <= InteractionRange && !contextualPrompt.activeInHierarchy && InteractionEnabled && !hidden)
