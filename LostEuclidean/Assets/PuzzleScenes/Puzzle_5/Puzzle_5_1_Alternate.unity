@@ -19629,7 +19629,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7692363752797861492, guid: a5e94dda176bcd84d9a27ee959837425, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.12
+      value: -10.532
       objectReference: {fileID: 0}
     - target: {fileID: 7692363752797861492, guid: a5e94dda176bcd84d9a27ee959837425, type: 3}
       propertyPath: m_LocalPosition.y
@@ -19637,7 +19637,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7692363752797861492, guid: a5e94dda176bcd84d9a27ee959837425, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.2
+      value: 7.895
       objectReference: {fileID: 0}
     - target: {fileID: 7692363752797861492, guid: a5e94dda176bcd84d9a27ee959837425, type: 3}
       propertyPath: m_LocalRotation.w
@@ -20129,6 +20129,14 @@ PrefabInstance:
     - target: {fileID: 3909633044232555223, guid: b7e058cb8e359aa41a4dca9a8f91da61, type: 3}
       propertyPath: m_Name
       value: Floor Lamp_Red
+      objectReference: {fileID: 0}
+    - target: {fileID: 4215553263430690225, guid: b7e058cb8e359aa41a4dca9a8f91da61, type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4215553263430690225, guid: b7e058cb8e359aa41a4dca9a8f91da61, type: 3}
+      propertyPath: m_BounceIntensity
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4215553263430690236, guid: b7e058cb8e359aa41a4dca9a8f91da61, type: 3}
       propertyPath: m_IsActive
