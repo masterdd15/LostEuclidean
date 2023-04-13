@@ -16043,7 +16043,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7340790340623683019, guid: fc265c59d21699947a9c4f2550b9e162, type: 3}
       propertyPath: roomColor
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7340790340623683020, guid: fc265c59d21699947a9c4f2550b9e162, type: 3}
       propertyPath: m_RootOrder

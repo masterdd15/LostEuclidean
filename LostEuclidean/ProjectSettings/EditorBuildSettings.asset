@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/PuzzleScenes/0_PUZZLEFINAL/Level3/L3_R1.unity
     guid: 6bad2d6eec29d04449d9715b1a251b68
   - enabled: 1
+    path: Assets/PuzzleScenes/0_PUZZLEFINAL/Level3/L3_R2.unity
+    guid: ea364e164a022b644b40b5f241f207a7
+  - enabled: 1
     path: Assets/PuzzleScenes/Puzzle_1/Puzzle_1_1.unity
     guid: cd2c2be41d488354d8c880c672bafe11
   - enabled: 1
