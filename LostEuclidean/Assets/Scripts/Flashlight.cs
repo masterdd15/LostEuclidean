@@ -19,8 +19,10 @@ public class Flashlight : MonoBehaviour
     Transform[] volumetricMeshes = new Transform[3];
     [SerializeField]
     Transform player;
-    [SerializeField] Canvas contextualPromptCanvas;
-    [SerializeField] GameObject buttonText;
+    //[SerializeField] Canvas contextualPromptCanvas;
+    [SerializeField] GameObject controllerPrompt;
+    [SerializeField] GameObject keyboardPrompt;
+    //[SerializeField] GameObject buttonText;
 
     private Light light;
     private Light playerLight;
@@ -56,21 +58,49 @@ public class Flashlight : MonoBehaviour
 
     private void Update()
     {
-        if (!isHolding)
+        GameObject contextualPrompt = null;
+        Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        if (player.GetInputScheme() == "Gamepad")
         {
-            if ((player.position - transform.position).magnitude <= PICKUP_DISTANCE && !contextualPromptCanvas.enabled)
+            contextualPrompt = controllerPrompt;
+            keyboardPrompt.SetActive(false);
+        }
+        else
+        {
+            contextualPrompt = keyboardPrompt;
+            controllerPrompt.SetActive(false);
+        }
+
+        if (contextualPrompt != null)
+        {
+            float distToPlayer = (player.transform.position - transform.position).magnitude;
+
+            if (distToPlayer <= PICKUP_DISTANCE && !contextualPrompt.activeInHierarchy)
             {
-                contextualPromptCanvas.enabled = true;
+                contextualPrompt.SetActive(true);
             }
-            else if ((player.position - transform.position).magnitude > PICKUP_DISTANCE && contextualPromptCanvas.enabled)
+            else if (distToPlayer >= PICKUP_DISTANCE && contextualPrompt.activeInHierarchy)
             {
-                contextualPromptCanvas.enabled = false;
+                contextualPrompt.SetActive(false);
             }
         }
-        else if (isHolding && contextualPromptCanvas.enabled)
-        {
-            contextualPromptCanvas.enabled = false;
-        }
+
+
+        //if (!isHolding)
+        //{
+        //    if ((player.position - transform.position).magnitude <= PICKUP_DISTANCE && !contextualPromptCanvas.enabled)
+        //    {
+        //        contextualPromptCanvas.enabled = true;
+        //    }
+        //    else if ((player.position - transform.position).magnitude > PICKUP_DISTANCE && contextualPromptCanvas.enabled)
+        //    {
+        //        contextualPromptCanvas.enabled = false;
+        //    }
+        //}
+        //else if (isHolding && contextualPromptCanvas.enabled)
+        //{
+        //    contextualPromptCanvas.enabled = false;
+        //}
     }
 
     private void TryPickUp(Transform holder)
@@ -81,9 +111,16 @@ public class Flashlight : MonoBehaviour
         transform.parent = holder;
         transform.localRotation = HOLD_ROTATION;
         transform.localPosition = HOLD_OFFSET;
+
+        FlashlightUIManager flashlightUI = GameObject.FindObjectOfType<FlashlightUIManager>();
+        if (flashlightUI != null)
+        {
+            flashlightUI.SetupLightWheel(lightModes, currentColorIndex);
+        }
+
         UpdateLightColor();
 
-        buttonText.SetActive(true);
+        //buttonText.SetActive(true);
     }
 
     private void TryDrop ()
@@ -94,7 +131,56 @@ public class Flashlight : MonoBehaviour
         transform.parent = null;
         UpdateLightColor();
 
-        buttonText.SetActive(false);
+        FlashlightUIManager flashlightUI = GameObject.FindObjectOfType<FlashlightUIManager>();
+        if (flashlightUI != null)
+        {
+            flashlightUI.DisableFlashlightUI();
+        }
+
+        //buttonText.SetActive(false);
+    }
+
+    public void SelectColor(LightColor newColor)
+    {
+        if (!isHolding)
+            return;
+        
+        if (currentColor == newColor)
+        {
+            FlashlightOnOff();
+        }
+        else
+        {
+            //Sound queue for flashlight
+            AudioManager.Instance.PlaySFX("Lantern_Switch");
+
+            for (int i = 0; i < colorObjList.Count; i++)
+            {
+                colorObjList[i].OnLightExit(currentColor);
+            }
+
+            int newColorIndex = -1;
+            for (int i = 0; i < lightModes.Length; i++)
+            {
+                if (lightModes[i] == newColor)
+                {
+                    newColorIndex = i;
+                }
+            }
+
+            if (newColorIndex != -1)
+            {
+                currentColorIndex = newColorIndex;
+                currentColor = lightModes[currentColorIndex];
+
+                for (int i = 0; i < colorObjList.Count; i++)
+                {
+                    colorObjList[i].OnLightEnter(currentColor);
+                }
+
+                UpdateLightColor();
+            }
+        }
     }
 
     public void OnChangeColor(float direction)
@@ -109,7 +195,6 @@ public class Flashlight : MonoBehaviour
             colorObjList[i].OnLightExit(currentColor);
         }
 
-        Debug.Log(direction);
         if (direction < 0)
         {
             currentColorIndex--;
@@ -134,6 +219,60 @@ public class Flashlight : MonoBehaviour
         }
 
         UpdateLightColor();
+    }
+
+    public void FlashlightOnOff()
+    {
+        if (!isHolding)
+            return;
+        //Sound queue for flashlight
+        AudioManager.Instance.PlaySFX("Lantern_Switch");
+
+        for (int i = 0; i < colorObjList.Count; i++)
+        {
+            colorObjList[i].OnLightExit(currentColor);
+        }
+
+        if (currentColor != LightColor.Off)
+        {
+            int offIndex = -1;
+            for (int i = 0; i < lightModes.Length; i++)
+            {
+                if (lightModes[i] == LightColor.Off)
+                {
+                    offIndex = i;
+                }
+            }
+
+            if (offIndex != -1)
+            {
+                currentColorIndex = offIndex;
+                currentColor = lightModes[currentColorIndex];
+
+                for (int i = 0; i < colorObjList.Count; i++)
+                {
+                    colorObjList[i].OnLightEnter(currentColor);
+                }
+
+                UpdateLightColor();
+            }
+        }
+        else
+        {
+            currentColorIndex++;
+            if (currentColorIndex >= lightModes.Length)
+            {
+                currentColorIndex = 0;
+            }
+
+            currentColor = lightModes[currentColorIndex];
+            for (int i = 0; i < colorObjList.Count; i++)
+            {
+                colorObjList[i].OnLightEnter(currentColor);
+            }
+
+            UpdateLightColor();
+        }
     }
 
     private void ChangeLightBar(Color newColor)
@@ -198,6 +337,12 @@ public class Flashlight : MonoBehaviour
         if (currentColor == LightColor.Off)
         {
             ChangeLightBar(Color.black);
+        }
+
+        FlashlightUIManager flashlightUI = GameObject.FindObjectOfType<FlashlightUIManager>();
+        if (flashlightUI != null)
+        {
+            flashlightUI.UpdateColorWheel(currentColor);
         }
     }
 

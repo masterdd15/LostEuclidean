@@ -76,6 +76,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "FlashlightOnOff",
+                    "type": "Button",
+                    "id": "4bf0f360-9adc-4864-99a7-bba6aa40fddf",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -430,6 +439,28 @@
                     "action": "ChangeColor",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "26949cf1-59eb-4f72-8301-0fe1ddbac87d",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FlashlightOnOff",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9988e06e-b614-489c-9454-e7b7e5ecd564",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FlashlightOnOff",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },

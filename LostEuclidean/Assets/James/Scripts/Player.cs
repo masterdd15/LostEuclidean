@@ -188,12 +188,29 @@ public class Player : MonoBehaviour
             {
                 if (context.ReadValue<float>() < 0)
                 {
-                    fl.OnChangeColor(-1);
+                    fl.SelectColor(LightColor.Green);
+
+                    //fl.OnChangeColor(-1);
                 }
                 else
                 {
-                    fl.OnChangeColor(1);
+                    fl.SelectColor(LightColor.Red);
+
+                    //fl.OnChangeColor(1);
                 }
+            }
+        }
+    }
+
+    public void FlashlightOnOff (InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Flashlight fl = GetComponentInChildren<Flashlight>();
+
+            if (fl != null)
+            {
+                fl.FlashlightOnOff();
             }
         }
     }
