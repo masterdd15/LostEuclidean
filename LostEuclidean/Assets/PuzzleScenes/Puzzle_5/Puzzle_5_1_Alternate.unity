@@ -24333,11 +24333,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3602887275893257679, guid: 3ca33be0fc7870e4a8d6e7925859fcb7, type: 3}
       propertyPath: doorDestination
-      value: Entrance
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3602887275893257679, guid: 3ca33be0fc7870e4a8d6e7925859fcb7, type: 3}
       propertyPath: sceneDestination
-      value: Puzzle_5_6_Alternate
+      value: ProtoMenu
       objectReference: {fileID: 0}
     - target: {fileID: 3602887275893257679, guid: 3ca33be0fc7870e4a8d6e7925859fcb7, type: 3}
       propertyPath: InteractionEnabled

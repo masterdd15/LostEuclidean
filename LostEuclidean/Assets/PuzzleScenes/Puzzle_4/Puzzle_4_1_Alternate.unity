@@ -2609,6 +2609,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7692363752797861491, guid: a5e94dda176bcd84d9a27ee959837425, type: 3}
+      propertyPath: lightModes.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7692363752797861491, guid: a5e94dda176bcd84d9a27ee959837425, type: 3}
+      propertyPath: lightModes.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7692363752797861492, guid: a5e94dda176bcd84d9a27ee959837425, type: 3}
       propertyPath: m_RootOrder
       value: 2

@@ -1378,7 +1378,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3602887275893257679, guid: c1c0a316ee211584aab2eb286d5d4a12, type: 3}
       propertyPath: sceneDestination
-      value: Puzzle_3_3
+      value: Puzzle_5_1_Alternate
       objectReference: {fileID: 0}
     - target: {fileID: 3602887275893257679, guid: c1c0a316ee211584aab2eb286d5d4a12, type: 3}
       propertyPath: InteractionEnabled
