@@ -9,6 +9,15 @@ EditorBuildSettings:
     path: Assets/DylansFolder/ProtoMenu.unity
     guid: 5fcb831723342c64c8915ecafb601ae7
   - enabled: 1
+    path: Assets/PuzzleScenes/0_PUZZLEFINAL/Level1/L1_R1.unity
+    guid: dc142611450185a43971dfd44731a480
+  - enabled: 1
+    path: Assets/PuzzleScenes/0_PUZZLEFINAL/Level1/L1_R2.unity
+    guid: a3f53839c0c2cbe469200ef8681102a4
+  - enabled: 1
+    path: Assets/PuzzleScenes/0_PUZZLEFINAL/Level2/L2_R1.unity
+    guid: b95d3041d26b6824394826df25c7a4d3
+  - enabled: 1
     path: Assets/PuzzleScenes/Puzzle_1/Puzzle_1_1.unity
     guid: cd2c2be41d488354d8c880c672bafe11
   - enabled: 1
