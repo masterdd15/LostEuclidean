@@ -629,7 +629,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5975726034359228817, guid: 7c74b33b2ef263846b553c65a6f1b60e, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5975726034359228819, guid: 7c74b33b2ef263846b553c65a6f1b60e, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -777,6 +777,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hallway_Color_Entrace
       objectReference: {fileID: 0}
+    - target: {fileID: 7925210522031411484, guid: 92603e977c09d6b42a249098d0da13b6, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92603e977c09d6b42a249098d0da13b6, type: 3}
 --- !u!1001 &448431389
@@ -852,7 +856,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5975726034359228817, guid: 7c74b33b2ef263846b553c65a6f1b60e, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5975726034359228819, guid: 7c74b33b2ef263846b553c65a6f1b60e, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1080,7 +1084,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5975726034359228817, guid: 7c74b33b2ef263846b553c65a6f1b60e, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5975726034359228819, guid: 7c74b33b2ef263846b553c65a6f1b60e, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2407,7 +2411,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5975726034359228817, guid: 7c74b33b2ef263846b553c65a6f1b60e, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5975726034359228819, guid: 7c74b33b2ef263846b553c65a6f1b60e, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2591,7 +2595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5975726034359228817, guid: 7c74b33b2ef263846b553c65a6f1b60e, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5975726034359228819, guid: 7c74b33b2ef263846b553c65a6f1b60e, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2654,6 +2658,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3602887275893257679, guid: c1c0a316ee211584aab2eb286d5d4a12, type: 3}
+      propertyPath: doorDestination
+      value: Entrance
+      objectReference: {fileID: 0}
+    - target: {fileID: 3602887275893257679, guid: c1c0a316ee211584aab2eb286d5d4a12, type: 3}
+      propertyPath: sceneDestination
+      value: L3_R3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1c0a316ee211584aab2eb286d5d4a12, type: 3}
 --- !u!1001 &2006814507
@@ -2714,6 +2726,10 @@ PrefabInstance:
     - target: {fileID: 7925210521871238730, guid: 92603e977c09d6b42a249098d0da13b6, type: 3}
       propertyPath: baseColor
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7925210522031411484, guid: 92603e977c09d6b42a249098d0da13b6, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7925210522031411485, guid: 92603e977c09d6b42a249098d0da13b6, type: 3}
       propertyPath: baseColor
