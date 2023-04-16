@@ -259,6 +259,7 @@ MonoBehaviour:
   colorCube: {fileID: -4280950177337262410}
   grabDistance: 2
   crateCollider: {fileID: 5238734299993449135}
+  rb: {fileID: 1670282855656833841}
 --- !u!54 &1670282855656833841
 Rigidbody:
   m_ObjectHideFlags: 0

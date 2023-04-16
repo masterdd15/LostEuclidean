@@ -239,29 +239,50 @@ public class Player : MonoBehaviour
                 }
             }
 
-
-            // Get the flashlight
-            GameObject[] flashlights = GameObject.FindGameObjectsWithTag("Flashlight");
-            Flashlight flashlight = null;
-            float dist = float.MaxValue;
-            if (flashlights.Length > 0)
+            // If a door is the closest and we're not holding a cube then just go through the door
+            DoorController door = closest.GetComponent<DoorController>();
+            if (door != null && minDist <= door.InteractionRange && !IsHolding)
             {
-                flashlight = flashlights[0].GetComponent<Flashlight>();
-                dist = (flashlight.transform.position - transform.position).magnitude;
-
-                for (int i = 1; i < flashlights.Length; i++)
+                door.Interact();
+            }
+            else
+            {
+                // Get the flashlight
+                GameObject[] flashlights = GameObject.FindGameObjectsWithTag("Flashlight");
+                Flashlight flashlight = null;
+                float dist = float.MaxValue;
+                if (flashlights.Length > 0)
                 {
-                    if ((flashlights[i].transform.position - transform.position).magnitude < dist)
+                    flashlight = flashlights[0].GetComponent<Flashlight>();
+                    dist = (flashlight.transform.position - transform.position).magnitude;
+
+                    for (int i = 1; i < flashlights.Length; i++)
                     {
-                        flashlight = flashlights[i].GetComponent<Flashlight>();
-                        dist = (flashlights[i].transform.position - transform.position).magnitude;
+                        if ((flashlights[i].transform.position - transform.position).magnitude < dist)
+                        {
+                            flashlight = flashlights[i].GetComponent<Flashlight>();
+                            dist = (flashlights[i].transform.position - transform.position).magnitude;
+                        }
                     }
                 }
-            }
 
-            if (closest != null && flashlight != null)
-            {
-                if (minDist < dist)
+                if (closest != null && flashlight != null)
+                {
+                    if (minDist < dist)
+                    {
+                        // If the closest interactable is close enough to be interacted with
+                        Interactable interactable = closest.GetComponent<Interactable>();
+                        if (minDist <= interactable.InteractionRange)
+                        {
+                            interactable.Interact();
+                        }
+                    }
+                    else
+                    {
+                        flashlight.OnPickUpFlashlight(null);
+                    }
+                }
+                else if (closest != null && flashlight == null)
                 {
                     // If the closest interactable is close enough to be interacted with
                     Interactable interactable = closest.GetComponent<Interactable>();
@@ -270,23 +291,10 @@ public class Player : MonoBehaviour
                         interactable.Interact();
                     }
                 }
-                else
+                else if (closest == null && flashlight != null)
                 {
                     flashlight.OnPickUpFlashlight(null);
                 }
-            }
-            else if (closest != null && flashlight == null)
-            {
-                // If the closest interactable is close enough to be interacted with
-                Interactable interactable = closest.GetComponent<Interactable>();
-                if (minDist <= interactable.InteractionRange)
-                {
-                    interactable.Interact();
-                }
-            }
-            else if (closest == null && flashlight != null)
-            {
-                flashlight.OnPickUpFlashlight(null);
             }
         }
     }
