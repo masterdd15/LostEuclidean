@@ -1555,7 +1555,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3602887275893257678, guid: c1c0a316ee211584aab2eb286d5d4a12, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3602887275893257678, guid: c1c0a316ee211584aab2eb286d5d4a12, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1597,8 +1597,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3602887275893257679, guid: c1c0a316ee211584aab2eb286d5d4a12, type: 3}
+      propertyPath: doorDestination
+      value: Entrance
+      objectReference: {fileID: 0}
+    - target: {fileID: 3602887275893257679, guid: c1c0a316ee211584aab2eb286d5d4a12, type: 3}
+      propertyPath: sceneDestination
+      value: L4_R2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1c0a316ee211584aab2eb286d5d4a12, type: 3}
+--- !u!114 &1775996029 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3602887275893257679, guid: c1c0a316ee211584aab2eb286d5d4a12, type: 3}
+  m_PrefabInstance: {fileID: 1775996028}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f23aa2fae45b6284d90871f51d5749bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1875397768
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1725,13 +1744,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1613668609}
     m_Modifications:
+    - target: {fileID: 1898413747913617792, guid: 2956a4059bd608a4d80251e48cdafb4e, type: 3}
+      propertyPath: connectedInteractables.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1898413747913617792, guid: 2956a4059bd608a4d80251e48cdafb4e, type: 3}
+      propertyPath: connectedInteractables.Array.data[0]
+      value: 
+      objectReference: {fileID: 1775996029}
     - target: {fileID: 1898413747913617793, guid: 2956a4059bd608a4d80251e48cdafb4e, type: 3}
       propertyPath: m_Name
       value: Button_Collider_Green
       objectReference: {fileID: 0}
     - target: {fileID: 1898413747913618046, guid: 2956a4059bd608a4d80251e48cdafb4e, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1898413747913618046, guid: 2956a4059bd608a4d80251e48cdafb4e, type: 3}
       propertyPath: m_LocalPosition.x
