@@ -130,6 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseColor: 1
+  canBeRevealed: 1
   interactable: 0
   canGlitch: 0
   canCauseGlitch: 0
@@ -138,9 +139,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   isRevealed: 0
-  canInteract: 0
-  isGlitching: 0
-  glitchersTouching: []
 --- !u!1 &4215553263430690236
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,7 +226,7 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
