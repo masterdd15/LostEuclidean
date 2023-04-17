@@ -364,6 +364,11 @@ public class Flashlight : MonoBehaviour
         }
     }
 
+    public bool IsHeld()
+    {
+        return isHolding;
+    }
+
     void OnTriggerStay(Collider other)
     {
         ColorObject obj = other.GetComponent<ColorObject>();
