@@ -30,8 +30,6 @@ public class Interactable : MonoBehaviour
             controllerPrompt.SetActive(false);
         }
 
-        if (player)
-
         if (contextualPrompt != null)
         {
             float distToPlayer = (player.transform.position - transform.position).magnitude;

@@ -5,6 +5,7 @@ public class CratePush : Interactable
     [SerializeField] SimpleColorCube colorCube;
     [SerializeField] float grabDistance = 2f;
     [SerializeField] Collider crateCollider;
+    [SerializeField] Rigidbody rb;
 
     private bool isGrabbed = false;
     Vector3 playerOffset;
@@ -29,6 +30,8 @@ public class CratePush : Interactable
             isGrabbed = false;
             playerBox.enabled = false;
             crateCollider.enabled = true;
+            //rb.isKinematic = false;
+            crateCollider.isTrigger = false;
             player.GetComponent<Player>().IsHolding = false;
         }
     }
@@ -39,7 +42,9 @@ public class CratePush : Interactable
         {
             isGrabbed = false;
             playerBox.enabled = false;
-            crateCollider.enabled = true;
+            //crateCollider.enabled = true;
+            //rb.isKinematic = false;
+            crateCollider.isTrigger = false;
             player.GetComponent<Player>().IsHolding = false;
         }
         else if (!isGrabbed && colorCube.CanInteract() && InteractionEnabled)
@@ -94,7 +99,9 @@ public class CratePush : Interactable
 
             playerBox = player.GetComponent<BoxCollider>();
             playerBox.enabled = true;
-            crateCollider.enabled = false;
+            //crateCollider.enabled = false;
+            crateCollider.isTrigger = true;
+            //rb.isKinematic = true;
         }
 
         //if (isGrabbed)

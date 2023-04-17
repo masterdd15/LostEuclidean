@@ -16,12 +16,12 @@
                 },
                 {
                     "name": "ChangeColor",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "c63f1806-8d15-4d17-9994-8af9d44572dc",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "PickUpFlashlight",
@@ -76,6 +76,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "FlashlightOnOff",
+                    "type": "Button",
+                    "id": "4bf0f360-9adc-4864-99a7-bba6aa40fddf",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -213,28 +222,6 @@
                 },
                 {
                     "name": "",
-                    "id": "de904d9b-e2af-4283-a314-87d862743a4d",
-                    "path": "<Keyboard>/r",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "ChangeColor",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "370d7eca-210f-4945-99d2-fca053c8a4f3",
-                    "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ChangeColor",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "09010691-2f6c-4c59-a8d1-cd32b5bf3963",
                     "path": "<Keyboard>/f",
                     "interactions": "",
@@ -302,7 +289,7 @@
                 {
                     "name": "negative",
                     "id": "849ad9fa-076e-46ad-af15-ee5a05f84620",
-                    "path": "<Gamepad>/leftShoulder",
+                    "path": "<Gamepad>/dpad/left",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -313,7 +300,7 @@
                 {
                     "name": "positive",
                     "id": "64025dc9-8a76-4aa5-aa6a-1528142c3b3c",
-                    "path": "<Gamepad>/rightShoulder",
+                    "path": "<Gamepad>/dpad/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -346,7 +333,7 @@
                 {
                     "name": "",
                     "id": "c8607a16-9ce5-4baf-9903-95586f685f49",
-                    "path": "<Gamepad>/buttonSouth",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -384,6 +371,94 @@
                     "processors": "",
                     "groups": "",
                     "action": "GamepadLook",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Controller",
+                    "id": "cb05218c-f246-4c81-ba1b-e9c6edad547a",
+                    "path": "1DAxis",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeColor",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "166e4866-0c6a-49f3-b32a-5e61f785c2f9",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeColor",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "920ac8ae-f7cd-4f1a-a630-9825778ecec7",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeColor",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "KeyboardMouse",
+                    "id": "48e0fd68-2a74-49b3-9241-e707903e4ec2",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeColor",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "fba9b9a1-a394-4642-a942-8e199ea3c4da",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeColor",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "ea054271-29dc-4749-adca-7d8b5e7678c7",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeColor",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "26949cf1-59eb-4f72-8301-0fe1ddbac87d",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FlashlightOnOff",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9988e06e-b614-489c-9454-e7b7e5ecd564",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FlashlightOnOff",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

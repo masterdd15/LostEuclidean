@@ -9,6 +9,33 @@ EditorBuildSettings:
     path: Assets/DylansFolder/ProtoMenu.unity
     guid: 5fcb831723342c64c8915ecafb601ae7
   - enabled: 1
+    path: Assets/PuzzleScenes/0_PUZZLEFINAL/Level1/L1_R1.unity
+    guid: dc142611450185a43971dfd44731a480
+  - enabled: 1
+    path: Assets/PuzzleScenes/0_PUZZLEFINAL/Level1/L1_R2.unity
+    guid: a3f53839c0c2cbe469200ef8681102a4
+  - enabled: 1
+    path: Assets/PuzzleScenes/0_PUZZLEFINAL/Level2/L2_R1.unity
+    guid: b95d3041d26b6824394826df25c7a4d3
+  - enabled: 1
+    path: Assets/PuzzleScenes/0_PUZZLEFINAL/Level3/L3_R1.unity
+    guid: 6bad2d6eec29d04449d9715b1a251b68
+  - enabled: 1
+    path: Assets/PuzzleScenes/0_PUZZLEFINAL/Level3/L3_R2.unity
+    guid: 88956e164297543479d558b9eb01f9de
+  - enabled: 1
+    path: Assets/PuzzleScenes/0_PUZZLEFINAL/Level3/L3_R3.unity
+    guid: 268a0c8da5ae63f45a640dc5a3c085ce
+  - enabled: 1
+    path: Assets/PuzzleScenes/0_PUZZLEFINAL/Level4/L4_R1.unity
+    guid: 662296e6a27f1484ba47ac988dac0fa8
+  - enabled: 1
+    path: Assets/PuzzleScenes/0_PUZZLEFINAL/Level4/L4_R2.unity
+    guid: 8ed48c4139e53df419efb27bb72e829f
+  - enabled: 1
+    path: Assets/PuzzleScenes/0_PUZZLEFINAL/Level4/L4_R3.unity
+    guid: 612432dd9ff744e4fa5a1d3e60a3ec12
+  - enabled: 1
     path: Assets/PuzzleScenes/Puzzle_1/Puzzle_1_1.unity
     guid: cd2c2be41d488354d8c880c672bafe11
   - enabled: 1

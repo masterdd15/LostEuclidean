@@ -12,6 +12,8 @@ public class GameUIManager : MonoBehaviour
     //0 = DarkenBase (Used to put focus on UI in front of game)
     //1 = PauseMenuUI
     [SerializeField] List<GameObject> gameUIScreens;
+    [SerializeField] GameObject GamepadControls;
+    [SerializeField] GameObject KeyboardControls;
 
     private bool isReadingDocument;
 
@@ -59,6 +61,21 @@ public class GameUIManager : MonoBehaviour
 
         //This sets the pause menu UI to it's opposite state (kind of like an on/off switch)
         gameUIScreens[1].SetActive(!gameUIScreens[1].activeSelf);
+
+        Player player = GameObject.FindObjectOfType<Player>();
+        if (player != null)
+        {
+            if (player.GetInputScheme() == "Gamepad")
+            {
+                GamepadControls.SetActive(true);
+                KeyboardControls.SetActive(false);
+            }
+            else
+            {
+                GamepadControls.SetActive(false);
+                KeyboardControls.SetActive(true);
+            }
+        }
     }
 
     public void DocumentInteract()
