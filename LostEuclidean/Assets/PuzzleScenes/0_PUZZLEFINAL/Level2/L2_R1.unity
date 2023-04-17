@@ -820,7 +820,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5975726034359228814, guid: 7c74b33b2ef263846b553c65a6f1b60e, type: 3}
       propertyPath: canCauseGlitch
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5975726034359228814, guid: 7c74b33b2ef263846b553c65a6f1b60e, type: 3}
       propertyPath: glitchMaterials.Array.data[0]
@@ -2097,7 +2097,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5975726034359228814, guid: 7c74b33b2ef263846b553c65a6f1b60e, type: 3}
       propertyPath: canGlitch
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5975726034359228814, guid: 7c74b33b2ef263846b553c65a6f1b60e, type: 3}
       propertyPath: canCauseGlitch
