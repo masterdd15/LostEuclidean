@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 33516818777615992}
   - component: {fileID: 23826970094074480}
   - component: {fileID: 95143608398717542}
+  - component: {fileID: -86771917216391196}
+  - component: {fileID: -1013999437439105447}
+  - component: {fileID: 6019761258413770572}
   m_Layer: 0
   m_Name: SM_Terrain_DustPile_Small_01
   m_TagString: Untagged
@@ -104,3 +107,55 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &-86771917216391196
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293663669456902}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7510376, y: 0.21572495, z: 0.8278199}
+  m_Center: {x: 0, y: 0.05003929, z: 0.000000029802322}
+--- !u!54 &-1013999437439105447
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293663669456902}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!114 &6019761258413770572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293663669456902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf5d3e4ee2543304eaf439f639a51ded, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: 0
+  canBeRevealed: 1
+  interactable: 0
+  canGlitch: 0
+  canCauseGlitch: 0
+  glitchMaterials:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  isRevealed: 0
+  enableCollider: 0

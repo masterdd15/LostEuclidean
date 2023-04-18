@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 4347705856453982}
   - component: {fileID: 33447846772876408}
   - component: {fileID: 23535141903061776}
-  - component: {fileID: 4420322898044498776}
+  - component: {fileID: 5612678321167865872}
+  - component: {fileID: 8843752450332865665}
+  - component: {fileID: -8577565268202063277}
   m_Layer: 0
   m_Name: SM_Prop_Bag_White_02
   m_TagString: Untagged
@@ -84,8 +86,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4420322898044498776
-MeshCollider:
+--- !u!65 &5612678321167865872
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,7 +96,45 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 1104c1a95b70a464faa4bafc14375102, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.22034867, y: 0.23998012, z: 0.17992438}
+  m_Center: {x: 0, y: 0.11999006, z: 0}
+--- !u!54 &8843752450332865665
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392227650577500}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!114 &-8577565268202063277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392227650577500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf5d3e4ee2543304eaf439f639a51ded, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: 0
+  canBeRevealed: 1
+  interactable: 0
+  canGlitch: 0
+  canCauseGlitch: 0
+  glitchMaterials:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  isRevealed: 0
+  enableCollider: 1

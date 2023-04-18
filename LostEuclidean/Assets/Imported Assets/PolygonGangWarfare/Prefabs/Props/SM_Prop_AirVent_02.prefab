@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 4008643020515812}
   - component: {fileID: 33652982973202750}
   - component: {fileID: 23525063508613642}
-  - component: {fileID: -3810510411174381705}
+  - component: {fileID: 8327021400086097449}
+  - component: {fileID: -7112135465522387808}
+  - component: {fileID: -3691929326631984684}
   m_Layer: 0
   m_Name: SM_Prop_AirVent_02
   m_TagString: Untagged
@@ -84,8 +86,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &-3810510411174381705
-MeshCollider:
+--- !u!65 &8327021400086097449
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,7 +96,45 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 9f888ec79b4f88243b65c79512d43d6b, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 1.2194076, y: 0.8108728, z: 0.5217315}
+  m_Center: {x: -0.00000074505806, y: 0.4054364, z: 0.0000003427267}
+--- !u!54 &-7112135465522387808
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232675859579728}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!114 &-3691929326631984684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232675859579728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf5d3e4ee2543304eaf439f639a51ded, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: 0
+  canBeRevealed: 1
+  interactable: 0
+  canGlitch: 0
+  canCauseGlitch: 0
+  glitchMaterials:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  isRevealed: 0
+  enableCollider: 1
