@@ -898,7 +898,7 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 0.5803922, g: 1, b: 0.67321193, a: 1}
   m_Intensity: 600
   m_Range: 25
   m_SpotAngle: 82.60782
@@ -2526,6 +2526,14 @@ PrefabInstance:
       propertyPath: roomColor
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7340790340623683019, guid: fc265c59d21699947a9c4f2550b9e162, type: 3}
+      propertyPath: greenDirectionalLight.b
+      value: 0.6745098
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340790340623683019, guid: fc265c59d21699947a9c4f2550b9e162, type: 3}
+      propertyPath: greenDirectionalLight.r
+      value: 0.5803922
+      objectReference: {fileID: 0}
     - target: {fileID: 7340790340623683020, guid: fc265c59d21699947a9c4f2550b9e162, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -3578,6 +3586,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0.509
       objectReference: {fileID: 0}
+    - target: {fileID: 23826970094074480, guid: bb300cb76438b164cb8d80ce9afb85ba, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 19cb0c69311cbeb4096ef069564f7f79, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb300cb76438b164cb8d80ce9afb85ba, type: 3}
 --- !u!1 &1878512885 stripped
