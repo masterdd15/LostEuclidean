@@ -246,7 +246,12 @@ public class Player : MonoBehaviour
             }
 
             // If a door is the closest and we're not holding a cube then just go through the door
-            DoorController door = closest.GetComponent<DoorController>();
+            DoorController door = null;
+            if (closest != null)
+            {
+                door = closest.GetComponent<DoorController>();
+            }
+
             if (door != null && minDist <= door.InteractionRange && !IsHolding)
             {
                 door.Interact();
