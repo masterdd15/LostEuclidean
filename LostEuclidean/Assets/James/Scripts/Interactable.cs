@@ -8,12 +8,19 @@ public class Interactable : MonoBehaviour
     [SerializeField] GameObject keyboardPrompt;
 
     [SerializeField] public bool InteractionEnabled;
+    [SerializeField] public GameObject InteractionObject;
 
     [SerializeField] public float InteractionRange;
 
     public bool hidden;
 
     [SerializeField] Collider colliderMesh;
+
+    public virtual void Start()
+    {
+        if (InteractionObject == null)
+            InteractionObject = gameObject;
+    }
 
     public virtual void Update()
     {
@@ -32,7 +39,7 @@ public class Interactable : MonoBehaviour
 
         if (contextualPrompt != null)
         {
-            float distToPlayer = (player.transform.position - transform.position).magnitude;
+            float distToPlayer = (player.transform.position - InteractionObject.transform.position).magnitude;
 
             if (distToPlayer <= InteractionRange && !contextualPrompt.activeInHierarchy && InteractionEnabled && !hidden)
             {
