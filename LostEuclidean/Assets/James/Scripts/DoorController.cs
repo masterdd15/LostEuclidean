@@ -19,7 +19,7 @@ public class DoorController : Interactable
     int materialIndex;
 
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
         doorMats = doorMesh.GetComponent<MeshRenderer>().materials;
         for (int i = 0; i < doorMats.Length; i++)
