@@ -235,7 +235,7 @@ public class Player : MonoBehaviour
 
                     Interactable interactable = interactables[i].GetComponent<Interactable>();
                     float newDist = (interactable.InteractionObject.transform.position - transform.position).magnitude;
-                    if (newDist < minDist && colorObj != null && colorObj.CanInteract())
+                    if (newDist < minDist && colorObj != null && colorObj.CanInteract() && interactable.InteractionEnabled)
                     {
                         //Debug.Log(interactables[i].name);
 
