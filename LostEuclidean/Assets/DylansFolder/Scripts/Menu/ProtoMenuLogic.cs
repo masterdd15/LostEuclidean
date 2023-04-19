@@ -69,6 +69,20 @@ public class ProtoMenuLogic : MonoBehaviour
         menuScreens[0].SetActive(true); //Show Base Menu
     }
 
+    public void LoadGame()
+    {
+        // Load the saved scene index from PlayerPrefs
+        int savedSceneIndex = PlayerPrefs.GetInt("CurrentSceneIndex");
+
+        // Load the saved scene
+        SceneManager.LoadScene(savedSceneIndex);
+    }
+
+    public void StartNewGame()
+    {
+        SceneManager.LoadScene("L1_R1");
+    }
+
     public void HandleMenu_Win_Back()
     {
         menuScreens[0].SetActive(false); //Hide Level Menu
