@@ -15,16 +15,20 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] GameObject GamepadControls;
     [SerializeField] GameObject KeyboardControls;
 
+    private bool isReadingDocument;
+
     // Start is called before the first frame update
     void Start()
     {
         gm = GameManager.Instance;
+
+        isReadingDocument = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 
     public void HandleMainMenu()
@@ -72,5 +76,12 @@ public class GameUIManager : MonoBehaviour
                 KeyboardControls.SetActive(true);
             }
         }
+    }
+
+    public void DocumentInteract()
+    {
+        gameUIScreens[2].SetActive(true);
+        isReadingDocument = true;
+
     }
 }

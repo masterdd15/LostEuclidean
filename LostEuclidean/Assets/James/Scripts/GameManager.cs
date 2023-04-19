@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
     //We are going to have a bool that keeps track of if the game is paused or not
     [SerializeField] bool isPaused = false;
 
+    private int currentSceneIndex;
+
+
     //Find the current pauseMenu screen
 
     private void Awake()
@@ -31,9 +34,33 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+    }
+
+    private void Update()
+    {
+        if (SceneManager.GetActiveScene().buildIndex != currentSceneIndex)
+        {
+            // Update the current scene index
+            currentSceneIndex = SceneManager.GetActiveScene().buildIndex; ;
+        }
+    }
+
     public void ChangeScene(string sceneName, string doorName, LightColor color)
     {
         StartCoroutine(LoadNewScene(sceneName, doorName, color));
+    }
+
+    public void LoadGame()
+    {
+        // Load the current scene index
+        currentSceneIndex = PlayerPrefs.GetInt("CurrentSceneIndex", 0);
+
+        // Load the scene
+        SceneManager.LoadScene(currentSceneIndex);
     }
 
     IEnumerator LoadNewScene(string sceneName, string doorName, LightColor color)
@@ -55,6 +82,15 @@ public class GameManager : MonoBehaviour
             {
                 yield return null;
             }
+
+            // Save the current scene index
+            PlayerPrefs.SetInt("CurrentSceneIndex", currentSceneIndex);
+
+            // Save the game
+            PlayerPrefs.Save();
+
+            //notify that the game has indeed saved
+            Debug.Log("game saved");
 
             // Place the player at the right door
             GameObject player = GameObject.FindGameObjectWithTag("Player");

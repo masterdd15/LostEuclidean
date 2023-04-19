@@ -268,7 +268,7 @@ public class Player : MonoBehaviour
 
                     Interactable interactable = interactables[i].GetComponent<Interactable>();
                     float newDist = (interactable.InteractionObject.transform.position - transform.position).magnitude;
-                    if (newDist < minDist && colorObj != null && colorObj.CanInteract())
+                    if (newDist < minDist && colorObj != null && colorObj.CanInteract() && interactable.InteractionEnabled)
                     {
                         //Debug.Log(interactables[i].name);
 
@@ -279,7 +279,12 @@ public class Player : MonoBehaviour
             }
 
             // If a door is the closest and we're not holding a cube then just go through the door
-            DoorController door = closest.GetComponent<DoorController>();
+            DoorController door = null;
+            if (closest != null)
+            {
+                door = closest.GetComponent<DoorController>();
+            }
+
             if (door != null && minDist <= door.InteractionRange && !IsHolding)
             {
                 door.Interact();
