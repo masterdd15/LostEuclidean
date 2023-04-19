@@ -19,9 +19,11 @@ public class Player : MonoBehaviour
     public float speed;
     public float drag;
 
+    Flashlight flashlight;
     // Movement variables
     bool moving;
     Vector3 moveVec;
+    Vector2 mouseVec;
     float ramp;
     bool controlCamera;
     public bool IsHolding;
@@ -42,6 +44,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdateAnimation();
         if (playerInput.currentControlScheme == "Keyboard&Mouse" && playerInput.currentActionMap == playerInput.actions.FindActionMap("Player") && !IsHolding)
         {
             // Look at the mouse
@@ -72,6 +75,37 @@ public class Player : MonoBehaviour
         }
     }
 
+    void UpdateAnimation()
+    {
+        if (moveVec.magnitude < 0.01f)
+            moving = false;
+        else
+            moving = true;
+        playerAnimator.SetBool("IsMoving", moving);
+        flashlight = GetComponentInChildren<Flashlight>();
+        if (flashlight != null)
+            playerAnimator.SetBool("IsHolding", true);
+        else
+            playerAnimator.SetBool("IsHolding", false);
+        float dir = Vector3.Dot(moveVec, transform.right);
+        if (dir > 0.5f)
+            playerAnimator.SetInteger("MoveDirVert", 1);
+        else if (dir < -0.5f)
+        {
+            playerAnimator.SetInteger("MoveDirVert", -1);
+        }
+        else
+            playerAnimator.SetInteger("MoveDirVert", 0);
+
+        dir = Vector3.Dot(moveVec, -transform.forward);
+        if (dir > 0.5f)
+            playerAnimator.SetInteger("MoveDirHor", 1);
+        else if (dir < -0.5f)
+            playerAnimator.SetInteger("MoveDirHor", -1);
+        else
+            playerAnimator.SetInteger("MoveDirHor", 0);
+    }
+
     void LookAtMouse()
     {
         Vector3 mousePos = Mouse.current.position.ReadValue();
@@ -93,6 +127,7 @@ public class Player : MonoBehaviour
         {
             worldMousePos = new Vector3(worldMousePos.x, transform.position.y, worldMousePos.z);
             Vector3 targetDir = worldMousePos - transform.position;
+            mouseVec = Vector3.Normalize(targetDir);
 
             float rotY = Mathf.Atan2(targetDir.z, targetDir.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, -rotY, 0f);
@@ -109,7 +144,6 @@ public class Player : MonoBehaviour
 
                 moveVec = new Vector3(inputMove.x, 0f, inputMove.y);
                 moving = true;
-                playerAnimator.SetBool("IsMoving", true);
                 //Debug.Log("Set value to true");
 
                 // Rotate the moveVec to correspond to the camera
@@ -123,8 +157,7 @@ public class Player : MonoBehaviour
             else
             {
                 moving = false;
-                playerAnimator.SetBool("IsMoving", false);
-                //moveVec = Vector3.zero;
+                moveVec = Vector3.zero;
             }
         }
         else // Move the camera
