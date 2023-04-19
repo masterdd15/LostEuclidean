@@ -26,7 +26,7 @@ public class ColorRoom : MonoBehaviour
         //    }
         //}
 
-        directionalLight = GameObject.Find("Directional Light").GetComponent<Light>();
+        directionalLight = GameObject.Find("Main Light").GetComponent<Light>();
 
         if (roomColor == LightColor.Green)
         {

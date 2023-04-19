@@ -225,14 +225,20 @@ public class Player : MonoBehaviour
             float minDist = float.MaxValue;
             if (interactables.Length > 0)
             {
-                closest = interactables[0];
-                minDist = (closest.transform.position - transform.position).magnitude;
-
-                for (int i = 1; i < interactables.Length; i++)
+                //closest = interactables[0];
+                //minDist = (closest.transform.position - transform.position).magnitude;
+                for (int i = 0; i < interactables.Length; i++)
                 {
-                    float newDist = (interactables[i].transform.position - transform.position).magnitude;
-                    if (newDist < minDist)
+                    ColorObject colorObj = interactables[i].GetComponent<ColorObject>();
+                    if (colorObj == null)
+                        colorObj = interactables[i].GetComponentInChildren<ColorObject>();
+
+                    Interactable interactable = interactables[i].GetComponent<Interactable>();
+                    float newDist = (interactable.InteractionObject.transform.position - transform.position).magnitude;
+                    if (newDist < minDist && colorObj != null && colorObj.CanInteract())
                     {
+                        //Debug.Log(interactables[i].name);
+
                         minDist = newDist;
                         closest = interactables[i];
                     }

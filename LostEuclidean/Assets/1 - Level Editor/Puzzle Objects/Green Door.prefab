@@ -272,6 +272,7 @@ MonoBehaviour:
   controllerPrompt: {fileID: 5603481128841883152}
   keyboardPrompt: {fileID: 550422689221379893}
   InteractionEnabled: 0
+  InteractionObject: {fileID: 3602887274841289483}
   InteractionRange: 2.5
   hidden: 0
   colliderMesh: {fileID: 6762710894007023398}

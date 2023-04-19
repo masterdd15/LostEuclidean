@@ -12,9 +12,9 @@ public class CratePush : Interactable
     GameObject player;
     BoxCollider playerBox;
 
-    private void Start()
+    public override void Start()
     {
-        
+        base.Start();
     }
 
     public override void Update()
