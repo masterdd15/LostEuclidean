@@ -237,7 +237,7 @@ public class Player : MonoBehaviour
                     float newDist = (interactable.InteractionObject.transform.position - transform.position).magnitude;
                     if (newDist < minDist && colorObj != null && colorObj.CanInteract())
                     {
-                        Debug.Log(interactables[i].name);
+                        //Debug.Log(interactables[i].name);
 
                         minDist = newDist;
                         closest = interactables[i];

@@ -762,11 +762,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3602887275893257679, guid: 3ca33be0fc7870e4a8d6e7925859fcb7, type: 3}
       propertyPath: doorDestination
-      value: Door_Red_North
+      value: Entrance
       objectReference: {fileID: 0}
     - target: {fileID: 3602887275893257679, guid: 3ca33be0fc7870e4a8d6e7925859fcb7, type: 3}
       propertyPath: sceneDestination
-      value: L4_R3
+      value: L5_R2
       objectReference: {fileID: 0}
     - target: {fileID: 3602887275893257679, guid: 3ca33be0fc7870e4a8d6e7925859fcb7, type: 3}
       propertyPath: InteractionEnabled
@@ -1816,7 +1816,7 @@ GameObject:
   - component: {fileID: 1352884129}
   - component: {fileID: 1352884131}
   m_Layer: 0
-  m_Name: Directional Light
+  m_Name: Main Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
