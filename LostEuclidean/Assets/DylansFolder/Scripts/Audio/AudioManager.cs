@@ -22,6 +22,7 @@ public class AudioManager : MonoBehaviour
     //These will be composed of ur sound effect sources
     [Header("FX Sources")]
     [SerializeField] private AudioSource _SFXSource;
+    [SerializeField] AudioSource _ButtonSFXSource;
 
     //We need to organize our sound clip variables, as to not confuse them for other references
     [Header("Background Audio")]
@@ -202,8 +203,15 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            //Sound Effect is set
-            _SFXSource.PlayOneShot(s.clip);
+            if (name != "But_Act")
+            {
+                //Sound Effect is set
+                _SFXSource.PlayOneShot(s.clip);
+            }
+            else if (!_ButtonSFXSource.isPlaying)
+            {
+                _ButtonSFXSource.Play();
+            }
         }
 
     }

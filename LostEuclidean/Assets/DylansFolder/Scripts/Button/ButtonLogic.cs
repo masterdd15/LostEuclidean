@@ -9,6 +9,8 @@ public class ButtonLogic : MonoBehaviour
 
     [SerializeField] List<Interactable> connectedInteractables;
 
+    List<GameObject> currentCollisions;
+
     //[SerializeField] Interactable connectedInteractable;
 
     ColorObject buttonColorObject;
@@ -26,7 +28,7 @@ public class ButtonLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        currentCollisions = new List<GameObject>();
     }
 
     // Update is called once per frame
@@ -41,6 +43,9 @@ public class ButtonLogic : MonoBehaviour
 
         if ((colorObj != null && other.tag == "Interactable") || other.tag == "Player")
         {
+            if (!currentCollisions.Contains(other.gameObject))
+                currentCollisions.Add(other.gameObject);
+
             //if (other.tag != "Flashlight")
             //    Debug.Log(localState.ToString() + " - " + other.gameObject.name + " - " + colorObj.CanInteract() + " - " + buttonColorObject.CanInteract());
             //If we can interact, and the button hasn't been turned on yet
@@ -99,14 +104,18 @@ public class ButtonLogic : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" || other.tag == "Interactable")
         {
-            //Debug.Log("EXITING: " + other.name);
+            if (currentCollisions.Contains(other.gameObject))
+                currentCollisions.Remove(other.gameObject);
 
-            localState = ButtonState.OFF;
-            onPlayed = false;
-
-            foreach (Interactable connected in connectedInteractables)
+            if (currentCollisions.Count <= 0)
             {
-                connected.Disable();
+                localState = ButtonState.OFF;
+                onPlayed = false;
+
+                foreach (Interactable connected in connectedInteractables)
+                {
+                    connected.Disable();
+                }
             }
         }
     }
