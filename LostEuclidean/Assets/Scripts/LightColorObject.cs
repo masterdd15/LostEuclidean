@@ -83,12 +83,14 @@ public class LightColorObject : ColorObject
 
     void EnableLamp()
     {
-        lampLight.enabled = true;
+        if (lampLight != null)
+            lampLight.enabled = true;
     }
 
     void DisableLamp()
     {
-        lampLight.enabled = false;
+        if (lampLight != null)
+            lampLight.enabled = false;
     }
 
 }

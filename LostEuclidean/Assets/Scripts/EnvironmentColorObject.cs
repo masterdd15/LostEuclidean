@@ -12,5 +12,7 @@ public class EnvironmentColorObject : ColorObject
         base.UpdateColorLayer();
         if (!enableCollider)
             DisableCollider();
+        else
+            EnableCollider();
     }
 }
