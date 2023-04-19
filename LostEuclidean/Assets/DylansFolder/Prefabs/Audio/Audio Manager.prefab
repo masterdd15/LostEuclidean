@@ -44,7 +44,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.18
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -172,7 +172,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.18
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -300,7 +300,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.18
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -601,8 +601,8 @@ MonoBehaviour:
   maxVolume: 1
   _SFXSource: {fileID: 1927280021}
   _ButtonSFXSource: {fileID: 886150184584018028}
-  greenDimensionMusic: {fileID: 8300000, guid: a47600c3fd232c149896b788007e9105, type: 3}
-  redDimensionMusic: {fileID: 8300000, guid: 3c063f61a7e9a8346a9dd7346d212688, type: 3}
+  greenDimensionMusic: {fileID: 8300000, guid: 5b4e178de136d8545abc44c06498fc63, type: 3}
+  redDimensionMusic: {fileID: 8300000, guid: 30590c8b7b2a31747aed52bd1907c74c, type: 3}
   blueDimensionMusic: {fileID: 8300000, guid: 4591487e6dc9d674d9ed4af51acf8fe4, type: 3}
   sfxSounds:
   - name: But_Act
