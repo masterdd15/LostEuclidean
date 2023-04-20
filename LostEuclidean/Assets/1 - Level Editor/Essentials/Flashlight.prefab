@@ -307,9 +307,8 @@ Transform:
   - {fileID: 7875244812720391319}
   - {fileID: 7692363753113001311}
   - {fileID: 4542717059979071934}
-  - {fileID: 8258637373450085788}
-  - {fileID: 7066262958351435141}
   - {fileID: 7131062031453387280}
+  - {fileID: 8258637373450085788}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -455,10 +454,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 1.3202299
-  m_Height: 4.163621
+  m_Radius: 1.01
+  m_Height: 2.43
   m_Direction: 1
-  m_Center: {x: 1.0658141e-13, y: 0.12349802, z: -0.8202299}
+  m_Center: {x: 0, y: 0.12349802, z: -0.54}
 --- !u!1 &7692363753113001280
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,7 +608,7 @@ RectTransform:
   - {fileID: 8528936422813741357}
   - {fileID: 8558135073688293370}
   m_Father: {fileID: 7692363752797861492}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
