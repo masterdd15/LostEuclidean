@@ -92,12 +92,14 @@ public class ColorObject : MonoBehaviour
 
     protected void EnableCollider()
     {
-        col.isTrigger = false;
+        if (col != null)
+            col.isTrigger = false;
     }
 
     protected void DisableCollider()
     {
-        col.isTrigger = true;
+        if (col != null)
+            col.isTrigger = true;
     }
 
     protected void EnablePhysics()
