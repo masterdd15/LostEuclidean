@@ -209,6 +209,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2985008277110077404, guid: 498a63665d1ca8f44a568877fc5f4bfb, type: 3}
+      propertyPath: baseColor
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 498a63665d1ca8f44a568877fc5f4bfb, type: 3}
 --- !u!1 &58192723
@@ -727,6 +731,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8978315640778278061, guid: 513d05ee088229342965d80c89d6ef4b, type: 3}
+      propertyPath: baseColor
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 513d05ee088229342965d80c89d6ef4b, type: 3}
 --- !u!1 &279506603
@@ -1082,6 +1090,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1613668609}
     m_Modifications:
+    - target: {fileID: -1960635490829522157, guid: 2412a868f93b96940ae42177a0ffba1b, type: 3}
+      propertyPath: baseColor
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1188041562686974, guid: 2412a868f93b96940ae42177a0ffba1b, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Office_Desk_01
@@ -1255,6 +1267,10 @@ PrefabInstance:
     - target: {fileID: 4547426913455494, guid: 900e61fd97a1d524aab1ec6baa411214, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8382656230378984006, guid: 900e61fd97a1d524aab1ec6baa411214, type: 3}
+      propertyPath: baseColor
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 900e61fd97a1d524aab1ec6baa411214, type: 3}
@@ -2411,6 +2427,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1653259253280745999, guid: 077c847ed78177e438ae9862887e3307, type: 3}
+      propertyPath: baseColor
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 077c847ed78177e438ae9862887e3307, type: 3}
 --- !u!1001 &922729806
@@ -2420,6 +2440,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1613668609}
     m_Modifications:
+    - target: {fileID: -6532402102227544818, guid: f667260ec585a354697f9b4aff65ff33, type: 3}
+      propertyPath: baseColor
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1036086231513998, guid: f667260ec585a354697f9b4aff65ff33, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Chair_01
@@ -2489,6 +2513,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1613668609}
     m_Modifications:
+    - target: {fileID: -4355576797621914116, guid: 435061e6497edda4fb00176dbde68d25, type: 3}
+      propertyPath: baseColor
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1965645316934734, guid: 435061e6497edda4fb00176dbde68d25, type: 3}
       propertyPath: m_Name
       value: SM_Prop_CardboardBox_03
@@ -2899,6 +2927,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1613668609}
     m_Modifications:
+    - target: {fileID: -5583910058273254085, guid: ec4f1403100404b48a1f28c4fd3db359, type: 3}
+      propertyPath: baseColor
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: ec4f1403100404b48a1f28c4fd3db359, type: 3}
       propertyPath: m_Name
       value: VentShaft_medium
@@ -3155,6 +3187,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1613668609}
     m_Modifications:
+    - target: {fileID: -5711853252137254521, guid: 957a3a49570024c44a2f3093f3f1fc40, type: 3}
+      propertyPath: baseColor
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1183393582343194, guid: 957a3a49570024c44a2f3093f3f1fc40, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Book_Group_02
@@ -3284,6 +3320,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6671300800908035339, guid: 49565edfcce1e66479a3efcc2553545e, type: 3}
+      propertyPath: baseColor
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49565edfcce1e66479a3efcc2553545e, type: 3}
 --- !u!1001 &1416849182
@@ -3293,6 +3333,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1613668609}
     m_Modifications:
+    - target: {fileID: -6759744215995594044, guid: 988fa9bf998607c4d92f434399f1a6c5, type: 3}
+      propertyPath: baseColor
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1998671092589244, guid: 988fa9bf998607c4d92f434399f1a6c5, type: 3}
       propertyPath: m_Name
       value: SM_Prop_CardboardBox_Stack_01
@@ -3446,6 +3490,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1613668609}
     m_Modifications:
+    - target: {fileID: -3217748193370268727, guid: fb29e70946e152d4191a0361efa91ca4, type: 3}
+      propertyPath: baseColor
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1126824068822070, guid: fb29e70946e152d4191a0361efa91ca4, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Alcohol_Glass_Filled_01
@@ -3572,6 +3620,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1613668609}
     m_Modifications:
+    - target: {fileID: -399346128281738927, guid: ad65c70d5d6d67741a126b2e0a7fda4e, type: 3}
+      propertyPath: baseColor
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1156012571973446, guid: ad65c70d5d6d67741a126b2e0a7fda4e, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Lab_MachinePanel_01
@@ -4197,6 +4249,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2985008277110077404, guid: 498a63665d1ca8f44a568877fc5f4bfb, type: 3}
+      propertyPath: baseColor
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 498a63665d1ca8f44a568877fc5f4bfb, type: 3}
 --- !u!1001 &1991996448
@@ -4253,6 +4309,10 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 02c6e92f0d885d841a4cab465be58b20, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 358340607335050649, guid: 02c6e92f0d885d841a4cab465be58b20, type: 3}
+      propertyPath: baseColor
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02c6e92f0d885d841a4cab465be58b20, type: 3}
@@ -4380,6 +4440,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7624921133647479623, guid: 23b101fd93e7552448b48fe5ddfb94f4, type: 3}
+      propertyPath: baseColor
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23b101fd93e7552448b48fe5ddfb94f4, type: 3}
 --- !u!1001 &2006814507
@@ -4498,6 +4562,10 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 9fcbe876e2e761843b3b8339558e8e9e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3168791226723539389, guid: 9fcbe876e2e761843b3b8339558e8e9e, type: 3}
+      propertyPath: baseColor
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fcbe876e2e761843b3b8339558e8e9e, type: 3}
