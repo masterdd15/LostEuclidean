@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mat_PlayerPants
+  m_Name: Mat_Player_Hoodie
   m_Shader: {fileID: -6465566751694194690, guid: d77f3c5530b9515408abd171f4efed9e, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -33,7 +33,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_DB342F0C:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 845351318c4735d459bcd1fbadec300d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -148,7 +148,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_6A162E48: {r: 0.2924528, g: 0.2924528, b: 0.2924528, a: 1}
+    - Color_6A162E48: {r: 0.87815946, g: 0.9339623, b: 0.9200116, a: 1}
     - Color_6C9C775A: {r: 1, g: 1, b: 1, a: 0}
     - Color_9A9462B: {r: 0.318, g: 0.318, b: 0.318, a: 1}
     - Color_D2A04608: {r: 1, g: 1, b: 1, a: 0}
