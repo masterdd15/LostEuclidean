@@ -183,6 +183,9 @@ public class AudioManager : MonoBehaviour
             yield return null;
         }
 
+        oldSource.volume = 0;
+        newSource.volume = maxVolume;
+
         //Finally, we have to update our current color to the new color now that we have transitioned
         currentDimension = newColor;
 
