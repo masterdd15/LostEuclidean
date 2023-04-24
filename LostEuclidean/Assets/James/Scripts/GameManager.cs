@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
             {
                 yield return null;
             }
-
+            AudioManager.Instance.HandleCurrentDimension(color);
             // Load the new scene if necessary
             AsyncOperation newScene = SceneManager.LoadSceneAsync(sceneName);
 
