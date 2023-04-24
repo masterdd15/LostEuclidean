@@ -314,11 +314,13 @@ public class GameManager : MonoBehaviour
             //If true, we need to stop all time in the game to fully be paused
             if (isPaused)
             {
+                AudioManager.Instance.PauseMusic();
                 Debug.Log("Setting time scale to 0");
                 Time.timeScale = 0.0f;
             }
             else //If false, we need to resume the timescale to it's normal values
             {
+                AudioManager.Instance.PlayMusic();
                 Debug.Log("Setting time scale to 1");
                 Time.timeScale = 1.0f;
             }

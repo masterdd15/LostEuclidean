@@ -224,4 +224,18 @@ public class AudioManager : MonoBehaviour
 
     }
 
+    public void PauseMusic()
+    {
+        _MusicGreenSource.Pause();
+        _MusicRedSource.Pause();
+        _MusicBlueSource.Pause();
+    }
+
+    public void PlayMusic()
+    {
+        _MusicGreenSource.Play();
+        _MusicRedSource.Play();
+        _MusicBlueSource.Play();
+    }
+
 }
