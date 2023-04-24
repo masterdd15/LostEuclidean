@@ -1462,17 +1462,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 105200d4ae1ed5647850b73e8b57fa3c, type: 3}
---- !u!114 &729387840 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8935579362227224145, guid: 18f4ef9ba333c994d9d2dad7b58a0c06, type: 3}
-  m_PrefabInstance: {fileID: 1299594887}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a7d46d25bedd784eb980c6bd7551b8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &752823042
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3305,8 +3294,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 729387840}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 48514276}
+        m_TargetAssemblyTypeName: ProtoMenuLogic, Assembly-CSharp
         m_MethodName: LoadGame
         m_Mode: 1
         m_Arguments:
@@ -3316,7 +3305,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &1726255018
 MonoBehaviour:
   m_ObjectHideFlags: 0
