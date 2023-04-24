@@ -110,7 +110,7 @@ public class Player : MonoBehaviour
     {
         Vector3 mousePos = Mouse.current.position.ReadValue();
 
-        //Vector3 worldMousPos = m_Camera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 10f));
+        //Vector3 worldMousePos = m_Camera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 25f));
 
         //Debug.Log(worldMousPos.x + " " + worldMousPos.y);
 
@@ -293,51 +293,53 @@ public class Player : MonoBehaviour
             {
                 // Get the flashlight
                 GameObject[] flashlights = GameObject.FindGameObjectsWithTag("Flashlight");
-                Flashlight flashlight = null;
+                Flashlight fl = null;
                 float dist = float.MaxValue;
                 if (flashlights.Length > 0)
                 {
-                    flashlight = flashlights[0].GetComponent<Flashlight>();
-                    dist = (flashlight.transform.position - transform.position).magnitude;
+                    fl = flashlights[0].GetComponent<Flashlight>();
+                    dist = (fl.transform.position - transform.position).magnitude;
 
                     for (int i = 1; i < flashlights.Length; i++)
                     {
                         if ((flashlights[i].transform.position - transform.position).magnitude < dist)
                         {
-                            flashlight = flashlights[i].GetComponent<Flashlight>();
+                            fl = flashlights[i].GetComponent<Flashlight>();
                             dist = (flashlights[i].transform.position - transform.position).magnitude;
                         }
                     }
                 }
 
-                if (closest != null && flashlight != null)
+                if (closest != null && fl != null)
                 {
                     if (minDist < dist)
                     {
                         // If the closest interactable is close enough to be interacted with
                         Interactable interactable = closest.GetComponent<Interactable>();
-                        if (minDist <= interactable.InteractionRange)
+                        if (door == null && flashlight == null && minDist <= interactable.InteractionRange)
                         {
                             interactable.Interact();
                         }
                     }
                     else
                     {
-                        flashlight.OnPickUpFlashlight(null);
+                        if (!IsHolding)
+                            fl.OnPickUpFlashlight(null);
                     }
                 }
-                else if (closest != null && flashlight == null)
+                else if (closest != null && fl == null)
                 {
                     // If the closest interactable is close enough to be interacted with
                     Interactable interactable = closest.GetComponent<Interactable>();
-                    if (minDist <= interactable.InteractionRange)
+                    if (door == null && flashlight == null && minDist <= interactable.InteractionRange)
                     {
                         interactable.Interact();
                     }
                 }
-                else if (closest == null && flashlight != null)
+                else if (closest == null && fl != null)
                 {
-                    flashlight.OnPickUpFlashlight(null);
+                    if (!IsHolding)
+                        fl.OnPickUpFlashlight(null);
                 }
             }
         }

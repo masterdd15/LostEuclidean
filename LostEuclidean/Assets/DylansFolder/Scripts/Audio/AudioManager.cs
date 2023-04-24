@@ -23,6 +23,7 @@ public class AudioManager : MonoBehaviour
     [Header("FX Sources")]
     [SerializeField] private AudioSource _SFXSource;
     [SerializeField] AudioSource _ButtonSFXSource;
+    [SerializeField] AudioSource _DoorSFXSource;
 
     //We need to organize our sound clip variables, as to not confuse them for other references
     [Header("Background Audio")]
@@ -206,14 +207,18 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            if (name != "But_Act")
+            if (name != "But_Act" && name != "Door_Unlock")
             {
                 //Sound Effect is set
                 _SFXSource.PlayOneShot(s.clip);
             }
-            else if (!_ButtonSFXSource.isPlaying)
+            else if (name == "But_Act" && !_ButtonSFXSource.isPlaying)
             {
                 _ButtonSFXSource.Play();
+            }
+            else if (name == "Door_Unlock" && !_DoorSFXSource.isPlaying)
+            {
+                _DoorSFXSource.Play();
             }
         }
 
