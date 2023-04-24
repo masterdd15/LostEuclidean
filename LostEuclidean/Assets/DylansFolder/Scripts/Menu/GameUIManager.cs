@@ -78,6 +78,18 @@ public class GameUIManager : MonoBehaviour
         }
     }
 
+    public void ToggleFullScreen(bool onOff)
+    {
+        if (onOff)
+        {
+            Screen.fullScreen = true;
+        }
+        else
+        {
+            Screen.fullScreen = false;
+        }
+    }
+
     public void DocumentInteract()
     {
         gameUIScreens[2].SetActive(true);
