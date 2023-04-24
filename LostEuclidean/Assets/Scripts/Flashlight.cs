@@ -33,9 +33,12 @@ public class Flashlight : MonoBehaviour
     private bool isHolding = false;
     private List<ColorObject> colorObjList = new List<ColorObject>();
 
+    private Transform holdPivot;
+   
     private const float PICKUP_DISTANCE = 3.5f;
-    private Vector3 HOLD_OFFSET = new Vector3(1.0f, 1.8f, -1.0f);
+    private Vector3 HOLD_OFFSET = Vector3.zero;
     private Quaternion HOLD_ROTATION;
+    private const string PIVOT_NAME = "mixamorig:RightHandMiddle1";
 
     void Awake()
     {
@@ -85,6 +88,11 @@ public class Flashlight : MonoBehaviour
             }
         }
 
+        if (isHolding)
+        {
+            UpdateHoldTransform();
+        }
+
 
         //if (!isHolding)
         //{
@@ -109,8 +117,8 @@ public class Flashlight : MonoBehaviour
             return;
         isHolding = true;
         transform.parent = holder;
-        transform.localRotation = HOLD_ROTATION;
-        transform.localPosition = HOLD_OFFSET;
+        holdPivot = holder.Find(PIVOT_NAME).transform;
+        UpdateHoldTransform();
 
         FlashlightUIManager flashlightUI = GameObject.FindObjectOfType<FlashlightUIManager>();
         if (flashlightUI != null)
@@ -121,6 +129,12 @@ public class Flashlight : MonoBehaviour
         UpdateLightColor();
 
         //buttonText.SetActive(true);
+    }
+
+    private void UpdateHoldTransform()
+    {
+        transform.localRotation = HOLD_ROTATION;
+        transform.position = holdPivot.position + HOLD_OFFSET;
     }
 
     private void TryDrop ()
@@ -387,4 +401,8 @@ public class Flashlight : MonoBehaviour
         }
     }
 
+    public void ClearColorObjectList()
+    {
+        colorObjList.Clear();
+    }
 }
