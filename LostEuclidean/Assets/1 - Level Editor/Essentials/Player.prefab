@@ -91,7 +91,7 @@ MonoBehaviour:
   playerInput: {fileID: 1990308870574399739}
   playerAnimator: {fileID: 3537108892006642328}
   rb: {fileID: 0}
-  speed: 5
+  speed: 7
   drag: 0.15
   IsHolding: 0
 --- !u!65 &7900228226537854549
