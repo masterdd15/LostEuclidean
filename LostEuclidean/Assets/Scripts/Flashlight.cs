@@ -36,7 +36,7 @@ public class Flashlight : MonoBehaviour
     private Transform holdPivot;
    
     private const float PICKUP_DISTANCE = 3.5f;
-    private Vector3 HOLD_OFFSET = Vector3.zero;
+    private Vector3 HOLD_OFFSET = new Vector3(0, -0.5f, 0);
     private Quaternion HOLD_ROTATION;
     private const string PIVOT_NAME = "mixamorig:RightHandMiddle1";
 
@@ -117,7 +117,7 @@ public class Flashlight : MonoBehaviour
             return;
         isHolding = true;
         transform.parent = holder;
-        holdPivot = holder.Find(PIVOT_NAME).transform;
+        holdPivot = GameObject.Find(PIVOT_NAME).transform;
         UpdateHoldTransform();
 
         FlashlightUIManager flashlightUI = GameObject.FindObjectOfType<FlashlightUIManager>();
