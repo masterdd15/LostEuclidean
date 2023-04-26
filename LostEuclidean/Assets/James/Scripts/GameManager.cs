@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
 
     private int currentSceneIndex;
 
+    public float thresholdValueForBloom = 0.03f;
+
 
     //Find the current pauseMenu screen
 
@@ -37,6 +39,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
 
     }
 
@@ -109,7 +112,18 @@ public class GameManager : MonoBehaviour
         {
             Volume volume = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Volume>();
 
+            Color startTint = new Color(243f / 255f, 68f / 255f, 68f / 255f);
+            Color endTint = new Color(0f, 0f, 0f);
+            float startThreshold = thresholdValueForBloom;
+            float endThreshold = 0f;
+
+
             ChromaticAberration chrome;
+
+            //bloom
+            Bloom bloomLayer = null;
+            volume.profile.TryGet(out bloomLayer);
+
             volume.profile.TryGet<ChromaticAberration>(out chrome);
 
             //Checks if we need to switch the music or not
@@ -207,11 +221,23 @@ public class GameManager : MonoBehaviour
                 //}
 
                 float intensity = 0f;
+
                 while (intensity < 1)
                 {
+               
+                    // Interpolate the tint value from startTint to endTint
+                    Color currentTint = Color.Lerp(endTint, startTint, intensity);
                     chrome.intensity.value = intensity;
+                    bloomLayer.tint.value = currentTint;
 
-                    intensity += 7 * Time.deltaTime;
+                    // Interpolate the threshold value from startThreshold to endThreshold
+                    float currentThreshold = Mathf.Lerp(endThreshold, startThreshold, intensity);
+                    if (bloomLayer != null)
+                    {
+                        bloomLayer.threshold.value = currentThreshold;
+                    }
+
+                    intensity += 1 * Time.deltaTime;
                     yield return new WaitForSeconds(0.01f);
                 }
 
@@ -227,6 +253,8 @@ public class GameManager : MonoBehaviour
                 while (intensity > 0)
                 {
                     chrome.intensity.value = intensity;
+                    bloomLayer.threshold.value = 0.7f;
+                    bloomLayer.tint.value = new Color(255f / 255f, 255f / 255f, 255f / 255f);
 
                     intensity -= 10 * Time.deltaTime;
                     yield return new WaitForSeconds(0.01f);
