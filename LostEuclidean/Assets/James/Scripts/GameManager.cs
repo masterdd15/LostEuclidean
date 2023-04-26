@@ -71,16 +71,25 @@ public class GameManager : MonoBehaviour
         if (sceneName != SceneManager.GetActiveScene().name)
         {
             // Fade out
-            Image fadingImage = GameObject.Find("FadeImage").GetComponent<FullscreenFadeController>().FadeOut();
-
-            if(fadingImage != null)
+            if (GameObject.Find("FadeImage") != null)
             {
+                Image fadingImage = GameObject.Find("FadeImage").GetComponent<FullscreenFadeController>().FadeOut();
+
                 while (fadingImage.color.a < 1)
                 {
                     yield return null;
                 }
             }
-            AudioManager.Instance.HandleCurrentDimension(color);
+
+
+            //if(AudioManager.Instance.currentDimension == LightColor.Off)
+            //{
+            //    AudioManager.Instance.HandleCurrentDimension(LightColor.Off);
+            //}
+            //else
+            //{
+            //    AudioManager.Instance.HandleCurrentDimension(color);
+            //} 
             // Load the new scene if necessary
             AsyncOperation newScene = SceneManager.LoadSceneAsync(sceneName);
 
@@ -88,6 +97,8 @@ public class GameManager : MonoBehaviour
             {
                 yield return null;
             }
+
+            AudioManager.Instance.HandleCurrentDimension(color);
 
             // Save the current scene index
             PlayerPrefs.SetInt("CurrentSceneIndex", currentSceneIndex);
@@ -365,13 +376,13 @@ public class GameManager : MonoBehaviour
             //If true, we need to stop all time in the game to fully be paused
             if (isPaused)
             {
-                AudioManager.Instance.PauseMusic();
+                AudioManager.Instance.HandlePauseMusicIn();
                 Debug.Log("Setting time scale to 0");
                 Time.timeScale = 0.0f;
             }
             else //If false, we need to resume the timescale to it's normal values
             {
-                AudioManager.Instance.PlayMusic();
+                AudioManager.Instance.HandlePauseMusicOut();
                 Debug.Log("Setting time scale to 1");
                 Time.timeScale = 1.0f;
             }

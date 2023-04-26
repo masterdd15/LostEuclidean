@@ -36,6 +36,7 @@ public class GameUIManager : MonoBehaviour
     {
         //We need to unpause the game
         gm.HandlePause();
+        AudioManager.Instance.HandleMenu();
         SceneManager.LoadScene("ProtoMenu");
     }
 

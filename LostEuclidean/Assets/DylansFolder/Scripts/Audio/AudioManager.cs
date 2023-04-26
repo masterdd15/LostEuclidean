@@ -13,11 +13,16 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource _MusicGreenSource;
     [SerializeField] private AudioSource _MusicRedSource;
     [SerializeField] private AudioSource _MusicBlueSource;
-    [SerializeField] private LightColor currentDimension;
+    [SerializeField] private AudioSource _MusicOffSource;
+    [SerializeField] public LightColor currentDimension;
+
 
     [Header("Transition Modifiers")]
     [SerializeField] private float timeToFade;
+    private float origFadeTime;
+    [SerializeField] private float pauseFade;
     [SerializeField] private float maxVolume;
+    [SerializeField] private float musicVolume;
 
     //These will be composed of ur sound effect sources
     [Header("FX Sources")]
@@ -52,6 +57,9 @@ public class AudioManager : MonoBehaviour
     //When we start a scene, this function will make sure that all of our sounds are set up properly
     private void Start()
     {
+        //The music volume is adjusted through the game, but we need to know how loud it is
+        musicVolume = maxVolume;
+
         //We need to intialize all of our clips into our audio sources
         SetupColorMusic();
 
@@ -62,7 +70,6 @@ public class AudioManager : MonoBehaviour
         HandleColorMusic(currentColor);
 
         //We link the SFX audio sourcec by linking it manually. We can create a line of code later would be code.
-
 
     }
 
@@ -83,11 +90,15 @@ public class AudioManager : MonoBehaviour
         _MusicBlueSource.clip = blueDimensionMusic;
         _MusicBlueSource.volume = 0;
         _MusicBlueSource.Play();
+
+        _MusicOffSource.volume = 0;
+        _MusicOffSource.Play();
     }
 
     //In this function, we choose what which audio source will be heard depending on the rooms color
     private void HandleColorMusic(LightColor roomColor)
     {
+        
         switch(roomColor)
         {
             case LightColor.Green:
@@ -105,10 +116,17 @@ public class AudioManager : MonoBehaviour
                 _MusicGreenSource.volume = 0;
                 _MusicRedSource.volume = 0;
                 break;
+            case LightColor.Off:
+                _MusicBlueSource.volume = 0;
+                _MusicGreenSource.volume = 0;
+                _MusicRedSource.volume = 0;
+                break;
             default:
                 Debug.Log("ERROR: MUSIC COLOR NOT FOUND");
                 break;
         }
+
+        currentDimension = roomColor;
     }
 
     //This will trigger when Color Room changes the room color
@@ -151,6 +169,9 @@ public class AudioManager : MonoBehaviour
             case LightColor.Blue:
                 oldSource = _MusicBlueSource;
                 break;
+            case LightColor.Off:
+                oldSource = _MusicOffSource;
+                break;
             default:
                 Debug.Log("ERROR WITH TRANSITION MUSIC OLD SOURCE");
                 oldSource = _MusicGreenSource;
@@ -169,6 +190,9 @@ public class AudioManager : MonoBehaviour
             case LightColor.Blue:
                 newSource = _MusicBlueSource;
                 break;
+            case LightColor.Off:
+                newSource = _MusicOffSource;
+                break;
             default:
                 Debug.Log("ERROR WITH TRANSITION MUSIC NEW SOURCE");
                 newSource = _MusicGreenSource;
@@ -178,14 +202,14 @@ public class AudioManager : MonoBehaviour
         //We will include variables to control the speed at which the transition occurs
         while(timeElapsed < timeToFade)
         {
-            oldSource.volume = Mathf.Lerp(maxVolume, 0, timeElapsed / timeToFade);
-            newSource.volume = Mathf.Lerp(0, maxVolume, timeElapsed / timeToFade);
-            timeElapsed += Time.deltaTime;
+            oldSource.volume = Mathf.Lerp(musicVolume, 0, timeElapsed / timeToFade);
+            newSource.volume = Mathf.Lerp(0, musicVolume, timeElapsed / timeToFade);
+            timeElapsed += Time.unscaledDeltaTime;
             yield return null;
         }
 
         oldSource.volume = 0;
-        newSource.volume = maxVolume;
+        newSource.volume = musicVolume;
 
         //Finally, we have to update our current color to the new color now that we have transitioned
         currentDimension = newColor;
@@ -221,21 +245,27 @@ public class AudioManager : MonoBehaviour
                 _DoorSFXSource.Play();
             }
         }
-
     }
 
-    public void PauseMusic()
+    //This script will control the volume of music when 
+    public void HandlePauseMusicIn()
     {
-        _MusicGreenSource.Pause();
-        _MusicRedSource.Pause();
-        _MusicBlueSource.Pause();
+        musicVolume = maxVolume / 4;
+        origFadeTime = timeToFade;
+        timeToFade = pauseFade;
+        StartCoroutine(TransitionMusic(currentDimension));
     }
 
-    public void PlayMusic()
+    public void HandlePauseMusicOut()
     {
-        _MusicGreenSource.Play();
-        _MusicRedSource.Play();
-        _MusicBlueSource.Play();
+        musicVolume = maxVolume;
+        StartCoroutine(TransitionMusic(currentDimension));
+        timeToFade = origFadeTime;
     }
 
+    public void HandleMenu()
+    {
+        timeToFade = origFadeTime;
+        StartCoroutine(TransitionMusic(LightColor.Off));
+    }
 }
