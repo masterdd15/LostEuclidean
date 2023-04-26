@@ -73,9 +73,12 @@ public class GameManager : MonoBehaviour
             // Fade out
             Image fadingImage = GameObject.Find("FadeImage").GetComponent<FullscreenFadeController>().FadeOut();
 
-            while (fadingImage.color.a < 1)
+            if(fadingImage != null)
             {
-                yield return null;
+                while (fadingImage.color.a < 1)
+                {
+                    yield return null;
+                }
             }
             AudioManager.Instance.HandleCurrentDimension(color);
             // Load the new scene if necessary
