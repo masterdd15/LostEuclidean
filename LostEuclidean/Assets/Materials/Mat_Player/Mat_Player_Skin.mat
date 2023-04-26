@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mat_PlayerHoodie
+  m_Name: Mat_Player_Skin
   m_Shader: {fileID: -6465566751694194690, guid: d77f3c5530b9515408abd171f4efed9e, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -29,7 +29,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_97C8EC94:
-        m_Texture: {fileID: 2800000, guid: 577d49e7de198ec40bd9aa13961a51ca, type: 3}
+        m_Texture: {fileID: 2800000, guid: a9acc156f89ad9a4c94105c6ad2b9616, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_DB342F0C:
@@ -148,9 +148,9 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_6A162E48: {r: 0.87815946, g: 0.9339623, b: 0.9200116, a: 1}
+    - Color_6A162E48: {r: 1, g: 0.8885283, b: 0.7987421, a: 1}
     - Color_6C9C775A: {r: 1, g: 1, b: 1, a: 0}
-    - Color_9A9462B: {r: 0.318, g: 0.318, b: 0.318, a: 1}
+    - Color_9A9462B: {r: 0.1, g: 0.1, b: 0.1, a: 1}
     - Color_D2A04608: {r: 1, g: 1, b: 1, a: 0}
     - Color_D840FCE7: {r: 1, g: 1, b: 1, a: 0}
     - Toon_Ramp_Tint: {r: 0.49056596, g: 0.49056596, b: 0.49056596, a: 1}
