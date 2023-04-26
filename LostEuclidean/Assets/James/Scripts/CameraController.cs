@@ -62,9 +62,9 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    public void RotateCamera(float direction)
+    public void RotateCamera(float direction, bool fast)
     {
-        StartCoroutine(CameraRotatingCoroutine(direction));
+        StartCoroutine(CameraRotatingCoroutine(direction, fast));
     }
 
     public void Rotate180Degrees()
@@ -72,7 +72,7 @@ public class CameraController : MonoBehaviour
         StartCoroutine(Rotate180Coroutine());
     }
 
-    IEnumerator CameraRotatingCoroutine(float dir)
+    IEnumerator CameraRotatingCoroutine(float dir, bool fast)
     {
         camRotating = true;
 
@@ -92,7 +92,14 @@ public class CameraController : MonoBehaviour
             bool revealed = false;
             while (deg < 90f)
             {
-                m_Camera.transform.RotateAround(camTarget.transform.position, Vector3.up, 2 * dir);
+                if (!fast)
+                {
+                    m_Camera.transform.RotateAround(camTarget.transform.position, Vector3.up, 2 * dir);
+                }
+                else
+                {
+                    m_Camera.transform.RotateAround(camTarget.transform.position, Vector3.up, 3 * dir);
+                }
 
                 // Reveal and hide walls as necessary
                 if (deg > 45f && !revealed)
@@ -147,7 +154,15 @@ public class CameraController : MonoBehaviour
                     revealed = true;
                 }
 
-                deg += 2;
+                //deg = Mathf.Lerp(0, 90, t);
+                if (!fast)
+                {
+                    deg += 2;
+                }
+                else
+                {
+                    deg += 3;
+                }
 
                 yield return new WaitForSeconds(0.01f);
             }

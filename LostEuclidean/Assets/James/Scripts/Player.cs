@@ -179,11 +179,11 @@ public class Player : MonoBehaviour
         {
             if (context.ReadValue<float>() < 0)
             {
-                m_Camera.gameObject.GetComponent<CameraController>().RotateCamera(1f);
+                m_Camera.gameObject.GetComponent<CameraController>().RotateCamera(1f, true);
             }
             else
             {
-                m_Camera.gameObject.GetComponent<CameraController>().RotateCamera(-1f);
+                m_Camera.gameObject.GetComponent<CameraController>().RotateCamera(-1f, true);
             }
         }
     }

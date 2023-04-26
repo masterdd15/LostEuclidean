@@ -112,12 +112,6 @@ public class GameManager : MonoBehaviour
         {
             Volume volume = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Volume>();
 
-            Color startTint = new Color(243f / 255f, 68f / 255f, 68f / 255f);
-            Color endTint = new Color(0f, 0f, 0f);
-            float startThreshold = thresholdValueForBloom;
-            float endThreshold = 0f;
-
-
             ChromaticAberration chrome;
 
             //bloom
@@ -125,6 +119,17 @@ public class GameManager : MonoBehaviour
             volume.profile.TryGet(out bloomLayer);
 
             volume.profile.TryGet<ChromaticAberration>(out chrome);
+
+            Color startTint = new Color(255f, 68f, 68f);
+
+            if (color == LightColor.Green)
+            {
+                startTint = new Color(62f, 255f, 77f);
+            }
+
+            Color endTint = new Color(255f, 255f, 255f);
+            float startThreshold = thresholdValueForBloom;
+            float endThreshold = 0f;
 
             //Checks if we need to switch the music or not
             AudioManager.Instance.HandleCurrentDimension(color);
@@ -153,11 +158,11 @@ public class GameManager : MonoBehaviour
                     //Debug.Log(mainCamera.transform.rotation.eulerAngles.y + " - " + door.transform.rotation.eulerAngles.y);
                     if (mainCamera.transform.rotation.eulerAngles.y > door.transform.rotation.eulerAngles.y)
                     {
-                        mainCamera.RotateCamera(1f);
+                        mainCamera.RotateCamera(1f, false);
                     }
                     else
                     {
-                        mainCamera.RotateCamera(-1f);
+                        mainCamera.RotateCamera(-1f, false);
                     }
                     //mainCamera.Rotate180Degrees();
                 }
@@ -220,47 +225,62 @@ public class GameManager : MonoBehaviour
                 //    }
                 //}
 
-                float intensity = 0f;
-
-                while (intensity < 1)
+                ColorRoom mainColorRoom = FindObjectOfType<ColorRoom>();
+                if (color != mainColorRoom.roomColor)
                 {
-               
-                    // Interpolate the tint value from startTint to endTint
-                    Color currentTint = Color.Lerp(endTint, startTint, intensity);
-                    chrome.intensity.value = intensity;
-                    bloomLayer.tint.value = currentTint;
+                    float intensity = 0f;
 
-                    // Interpolate the threshold value from startThreshold to endThreshold
-                    float currentThreshold = Mathf.Lerp(endThreshold, startThreshold, intensity);
-                    if (bloomLayer != null)
+                    while (intensity < 1)
                     {
-                        bloomLayer.threshold.value = currentThreshold;
+
+                        // Interpolate the tint value from startTint to endTint
+                        Color currentTint = Color.Lerp(endTint, startTint, intensity);
+                        chrome.intensity.value = intensity;
+                        bloomLayer.intensity.value = intensity;
+                        bloomLayer.tint.value = currentTint;
+
+                        //// Interpolate the threshold value from startThreshold to endThreshold
+                        //float currentThreshold = Mathf.Lerp(startThreshold, endThreshold, intensity);
+                        //if (bloomLayer != null)
+                        //{
+                        //    bloomLayer.threshold.value = currentThreshold;
+                        //}
+
+                        intensity += 2 * Time.deltaTime;
+                        yield return new WaitForSeconds(0.01f);
                     }
 
-                    intensity += 1 * Time.deltaTime;
-                    yield return new WaitForSeconds(0.01f);
+                    bloomLayer.tint.value = startTint;
+                    bloomLayer.intensity.value = 1f;
+                    chrome.intensity.value = 1f;
+
+                    // Set the color
+                    GameObject[] colorRooms = GameObject.FindGameObjectsWithTag("ColorRoom");
+                    foreach (GameObject colorRoom in colorRooms)
+                    {
+                        colorRoom.GetComponent<ColorRoom>().ChangeRoomColor(color);
+                    }
+
+                    while (intensity > 0)
+                    {
+                        // Interpolate the tint value from startTint to endTint
+                        Color currentTint = Color.Lerp(startTint, endTint, intensity);
+                        chrome.intensity.value = intensity;
+                        bloomLayer.intensity.value = intensity;
+                        bloomLayer.tint.value = currentTint;
+
+                        //chrome.intensity.value = intensity;
+                        //bloomLayer.threshold.value = 0.7f;
+                        //bloomLayer.tint.value = new Color(255f / 255f, 255f / 255f, 255f / 255f);
+
+                        intensity -= 4 * Time.deltaTime;
+                        yield return new WaitForSeconds(0.01f);
+                    }
+
+                    bloomLayer.tint.value = endTint;
+                    bloomLayer.intensity.value = 0f;
+                    chrome.intensity.value = 0f;
                 }
-
-                chrome.intensity.value = 1f;
-
-                // Set the color
-                GameObject[] colorRooms = GameObject.FindGameObjectsWithTag("ColorRoom");
-                foreach (GameObject colorRoom in colorRooms)
-                {
-                    colorRoom.GetComponent<ColorRoom>().ChangeRoomColor(color);
-                }
-
-                while (intensity > 0)
-                {
-                    chrome.intensity.value = intensity;
-                    bloomLayer.threshold.value = 0.7f;
-                    bloomLayer.tint.value = new Color(255f / 255f, 255f / 255f, 255f / 255f);
-
-                    intensity -= 10 * Time.deltaTime;
-                    yield return new WaitForSeconds(0.01f);
-                }
-
-                chrome.intensity.value = 0f;
             }
         }        
     }
