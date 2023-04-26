@@ -15,13 +15,13 @@ public class WallpaperColorObject : ColorObject
     protected override void UpdateColorLayer()
     {
         base.UpdateColorLayer();
-        if (baseColor == room.roomColor)
+        /*if (baseColor == room.roomColor)
         {
             transform.Translate(dir);
         }
         else
         {
             transform.Translate(-dir);
-        }
+        }*/
     }
 }
