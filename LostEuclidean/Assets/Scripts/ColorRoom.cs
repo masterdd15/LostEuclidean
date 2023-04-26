@@ -12,6 +12,7 @@ public class ColorRoom : MonoBehaviour
     [SerializeField] Color blueDirectionalLight;
 
     private List<ColorObject> objectsInRoom = new List<ColorObject>();
+    private Flashlight flashlight;
 
     void Start()
     {
@@ -25,6 +26,8 @@ public class ColorRoom : MonoBehaviour
         //        objectsInRoom.Add(child);
         //    }
         //}
+
+        flashlight = FindObjectOfType<Flashlight>();
 
         directionalLight = GameObject.Find("Main Light").GetComponent<Light>();
 
@@ -71,5 +74,7 @@ public class ColorRoom : MonoBehaviour
         {
             colorObject.OnRoomColorChange();
         }
+
+        flashlight.ClearColorObjectList();
     }
 }

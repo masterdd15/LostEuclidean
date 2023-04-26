@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mat_PlayerJacket
+  m_Name: Mat_Player_CoatSleeves
   m_Shader: {fileID: -6465566751694194690, guid: d77f3c5530b9515408abd171f4efed9e, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -33,7 +33,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_DB342F0C:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 8fe91bfa3ef0381449f36cfca3abc990, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
