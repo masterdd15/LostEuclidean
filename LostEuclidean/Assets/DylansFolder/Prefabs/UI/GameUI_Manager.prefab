@@ -3755,7 +3755,6 @@ MonoBehaviour:
   - {fileID: 6122945601882677266}
   GamepadControls: {fileID: 559128194607739060}
   KeyboardControls: {fileID: 4638581843820596851}
-  FullscreenButton: {fileID: 0}
 --- !u!1 &6122945603221086905
 GameObject:
   m_ObjectHideFlags: 0
@@ -3954,13 +3953,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 6122945602649536118}
+        m_TargetAssemblyTypeName: GameUIManager, Assembly-CSharp
+        m_MethodName: HandleQuit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4201,7 +4200,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -4729,6 +4728,7 @@ GameObject:
   m_Component:
   - component: {fileID: 80211180880714151}
   - component: {fileID: 6982269317654882564}
+  - component: {fileID: 2078916620413584659}
   m_Layer: 5
   m_Name: FullScreenToggle
   m_TagString: Untagged
@@ -4805,19 +4805,31 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 6122945602649536118}
+        m_TargetAssemblyTypeName: GameUIManager, Assembly-CSharp
+        m_MethodName: ToggleFullScreen
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgument: {fileID: 6982269317654882564}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
   m_IsOn: 1
+--- !u!114 &2078916620413584659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7073927181849436737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c889e6ee392110409d393a4d4a2aa71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7191542657442870940
 GameObject:
   m_ObjectHideFlags: 0
