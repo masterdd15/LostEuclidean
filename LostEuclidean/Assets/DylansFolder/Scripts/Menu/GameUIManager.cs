@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameUIManager : MonoBehaviour
 {
@@ -76,6 +77,11 @@ public class GameUIManager : MonoBehaviour
                 KeyboardControls.SetActive(true);
             }
         }
+    }
+
+    public void ToggleFullScreen(Toggle onOff)
+    {
+        Screen.fullScreen = onOff.isOn;
     }
 
     public void DocumentInteract()

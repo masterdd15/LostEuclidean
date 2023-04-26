@@ -1095,26 +1095,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ortho Camera
       objectReference: {fileID: 0}
-    - target: {fileID: 2915566448870680950, guid: a34defe71ee85e04fad803995f1c189c, type: 3}
-      propertyPath: m_ClearFlags
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2915566448870680950, guid: a34defe71ee85e04fad803995f1c189c, type: 3}
-      propertyPath: orthographic size
-      value: 14.39
-      objectReference: {fileID: 0}
-    - target: {fileID: 2915566448870680950, guid: a34defe71ee85e04fad803995f1c189c, type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2915566448870680950, guid: a34defe71ee85e04fad803995f1c189c, type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2915566448870680950, guid: a34defe71ee85e04fad803995f1c189c, type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a34defe71ee85e04fad803995f1c189c, type: 3}
 --- !u!1001 &301133304
@@ -3435,6 +3415,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1729260431}
     m_Modifications:
+    - target: {fileID: 6122945601882677266, guid: cda165dc0cf1b88419f46bf4a6ea2d36, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6122945602649536116, guid: cda165dc0cf1b88419f46bf4a6ea2d36, type: 3}
       propertyPath: m_Name
       value: GameUI_Manager
@@ -5549,7 +5533,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
