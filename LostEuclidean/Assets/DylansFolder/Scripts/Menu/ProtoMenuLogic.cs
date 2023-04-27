@@ -80,7 +80,8 @@ public class ProtoMenuLogic : MonoBehaviour
 
     public void StartNewGame()
     {
-        SceneManager.LoadScene("L1_R1");
+        //SceneManager.LoadScene("L1_R1");
+        gm.ChangeScene("L1_R1", "Entrance", LightColor.Green);
     }
 
     public void HandleMenu_Win_Back()
