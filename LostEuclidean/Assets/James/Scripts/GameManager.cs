@@ -260,7 +260,7 @@ public class GameManager : MonoBehaviour
                         //    bloomLayer.threshold.value = currentThreshold;
                         //}
 
-                        intensity += 2 * Time.deltaTime;
+                        intensity += 6 * Time.deltaTime;
                         yield return new WaitForSeconds(0.01f);
                     }
 
@@ -287,7 +287,7 @@ public class GameManager : MonoBehaviour
                         //bloomLayer.threshold.value = 0.7f;
                         //bloomLayer.tint.value = new Color(255f / 255f, 255f / 255f, 255f / 255f);
 
-                        intensity -= 4 * Time.deltaTime;
+                        intensity -= 8 * Time.deltaTime;
                         yield return new WaitForSeconds(0.01f);
                     }
 
