@@ -162,7 +162,7 @@ Material:
     - Color_D2A04608: {r: 1, g: 1, b: 1, a: 0}
     - Color_D840FCE7: {r: 1, g: 1, b: 1, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.8616748, g: 0.990566, b: 0.80740476, a: 1}
+    - _Color: {r: 0.7159881, g: 1, b: 0.5911949, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Emission_Color: {r: 1, g: 1, b: 1, a: 0}
     - _End_Point: {r: 0, g: 0, b: 0, a: 0}
