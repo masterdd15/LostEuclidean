@@ -91,4 +91,10 @@ public class GameUIManager : MonoBehaviour
         isReadingDocument = true;
 
     }
+
+    public void ResetRoom()
+    {
+        GameManager.Instance.ResetRoom();
+        GameManager.Instance.HandlePause();
+    }
 }

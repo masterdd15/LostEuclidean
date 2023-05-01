@@ -29,7 +29,7 @@ public class LevelTitleController : MonoBehaviour
             levelTitle.color = newTitleColor;
 
             Color newImageColor = BG.color;
-            newImageColor.a = Mathf.Lerp(imageA, 0.3f, t);
+            newImageColor.a = Mathf.Lerp(imageA, 1f, t);
             BG.color = newImageColor;
 
             yield return new WaitForSeconds(0.01f);

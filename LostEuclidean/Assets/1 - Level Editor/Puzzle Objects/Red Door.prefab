@@ -158,7 +158,7 @@ MonoBehaviour:
   keyboardPrompt: {fileID: 3591827885997539597}
   InteractionEnabled: 0
   InteractionObject: {fileID: 3602887274841289483}
-  InteractionRange: 2.5
+  InteractionRange: 1.5
   hidden: 0
   colliderMesh: {fileID: 8417868924074896095}
   front: {fileID: 3602887274841289480}
