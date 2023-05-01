@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -15,6 +16,7 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] List<GameObject> gameUIScreens;
     [SerializeField] GameObject GamepadControls;
     [SerializeField] GameObject KeyboardControls;
+    [SerializeField] TMP_Text LevelTitle;
 
     private bool isReadingDocument;
 
@@ -24,6 +26,12 @@ public class GameUIManager : MonoBehaviour
         gm = GameManager.Instance;
 
         isReadingDocument = false;
+
+        LevelTitleController levelTitleController = FindObjectOfType<LevelTitleController>();
+        if (levelTitleController != null)
+        {
+            LevelTitle.text = levelTitleController.levelTitle.text;
+        }
     }
 
     // Update is called once per frame

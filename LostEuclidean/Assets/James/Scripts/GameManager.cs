@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     //We are going to have a bool that keeps track of if the game is paused or not
     [SerializeField] bool isPaused = false;
+    [SerializeField] float bloomMultiplier;
 
     private int currentSceneIndex;
 
@@ -250,7 +251,7 @@ public class GameManager : MonoBehaviour
                         // Interpolate the tint value from startTint to endTint
                         Color currentTint = Color.Lerp(endTint, startTint, intensity);
                         chrome.intensity.value = intensity;
-                        bloomLayer.intensity.value = intensity;
+                        bloomLayer.intensity.value = intensity * bloomMultiplier;
                         bloomLayer.tint.value = currentTint;
 
                         //// Interpolate the threshold value from startThreshold to endThreshold
@@ -280,7 +281,7 @@ public class GameManager : MonoBehaviour
                         // Interpolate the tint value from startTint to endTint
                         Color currentTint = Color.Lerp(startTint, endTint, intensity);
                         chrome.intensity.value = intensity;
-                        bloomLayer.intensity.value = intensity;
+                        bloomLayer.intensity.value = intensity * bloomMultiplier;
                         bloomLayer.tint.value = currentTint;
 
                         //chrome.intensity.value = intensity;
@@ -364,8 +365,6 @@ public class GameManager : MonoBehaviour
 
         ChromaticAberration chrome;
         volume.profile.TryGet<ChromaticAberration>(out chrome);
-
-        
 
         if (chrome != null)
         {
