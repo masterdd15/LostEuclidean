@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     //We are going to have a bool that keeps track of if the game is paused or not
     [SerializeField] bool isPaused = false;
+    [SerializeField] float bloomMultiplier;
 
     private int currentSceneIndex;
 
@@ -250,7 +251,7 @@ public class GameManager : MonoBehaviour
                         // Interpolate the tint value from startTint to endTint
                         Color currentTint = Color.Lerp(endTint, startTint, intensity);
                         chrome.intensity.value = intensity;
-                        bloomLayer.intensity.value = intensity;
+                        bloomLayer.intensity.value = intensity * bloomMultiplier;
                         bloomLayer.tint.value = currentTint;
 
                         //// Interpolate the threshold value from startThreshold to endThreshold
@@ -260,7 +261,7 @@ public class GameManager : MonoBehaviour
                         //    bloomLayer.threshold.value = currentThreshold;
                         //}
 
-                        intensity += 2 * Time.deltaTime;
+                        intensity += 6 * Time.deltaTime;
                         yield return new WaitForSeconds(0.01f);
                     }
 
@@ -280,14 +281,14 @@ public class GameManager : MonoBehaviour
                         // Interpolate the tint value from startTint to endTint
                         Color currentTint = Color.Lerp(startTint, endTint, intensity);
                         chrome.intensity.value = intensity;
-                        bloomLayer.intensity.value = intensity;
+                        bloomLayer.intensity.value = intensity * bloomMultiplier;
                         bloomLayer.tint.value = currentTint;
 
                         //chrome.intensity.value = intensity;
                         //bloomLayer.threshold.value = 0.7f;
                         //bloomLayer.tint.value = new Color(255f / 255f, 255f / 255f, 255f / 255f);
 
-                        intensity -= 4 * Time.deltaTime;
+                        intensity -= 8 * Time.deltaTime;
                         yield return new WaitForSeconds(0.01f);
                     }
 
@@ -297,6 +298,60 @@ public class GameManager : MonoBehaviour
                 }
             }
         }        
+    }
+
+    public void ResetRoom()
+    {
+        StartCoroutine(ResetRoomRoutine());
+    }
+
+    IEnumerator ResetRoomRoutine()
+    {
+        // Fade out
+        if (GameObject.Find("FadeImage") != null)
+        {
+            Image fadingImage = GameObject.Find("FadeImage").GetComponent<FullscreenFadeController>().FadeOut();
+
+            while (fadingImage.color.a < 1)
+            {
+                yield return null;
+            }
+        }
+
+        // Reload the scene
+        AsyncOperation newScene = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
+
+        while (!newScene.isDone)
+        {
+            yield return null;
+        }
+
+        LightColor color = FindObjectOfType<ColorRoom>().roomColor;
+
+        AudioManager.Instance.HandleCurrentDimension(color);
+
+        // Save the current scene index
+        PlayerPrefs.SetInt("CurrentSceneIndex", currentSceneIndex);
+
+        // Save the game
+        PlayerPrefs.Save();
+
+        //notify that the game has indeed saved
+        Debug.Log("game saved");
+
+        // Place the player at the right door
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        DoorController door = GameObject.Find("Entrance").GetComponent<DoorController>();
+
+        if (door != null)
+            player.transform.position = door.front.position;
+
+        // Set the color
+        GameObject[] colorRooms = GameObject.FindGameObjectsWithTag("ColorRoom");
+        foreach (GameObject colorRoom in colorRooms)
+        {
+            colorRoom.GetComponent<ColorRoom>().ChangeRoomColor(color);
+        }
     }
 
     public void ChangeRoomColor(LightColor color)
@@ -310,8 +365,6 @@ public class GameManager : MonoBehaviour
 
         ChromaticAberration chrome;
         volume.profile.TryGet<ChromaticAberration>(out chrome);
-
-        
 
         if (chrome != null)
         {

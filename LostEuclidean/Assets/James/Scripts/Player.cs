@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     float ramp;
     bool controlCamera;
     public bool IsHolding;
+    bool againstWall;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +38,7 @@ public class Player : MonoBehaviour
         ramp = 0f;
         moveVec = Vector3.zero;
         IsHolding = false;
+        againstWall = false;
 
         gm = GameManager.Instance;
     }
@@ -54,7 +56,11 @@ public class Player : MonoBehaviour
         // Move the character
         if (ramp != 0)
         {
-            transform.Translate(moveVec * speed * ramp * Time.deltaTime, Space.World);
+            float wallSlowdown = 1f;
+            if (againstWall)
+                wallSlowdown = 0.5f;
+
+            transform.Translate(moveVec * speed * ramp * Time.deltaTime * wallSlowdown, Space.World);
             //rb.MovePosition(transform.position + (moveVec * speed * ramp * Time.deltaTime));
         }
 
@@ -73,6 +79,34 @@ public class Player : MonoBehaviour
             if (ramp < 0.01f)
                 ramp = 0f;
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        WallpaperColorObject wallpaper = collision.gameObject.GetComponent<WallpaperColorObject>();
+        if (wallpaper != null)
+        {
+            againstWall = true;
+        }
+
+        //if (collision.gameObject.layer == 10 || collision.gameObject.layer == 12)
+        //{
+        //    againstWall = true;
+        //}
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        WallpaperColorObject wallpaper = collision.gameObject.GetComponent<WallpaperColorObject>();
+        if (wallpaper != null)
+        {
+            againstWall = false;
+        }
+
+        //if (collision.gameObject.layer == 10 || collision.gameObject.layer == 12)
+        //{
+        //    againstWall = false;
+        //}
     }
 
     void UpdateAnimation()
