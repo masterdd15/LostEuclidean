@@ -13,7 +13,7 @@ public class DimensionLoop : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(ChangeDimension());
+        StartChangeCountdown();
     }
 
     IEnumerator ChangeDimension()
@@ -23,5 +23,10 @@ public class DimensionLoop : MonoBehaviour
             room.ChangeRoomColor(LightColor.Green);
         else
             room.ChangeRoomColor(LightColor.Red);
+    }
+
+    public void StartChangeCountdown()
+    {
+        StartCoroutine(ChangeDimension());
     }
 }
