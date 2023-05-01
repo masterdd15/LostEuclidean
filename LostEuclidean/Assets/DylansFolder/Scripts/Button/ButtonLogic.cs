@@ -11,9 +11,13 @@ public class ButtonLogic : MonoBehaviour
 
     List<GameObject> currentCollisions;
 
+    private Material mat;
+
     //[SerializeField] Interactable connectedInteractable;
 
     ColorObject buttonColorObject;
+
+    private LineRenderer lr;
 
     private void Awake()
     {
@@ -22,6 +26,11 @@ public class ButtonLogic : MonoBehaviour
         localState = ButtonState.OFF; //Button will start off, and will wait until object are detected inside of it
 
         buttonColorObject = GetComponent<ColorObject>();
+        lr = GetComponent<LineRenderer>();
+        mat = new Material(lr.material);
+        mat.SetVector("_Start_Point", transform.position);
+        mat.SetVector("_End_Point", connectedInteractables[0].transform.position);
+        lr.material = mat;
     }
 
 
@@ -31,11 +40,6 @@ public class ButtonLogic : MonoBehaviour
         currentCollisions = new List<GameObject>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     private void OnTriggerStay(Collider other)
     {
@@ -52,6 +56,7 @@ public class ButtonLogic : MonoBehaviour
             if ((other.tag == "Player" || colorObj.CanInteract()) && buttonColorObject.CanInteract() && localState != ButtonState.ON)
             {
                 localState = ButtonState.ON;
+                StartCoroutine(DrawLine());
 
                 if(!onPlayed)
                 {
@@ -117,6 +122,40 @@ public class ButtonLogic : MonoBehaviour
                     connected.Disable();
                 }
             }
+        }
+    }
+
+    void DrawQuadraticBezierCurve(Vector3 point0, Vector3 point2)
+    {
+        Vector3 point1 = (point0 + point2) / 2 + Vector3.up * 2 * Mathf.Pow((point2 - point0).magnitude, 0.5f);
+        lr.positionCount = 200;
+        float t = 0f;
+        Vector3 B = new Vector3(0, 0, 0);
+        for (int i = 0; i < lr.positionCount; i++)
+        {
+            B = (1 - t) * (1 - t) * point0 + 2 * (1 - t) * t * point1 + t * t * point2;
+            lr.SetPosition(i, B);
+            t += (1 / (float)lr.positionCount);
+        }
+    }
+
+    IEnumerator DrawLine()
+    {
+        DrawQuadraticBezierCurve(transform.position, connectedInteractables[0].transform.position);
+        yield return new WaitForSeconds(2.0f);
+        lr.positionCount = 0;
+    }
+
+    void DrawQuadraticBezierCurve(Vector3 point0, Vector3 point1, Vector3 point2)
+    {
+        lr.positionCount = 200;
+        float t = 0f;
+        Vector3 B = new Vector3(0, 0, 0);
+        for (int i = 0; i < lr.positionCount; i++)
+        {
+            B = (1 - t) * (1 - t) * point0 + 2 * (1 - t) * t * point1 + t * t * point2;
+            lr.SetPosition(i, B);
+            t += (1 / (float)lr.positionCount);
         }
     }
 
