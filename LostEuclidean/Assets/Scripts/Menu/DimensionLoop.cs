@@ -18,7 +18,7 @@ public class DimensionLoop : MonoBehaviour
 
     IEnumerator ChangeDimension()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(6f);
         if (room.roomColor == LightColor.Red)
             room.ChangeRoomColor(LightColor.Green);
         else
