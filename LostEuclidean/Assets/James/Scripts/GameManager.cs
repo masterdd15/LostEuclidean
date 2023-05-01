@@ -299,6 +299,60 @@ public class GameManager : MonoBehaviour
         }        
     }
 
+    public void ResetRoom()
+    {
+        StartCoroutine(ResetRoomRoutine());
+    }
+
+    IEnumerator ResetRoomRoutine()
+    {
+        // Fade out
+        if (GameObject.Find("FadeImage") != null)
+        {
+            Image fadingImage = GameObject.Find("FadeImage").GetComponent<FullscreenFadeController>().FadeOut();
+
+            while (fadingImage.color.a < 1)
+            {
+                yield return null;
+            }
+        }
+
+        // Reload the scene
+        AsyncOperation newScene = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
+
+        while (!newScene.isDone)
+        {
+            yield return null;
+        }
+
+        LightColor color = FindObjectOfType<ColorRoom>().roomColor;
+
+        AudioManager.Instance.HandleCurrentDimension(color);
+
+        // Save the current scene index
+        PlayerPrefs.SetInt("CurrentSceneIndex", currentSceneIndex);
+
+        // Save the game
+        PlayerPrefs.Save();
+
+        //notify that the game has indeed saved
+        Debug.Log("game saved");
+
+        // Place the player at the right door
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        DoorController door = GameObject.Find("Entrance").GetComponent<DoorController>();
+
+        if (door != null)
+            player.transform.position = door.front.position;
+
+        // Set the color
+        GameObject[] colorRooms = GameObject.FindGameObjectsWithTag("ColorRoom");
+        foreach (GameObject colorRoom in colorRooms)
+        {
+            colorRoom.GetComponent<ColorRoom>().ChangeRoomColor(color);
+        }
+    }
+
     public void ChangeRoomColor(LightColor color)
     {
         StartCoroutine(ChangeRoomColorCoroutine(color));
