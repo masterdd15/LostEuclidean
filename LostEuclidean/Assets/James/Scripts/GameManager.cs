@@ -101,20 +101,23 @@ public class GameManager : MonoBehaviour
 
             AudioManager.Instance.HandleCurrentDimension(color);
 
-            // Save the current scene index
-            PlayerPrefs.SetInt("CurrentSceneIndex", currentSceneIndex);
+            if (sceneName != "ProtoMenu")
+            {
+                // Save the current scene index
+                PlayerPrefs.SetInt("CurrentSceneIndex", currentSceneIndex);
 
-            // Save the game
-            PlayerPrefs.Save();
+                // Save the game
+                PlayerPrefs.Save();
 
-            //notify that the game has indeed saved
-            Debug.Log("game saved");
+                //notify that the game has indeed saved
+                Debug.Log("game saved");
 
-            // Place the player at the right door
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            DoorController door = GameObject.Find(doorName).GetComponent<DoorController>();
+                // Place the player at the right door
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                DoorController door = GameObject.Find(doorName).GetComponent<DoorController>();
 
-            player.transform.position = door.front.position;
+                player.transform.position = door.front.position;
+            }
 
             // Set the color
             GameObject[] colorRooms = GameObject.FindGameObjectsWithTag("ColorRoom");
