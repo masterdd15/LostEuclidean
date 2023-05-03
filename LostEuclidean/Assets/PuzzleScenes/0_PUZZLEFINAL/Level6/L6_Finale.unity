@@ -2859,6 +2859,8 @@ MonoBehaviour:
   InteractionRange: 4
   hidden: 0
   colliderMesh: {fileID: 1984814811}
+  playerObj: {fileID: 0}
+  speed: 10
 --- !u!65 &1984814811
 BoxCollider:
   m_ObjectHideFlags: 0

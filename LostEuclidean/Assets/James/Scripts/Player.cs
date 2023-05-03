@@ -29,6 +29,8 @@ public class Player : MonoBehaviour
     public bool IsHolding;
     bool againstWall;
 
+    private bool inCutscene = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,7 +48,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateAnimation();
+        if(!inCutscene)
+        {
+            UpdateAnimation();
+        }
         if (playerInput.currentControlScheme == "Keyboard&Mouse" && playerInput.currentActionMap == playerInput.actions.FindActionMap("Player") && !IsHolding)
         {
             // Look at the mouse
@@ -457,5 +462,6 @@ public class Player : MonoBehaviour
     public string GetInputScheme()
     {
         return playerInput.currentControlScheme;
+        inCutscene = true;
     }
 }
