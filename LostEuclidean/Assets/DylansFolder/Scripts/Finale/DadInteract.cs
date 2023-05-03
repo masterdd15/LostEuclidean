@@ -17,5 +17,6 @@ public class DadInteract : Interactable
     public override void Interact()
     {
         Debug.Log("Has interacted!");
+
     }
 }

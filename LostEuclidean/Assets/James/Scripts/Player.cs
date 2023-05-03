@@ -449,6 +449,11 @@ public class Player : MonoBehaviour
 
     }
 
+    public void HandleCutscene()
+    {
+        playerInput.currentActionMap = playerInput.actions.FindActionMap("EmptyControls");
+    }
+
     public string GetInputScheme()
     {
         return playerInput.currentControlScheme;
