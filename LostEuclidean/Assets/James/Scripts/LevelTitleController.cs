@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class LevelTitleController : MonoBehaviour
 {
     [SerializeField] Image BG;
-    [SerializeField] TMP_Text levelTitle;
+    [SerializeField] public TMP_Text levelTitle;
     [SerializeField] float waitTime;
     [SerializeField] float fadeRate;
 

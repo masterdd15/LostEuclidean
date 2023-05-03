@@ -44,3 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a7d46d25bedd784eb980c6bd7551b8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasWon: 0
+  isPaused: 0
+  bloomMultiplier: 5
+  thresholdValueForBloom: 0.03
