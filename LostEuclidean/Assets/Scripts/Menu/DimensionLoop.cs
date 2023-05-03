@@ -4,12 +4,8 @@ using UnityEngine;
 
 public class DimensionLoop : MonoBehaviour
 {
-    private ColorRoom room;
-
-    void Awake()
-    {
-        room = FindObjectOfType<ColorRoom>();
-    }
+    [SerializeField]
+    Material mat;
 
     void Start()
     {
@@ -18,11 +14,29 @@ public class DimensionLoop : MonoBehaviour
 
     IEnumerator ChangeDimension()
     {
-        yield return new WaitForSeconds(10f);
-        if (room.roomColor == LightColor.Red)
-            room.ChangeRoomColor(LightColor.Green);
+        yield return new WaitForSeconds(6f);
+        float lerp = mat.GetFloat("_Lerp");
+        if (lerp > 0.5f)
+        {
+            while (Mathf.Abs(lerp - 0) > 0.00001)
+            {
+                lerp += Mathf.Sign(0 - lerp) * Time.deltaTime * 8;
+                lerp = Mathf.Clamp(lerp, 0, 1);
+                mat.SetFloat("_Lerp", lerp);
+                yield return null;
+            }
+        }
         else
-            room.ChangeRoomColor(LightColor.Red);
+        {
+            while (Mathf.Abs(lerp - 1) > 0.00001)
+            {
+                lerp += Mathf.Sign(1 - lerp) * Time.deltaTime * 8;
+                lerp = Mathf.Clamp(lerp, 0, 1);
+                mat.SetFloat("_Lerp", lerp);
+                yield return null;
+            }
+        }
+        StartCoroutine(ChangeDimension());
     }
 
     public void StartChangeCountdown()

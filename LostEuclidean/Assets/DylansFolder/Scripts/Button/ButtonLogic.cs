@@ -9,6 +9,9 @@ public class ButtonLogic : MonoBehaviour
 
     [SerializeField] List<Interactable> connectedInteractables;
 
+    [SerializeField]
+    GameObject lrPrefab;
+
     List<GameObject> currentCollisions;
 
     private Material mat;
@@ -26,7 +29,9 @@ public class ButtonLogic : MonoBehaviour
         localState = ButtonState.OFF; //Button will start off, and will wait until object are detected inside of it
 
         buttonColorObject = GetComponent<ColorObject>();
-        lr = GetComponent<LineRenderer>();
+        GameObject obj = Instantiate(lrPrefab);
+        obj.transform.parent = null;
+        lr = obj.GetComponent<LineRenderer>();
         mat = new Material(lr.material);
         mat.SetVector("_Start_Point", transform.position);
         mat.SetVector("_End_Point", connectedInteractables[0].transform.position);
@@ -116,6 +121,7 @@ public class ButtonLogic : MonoBehaviour
             {
                 localState = ButtonState.OFF;
                 onPlayed = false;
+                lr.positionCount = 0;
 
                 foreach (Interactable connected in connectedInteractables)
                 {
