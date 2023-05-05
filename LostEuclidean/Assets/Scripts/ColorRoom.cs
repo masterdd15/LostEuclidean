@@ -75,6 +75,9 @@ public class ColorRoom : MonoBehaviour
             colorObject.OnRoomColorChange();
         }
 
-        flashlight.ClearColorObjectList();
+        if (flashlight != null)
+        {
+            flashlight.ClearColorObjectList();
+        }
     }
 }
