@@ -5,6 +5,7 @@ using UnityEngine;
 public class DadInteract : Interactable
 {
     public GameObject playerObj;
+    public GameObject dadObj;
     [SerializeField] private float speed;
     
     public override void Start()
@@ -28,14 +29,14 @@ public class DadInteract : Interactable
 
     IEnumerator FinalCutScene()
     {
-        Quaternion lookRotation = Quaternion.LookRotation(transform.position - playerObj.transform.position, playerObj.transform.up);
-
-        // Make the player look at Dad
-        playerObj.transform.LookAt(transform);
+        playerObj.transform.LookAt(dadObj.transform);
         playerObj.transform.Rotate(0,-90,0);
 
         //Now play the animation
-        playerObj.GetComponentInChildren<Animator>().Play("DancingTest");
+        //playerObj.GetComponentInChildren<Animator>().SetLayerWeight(0, 1);
+        //playerObj.GetComponentInChildren<Animator>().SetLayerWeight(1, 1);
+
+        //Playing the music
 
         yield return null;
     }
