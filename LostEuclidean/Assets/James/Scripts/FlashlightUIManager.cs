@@ -14,6 +14,8 @@ public class FlashlightUIManager : MonoBehaviour
     [SerializeField] GameObject RT;
     [SerializeField] GameObject MBL;
     [SerializeField] GameObject MBR;
+    [SerializeField] GameObject Space;
+    [SerializeField] GameObject RB;
 
     [Header("Colors")]
     [SerializeField] Color[] Greens;
@@ -37,6 +39,17 @@ public class FlashlightUIManager : MonoBehaviour
         }
 
         Player player = GameObject.FindObjectOfType<Player>();
+        if (player.GetInputScheme() == "Gamepad")
+        {
+            RB.SetActive(true);
+            Space.SetActive(false);
+        }
+        else
+        {
+            RB.SetActive(false);
+            Space.SetActive(true);
+        }
+
         if (availableColors.Count == 1)
         {
             if (availableColors[0] == LightColor.Green)
@@ -174,5 +187,7 @@ public class FlashlightUIManager : MonoBehaviour
         SingleColor.SetActive(false);
         TwoColors.SetActive(false);
         ThreeColors.SetActive(false);
+        RB.SetActive(false);
+        Space.SetActive(false);
     }
 }

@@ -74,7 +74,7 @@ public class Flashlight : MonoBehaviour
             controllerPrompt.SetActive(false);
         }
 
-        if (contextualPrompt != null)
+        if (contextualPrompt != null && !isHolding)
         {
             float distToPlayer = (player.transform.position - transform.position).magnitude;
 
@@ -86,6 +86,10 @@ public class Flashlight : MonoBehaviour
             {
                 contextualPrompt.SetActive(false);
             }
+        }
+        else if (isHolding && contextualPrompt != null && contextualPrompt.activeInHierarchy == true)
+        {
+            contextualPrompt.SetActive(false);
         }
 
         if (isHolding)

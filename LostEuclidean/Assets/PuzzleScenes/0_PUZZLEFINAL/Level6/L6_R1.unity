@@ -4551,7 +4551,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1990308870574399718, guid: 95e69907bef7049479adc2320b10da3a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.48
+      value: 0.449
       objectReference: {fileID: 0}
     - target: {fileID: 1990308870574399718, guid: 95e69907bef7049479adc2320b10da3a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5253,7 +5253,7 @@ MonoBehaviour:
   enabledMat: {fileID: 2100000, guid: a315fb9af35b24d45a301fdb510a05ae, type: 2}
   sceneDestination: L6_Void1
   doorDestination: Entrance
-  colorDestination: 3
+  colorDestination: 0
 --- !u!1001 &1218408437
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9215,7 +9215,7 @@ MonoBehaviour:
   enabledMat: {fileID: 2100000, guid: a315fb9af35b24d45a301fdb510a05ae, type: 2}
   sceneDestination: L6_Void1
   doorDestination: Entrance
-  colorDestination: 3
+  colorDestination: 0
 --- !u!1 &3602887274204269493
 GameObject:
   m_ObjectHideFlags: 0
