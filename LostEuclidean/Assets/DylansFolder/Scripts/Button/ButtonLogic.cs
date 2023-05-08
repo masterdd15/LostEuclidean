@@ -21,7 +21,7 @@ public class ButtonLogic : MonoBehaviour
     ColorObject buttonColorObject;
 
     private LineRenderer lr;
-
+ 
     private void Awake()
     {
         //This button's collider is attached to the parent object. Note this in case any changes are made

@@ -23,18 +23,20 @@ public class ButtonColorChange : MonoBehaviour, IPointerEnterHandler
         StopAllCoroutines();
         StartCoroutine(StartChange());
         dl.StopAllCoroutines();
-        dl.StartChangeCountdown();
+        float cur = mat.GetFloat("_Lerp");
+        dl.StartChangeCountdown((int)cur);
     }
 
     IEnumerator StartChange()
     {
         float lerp = mat.GetFloat("_Lerp");
-        while (Mathf.Abs(lerp - destination) > 0.00001)
+        while (Mathf.Abs(lerp - destination) > 0.05)
         {
             lerp += Mathf.Sign(destination - lerp) * Time.deltaTime * speed;
-            lerp = Mathf.Clamp(lerp, 0, 1);
+            lerp = Mathf.Clamp(lerp, 0, 3);
             mat.SetFloat("_Lerp", lerp);
             yield return null;
         }
+        mat.SetFloat("_Lerp", destination);
     }
 }

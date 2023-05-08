@@ -9,38 +9,30 @@ public class DimensionLoop : MonoBehaviour
 
     void Start()
     {
-        StartChangeCountdown();
+        mat.SetFloat("_Lerp", 0f);
+        StartChangeCountdown(1);
     }
 
-    IEnumerator ChangeDimension()
+    IEnumerator ChangeDimension(int dest)
     {
         yield return new WaitForSeconds(6f);
         float lerp = mat.GetFloat("_Lerp");
-        if (lerp > 0.5f)
+        while (Mathf.Abs(lerp - dest) > 0.05)
         {
-            while (Mathf.Abs(lerp - 0) > 0.00001)
-            {
-                lerp += Mathf.Sign(0 - lerp) * Time.deltaTime * 8;
-                lerp = Mathf.Clamp(lerp, 0, 1);
-                mat.SetFloat("_Lerp", lerp);
-                yield return null;
-            }
+            lerp += Mathf.Sign(dest - lerp) * Time.deltaTime * 8;
+            lerp = Mathf.Clamp(lerp, 0, 3);
+            mat.SetFloat("_Lerp", lerp);
+            yield return null;
         }
+        mat.SetFloat("_Lerp", dest);
+        if (dest >= 3)
+            StartCoroutine(ChangeDimension(0));
         else
-        {
-            while (Mathf.Abs(lerp - 1) > 0.00001)
-            {
-                lerp += Mathf.Sign(1 - lerp) * Time.deltaTime * 8;
-                lerp = Mathf.Clamp(lerp, 0, 1);
-                mat.SetFloat("_Lerp", lerp);
-                yield return null;
-            }
-        }
-        StartCoroutine(ChangeDimension());
+            StartCoroutine(ChangeDimension(dest + 1));
     }
 
-    public void StartChangeCountdown()
+    public void StartChangeCountdown(int dest)
     {
-        StartCoroutine(ChangeDimension());
+        StartCoroutine(ChangeDimension(dest));
     }
 }
