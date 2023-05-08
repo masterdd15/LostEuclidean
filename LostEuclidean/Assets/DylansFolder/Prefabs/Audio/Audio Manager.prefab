@@ -737,7 +737,7 @@ MonoBehaviour:
   _DoorSFXSource: {fileID: 8822777072928202025}
   greenDimensionMusic: {fileID: 8300000, guid: 90dc9b1e1c95dd34a8ae0d5ee3271a9f, type: 3}
   redDimensionMusic: {fileID: 8300000, guid: 30590c8b7b2a31747aed52bd1907c74c, type: 3}
-  blueDimensionMusic: {fileID: 8300000, guid: 4591487e6dc9d674d9ed4af51acf8fe4, type: 3}
+  blueDimensionMusic: {fileID: 8300000, guid: 14d13578001e17a429d2552fc72fac33, type: 3}
   sfxSounds:
   - name: But_Act
     clip: {fileID: 8300000, guid: df01845efeb36504b84430a3db5f5428, type: 3}

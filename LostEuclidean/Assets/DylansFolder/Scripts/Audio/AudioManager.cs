@@ -36,8 +36,12 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioClip redDimensionMusic;
     [SerializeField] AudioClip blueDimensionMusic;
 
+    [Header("Finale Music")]
+    [SerializeField] AudioClip finaleMusic;
+
     [Header("Sound FX")]
     [SerializeField] SFX[] sfxSounds;
+
 
     private void Awake()
     {
@@ -247,6 +251,11 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    IEnumerator FinaleAudio()
+    {
+        yield return null;
+    }
+
     //This script will control the volume of music when 
     public void HandlePauseMusicIn()
     {
@@ -267,5 +276,10 @@ public class AudioManager : MonoBehaviour
     {
         timeToFade = origFadeTime;
         StartCoroutine(TransitionMusic(LightColor.Off));
+    }
+
+    public void HandleFinaleMusic()
+    {
+
     }
 }
