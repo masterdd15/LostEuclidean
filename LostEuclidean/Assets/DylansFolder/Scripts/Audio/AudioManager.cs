@@ -258,7 +258,7 @@ public class AudioManager : MonoBehaviour
         _finaleSource.Play();
         yield return new WaitForSecondsRealtime(22.87f);
         Debug.Log("Music is over!!!");
-        GameManager.Instance.ChangeScene("ProtoMenu", " ", LightColor.Off);
+        GameManager.Instance.ChangeScene("Credits", " ", LightColor.Off);
         yield return null;
     }
 
