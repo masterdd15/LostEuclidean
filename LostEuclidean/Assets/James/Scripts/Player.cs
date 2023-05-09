@@ -349,6 +349,17 @@ public class Player : MonoBehaviour
                     }
                 }
 
+                DadInteract dadController = GameObject.FindObjectOfType<DadInteract>();
+                if (dadController != null)
+                {
+                    float dadDist = (transform.position - dadController.transform.position).magnitude;
+                    if (dadDist <= dadController.InteractionRange)
+                    {
+                        dadController.Interact();
+                        return;
+                    }
+                }
+
                 if (closest != null && fl != null)
                 {
                     if (minDist < dist)
