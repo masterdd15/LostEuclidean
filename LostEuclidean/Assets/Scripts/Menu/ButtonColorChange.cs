@@ -30,7 +30,7 @@ public class ButtonColorChange : MonoBehaviour, IPointerEnterHandler
     IEnumerator StartChange()
     {
         float lerp = mat.GetFloat("_Lerp");
-        while (Mathf.Abs(lerp - destination) > 0.05)
+        while (Mathf.Abs(lerp - destination) > 0.1)
         {
             lerp += Mathf.Sign(destination - lerp) * Time.deltaTime * speed;
             lerp = Mathf.Clamp(lerp, 0, 3);

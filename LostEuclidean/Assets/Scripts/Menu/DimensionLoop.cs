@@ -17,7 +17,7 @@ public class DimensionLoop : MonoBehaviour
     {
         yield return new WaitForSeconds(6f);
         float lerp = mat.GetFloat("_Lerp");
-        while (Mathf.Abs(lerp - dest) > 0.05)
+        while (Mathf.Abs(lerp - dest) > 0.1)
         {
             lerp += Mathf.Sign(dest - lerp) * Time.deltaTime * 8;
             lerp = Mathf.Clamp(lerp, 0, 3);
