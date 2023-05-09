@@ -171,7 +171,9 @@ public class ColorObject : MonoBehaviour
 
             isLightActive = false && canBeRevealed;
             isRevealed = true;
-            meshRenderer.enabled = true;
+            
+            if (meshRenderer != null)
+                meshRenderer.enabled = true;
             return;
         }
 
@@ -179,7 +181,9 @@ public class ColorObject : MonoBehaviour
         DisableInteract();
         //DisablePhysics();
         isRevealed = false;
-        meshRenderer.enabled = false;
+
+        if (meshRenderer != null)
+            meshRenderer.enabled = false;
 
         if (baseColor == LightColor.Red)
         {

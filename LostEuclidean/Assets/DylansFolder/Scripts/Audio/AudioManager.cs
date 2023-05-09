@@ -36,8 +36,13 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioClip redDimensionMusic;
     [SerializeField] AudioClip blueDimensionMusic;
 
+    [Header("Finale Music")]
+    [SerializeField] AudioSource _finaleSource;
+    [SerializeField] AudioClip finaleMusic;
+
     [Header("Sound FX")]
     [SerializeField] SFX[] sfxSounds;
+
 
     private void Awake()
     {
@@ -247,6 +252,17 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    IEnumerator FinaleAudio()
+    {
+        float waitTime = _finaleSource.clip.length;
+        _finaleSource.Play();
+        yield return new WaitForSecondsRealtime(22.87f);
+        //yield return new WaitForSecondsRealtime(30.87f);
+        Debug.Log("Music is over!!!");
+        GameManager.Instance.ChangeScene("Credits", " ", LightColor.Blue);
+        yield return null;
+    }
+
     //This script will control the volume of music when 
     public void HandlePauseMusicIn()
     {
@@ -267,5 +283,18 @@ public class AudioManager : MonoBehaviour
     {
         timeToFade = origFadeTime;
         StartCoroutine(TransitionMusic(LightColor.Off));
+    }
+
+    //We start the finale music
+    //We also return the time it takes for the music to end
+    public void HandleFinaleMusic()
+    {
+        //_finaleSource.clip = finaleMusic;
+        //_finaleSource.PlayOneShot(finaleMusic);
+
+        _finaleSource.clip = finaleMusic;
+        _finaleSource.volume = 1;
+        StartCoroutine(FinaleAudio());
+        //return finaleMusic.length;
     }
 }

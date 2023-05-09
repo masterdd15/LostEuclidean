@@ -89,5 +89,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/PuzzleScenes/0_PUZZLEFINAL/Level6/L6_Finale.unity
     guid: db409cece351c2a40b6de5f33bce3d25
+  - enabled: 1
+    path: Assets/DianesFolder/Credits.unity
+    guid: 83dc33a2b4c8a4059b1c7583a9b46370
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 81ae31d39a50c9443878df0a7045a423, type: 2}

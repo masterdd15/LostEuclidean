@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] bool isPaused = false;
     [SerializeField] float bloomMultiplier;
 
+    bool changingScene;
+
     private int currentSceneIndex;
 
     public float thresholdValueForBloom = 0.03f;
@@ -41,7 +43,7 @@ public class GameManager : MonoBehaviour
     {
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
-
+        changingScene = false;
     }
 
     private void Update()
@@ -69,235 +71,247 @@ public class GameManager : MonoBehaviour
 
     IEnumerator LoadNewScene(string sceneName, string doorName, LightColor color)
     {
-        if (sceneName != SceneManager.GetActiveScene().name)
+        Debug.Log(sceneName + " " + changingScene);
+        if (!changingScene)
         {
-            // Fade out
-            if (GameObject.Find("FadeImage") != null)
+            changingScene = true;
+            if (sceneName != SceneManager.GetActiveScene().name)
             {
-                Image fadingImage = GameObject.Find("FadeImage").GetComponent<FullscreenFadeController>().FadeOut();
-
-                while (fadingImage.color.a < 1)
+                // Fade out
+                if (GameObject.Find("FadeImage") != null)
                 {
-                    yield return null;
-                }
-            }
+                    Image fadingImage = GameObject.Find("FadeImage").GetComponent<FullscreenFadeController>().FadeOut();
 
-
-            //if(AudioManager.Instance.currentDimension == LightColor.Off)
-            //{
-            //    AudioManager.Instance.HandleCurrentDimension(LightColor.Off);
-            //}
-            //else
-            //{
-            //    AudioManager.Instance.HandleCurrentDimension(color);
-            //} 
-            // Load the new scene if necessary
-            AsyncOperation newScene = SceneManager.LoadSceneAsync(sceneName);
-
-            while (!newScene.isDone)
-            {
-                yield return null;
-            }
-
-            AudioManager.Instance.HandleCurrentDimension(color);
-
-            // Save the current scene index
-            PlayerPrefs.SetInt("CurrentSceneIndex", currentSceneIndex);
-
-            // Save the game
-            PlayerPrefs.Save();
-
-            //notify that the game has indeed saved
-            Debug.Log("game saved");
-
-            // Place the player at the right door
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            DoorController door = GameObject.Find(doorName).GetComponent<DoorController>();
-
-            player.transform.position = door.front.position;
-
-            // Set the color
-            GameObject[] colorRooms = GameObject.FindGameObjectsWithTag("ColorRoom");
-            foreach (GameObject colorRoom in colorRooms)
-            {
-                colorRoom.GetComponent<ColorRoom>().ChangeRoomColor(color);
-            }
-        }
-        else
-        {
-            Volume volume = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Volume>();
-
-            ChromaticAberration chrome;
-
-            //bloom
-            Bloom bloomLayer = null;
-            volume.profile.TryGet(out bloomLayer);
-
-            volume.profile.TryGet<ChromaticAberration>(out chrome);
-
-            Color startTint = new Color(255f, 68f, 68f);
-
-            if (color == LightColor.Green)
-            {
-                startTint = new Color(62f, 255f, 77f);
-            }
-
-            Color endTint = new Color(255f, 255f, 255f);
-            float startThreshold = thresholdValueForBloom;
-            float endThreshold = 0f;
-
-            //Checks if we need to switch the music or not
-            AudioManager.Instance.HandleCurrentDimension(color);
-
-            if (chrome != null)
-            {
-                // Place the player at the right door
-                GameObject player = GameObject.FindGameObjectWithTag("Player");
-                DoorController door = GameObject.Find(doorName).GetComponent<DoorController>();
-
-                player.transform.position = door.front.position;
-
-                // Determine if we need to rotate the room at all
-                CameraController mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
-                //bool camIn180 = 0 <= mainCamera.transform.rotation.eulerAngles.y && mainCamera.transform.rotation.eulerAngles.y <= 180f;
-                //bool doorIn180 = 0 <= door.transform.rotation.eulerAngles.y && door.transform.rotation.eulerAngles.y <= 180f;
-
-                Vector3 doorToCam = (mainCamera.transform.position - door.transform.position).normalized;
-                float direction = Vector3.Dot(doorToCam, door.transform.forward);
-
-                bool xOpposite = (mainCamera.transform.position.x < 0 && door.transform.position.x > 0) || (mainCamera.transform.position.x > 0 && door.transform.position.x < 0);
-                bool zOpposite = (mainCamera.transform.position.z < 0 && door.transform.position.z > 0) || (mainCamera.transform.position.z > 0 && door.transform.position.z < 0);
-
-                if (direction < 0)
-                {
-                    //Debug.Log(mainCamera.transform.rotation.eulerAngles.y + " - " + door.transform.rotation.eulerAngles.y);
-                    if (mainCamera.transform.rotation.eulerAngles.y > door.transform.rotation.eulerAngles.y)
+                    while (fadingImage.color.a < 1)
                     {
-                        mainCamera.RotateCamera(1f, false);
+                        yield return null;
                     }
-                    else
-                    {
-                        mainCamera.RotateCamera(-1f, false);
-                    }
-                    //mainCamera.Rotate180Degrees();
                 }
 
-                //if (xOpposite && zOpposite)
+
+                //if(AudioManager.Instance.currentDimension == LightColor.Off)
                 //{
-                //    mainCamera.Rotate180Degrees();
-                //}
-                //else if (!xOpposite && !zOpposite)
-                //{
-                //    // Do nothing
+                //    AudioManager.Instance.HandleCurrentDimension(LightColor.Off);
                 //}
                 //else
                 //{
-                //    float angle = Vector3.Angle(mainCamera.transform.forward, doorToCam);
-                //    Vector3 cross = Vector3.Cross(mainCamera.transform.forward, doorToCam);
+                //    AudioManager.Instance.HandleCurrentDimension(color);
+                //} 
+                // Load the new scene if necessary
+                AsyncOperation newScene = SceneManager.LoadSceneAsync(sceneName);
 
-                //    if (cross.y < 0)
-                //        angle = -angle;
-
-                //    if (direction < 0)
-                //    {
-                //        if (angle < 0)
-                //        {
-                //            mainCamera.RotateCamera(-1f);
-                //        }
-                //        else
-                //        {
-                //            mainCamera.RotateCamera(1f);
-                //        }
-
-                //        //if (mainCamera.transform.rotation.eulerAngles.y > door.transform.rotation.eulerAngles.y)
-                //        //{
-                //        //    mainCamera.RotateCamera(1f);
-                //        //}
-                //        //else
-                //        //{
-                //        //    mainCamera.RotateCamera(-1f);
-                //        //}
-                //    }
-                //    else
-                //    {
-                //        if (angle < 0)
-                //        {
-                //            mainCamera.RotateCamera(1f);
-                //        }
-                //        else
-                //        {
-                //            mainCamera.RotateCamera(-1f);
-                //        }
-
-                //        //if (mainCamera.transform.rotation.eulerAngles.y > door.transform.rotation.eulerAngles.y)
-                //        //{
-                //        //    mainCamera.RotateCamera(-1f);
-                //        //}
-                //        //else
-                //        //{
-                //        //    mainCamera.RotateCamera(1f);
-                //        //}
-                //    }
-                //}
-
-                ColorRoom mainColorRoom = FindObjectOfType<ColorRoom>();
-                if (color != mainColorRoom.roomColor)
+                while (!newScene.isDone)
                 {
-                    float intensity = 0f;
+                    yield return null;
+                }
 
-                    while (intensity < 1)
+                AudioManager.Instance.HandleCurrentDimension(color);
+
+                if (sceneName != "ProtoMenu")
+                {
+                    // Save the current scene index
+                    PlayerPrefs.SetInt("CurrentSceneIndex", currentSceneIndex);
+
+                    // Save the game
+                    PlayerPrefs.Save();
+
+                    //notify that the game has indeed saved
+                    Debug.Log("game saved");
+
+                    // Place the player at the right door
+                    GameObject player = GameObject.FindGameObjectWithTag("Player");
+                    GameObject doorObj = GameObject.Find(doorName);
+                    if (doorObj != null)
                     {
-
-                        // Interpolate the tint value from startTint to endTint
-                        Color currentTint = Color.Lerp(endTint, startTint, intensity);
-                        chrome.intensity.value = intensity;
-                        bloomLayer.intensity.value = intensity * bloomMultiplier;
-                        bloomLayer.tint.value = currentTint;
-
-                        //// Interpolate the threshold value from startThreshold to endThreshold
-                        //float currentThreshold = Mathf.Lerp(startThreshold, endThreshold, intensity);
-                        //if (bloomLayer != null)
-                        //{
-                        //    bloomLayer.threshold.value = currentThreshold;
-                        //}
-
-                        intensity += 3 * Time.deltaTime;
-                        yield return new WaitForSeconds(0.01f);
+                        DoorController door = doorObj.GetComponent<DoorController>();
+                        player.transform.position = door.front.position;
                     }
+                }
 
-                    bloomLayer.tint.value = startTint;
-                    bloomLayer.intensity.value = 1f;
-                    chrome.intensity.value = 1f;
-
-                    // Set the color
-                    GameObject[] colorRooms = GameObject.FindGameObjectsWithTag("ColorRoom");
-                    foreach (GameObject colorRoom in colorRooms)
-                    {
-                        colorRoom.GetComponent<ColorRoom>().ChangeRoomColor(color);
-                    }
-
-                    while (intensity > 0)
-                    {
-                        // Interpolate the tint value from startTint to endTint
-                        Color currentTint = Color.Lerp(startTint, endTint, intensity);
-                        chrome.intensity.value = intensity;
-                        bloomLayer.intensity.value = intensity * bloomMultiplier;
-                        bloomLayer.tint.value = currentTint;
-
-                        //chrome.intensity.value = intensity;
-                        //bloomLayer.threshold.value = 0.7f;
-                        //bloomLayer.tint.value = new Color(255f / 255f, 255f / 255f, 255f / 255f);
-
-                        intensity -= 6 * Time.deltaTime;
-                        yield return new WaitForSeconds(0.01f);
-                    }
-
-                    bloomLayer.tint.value = endTint;
-                    bloomLayer.intensity.value = 0f;
-                    chrome.intensity.value = 0f;
+                // Set the color
+                GameObject[] colorRooms = GameObject.FindGameObjectsWithTag("ColorRoom");
+                foreach (GameObject colorRoom in colorRooms)
+                {
+                    colorRoom.GetComponent<ColorRoom>().ChangeRoomColor(color);
                 }
             }
-        }        
+            else
+            {
+                Volume volume = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Volume>();
+
+                ChromaticAberration chrome;
+
+                //bloom
+                Bloom bloomLayer = null;
+                volume.profile.TryGet(out bloomLayer);
+
+                volume.profile.TryGet<ChromaticAberration>(out chrome);
+
+                Color startTint = new Color(255f, 68f, 68f);
+
+                if (color == LightColor.Green)
+                {
+                    startTint = new Color(62f, 255f, 77f);
+                }
+
+                Color endTint = new Color(255f, 255f, 255f);
+                float startThreshold = thresholdValueForBloom;
+                float endThreshold = 0f;
+
+                //Checks if we need to switch the music or not
+                AudioManager.Instance.HandleCurrentDimension(color);
+
+                if (chrome != null)
+                {
+                    // Place the player at the right door
+                    GameObject player = GameObject.FindGameObjectWithTag("Player");
+                    DoorController door = GameObject.Find(doorName).GetComponent<DoorController>();
+
+                    player.transform.position = door.front.position;
+
+                    // Determine if we need to rotate the room at all
+                    CameraController mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
+                    //bool camIn180 = 0 <= mainCamera.transform.rotation.eulerAngles.y && mainCamera.transform.rotation.eulerAngles.y <= 180f;
+                    //bool doorIn180 = 0 <= door.transform.rotation.eulerAngles.y && door.transform.rotation.eulerAngles.y <= 180f;
+
+                    Vector3 doorToCam = (mainCamera.transform.position - door.transform.position).normalized;
+                    float direction = Vector3.Dot(doorToCam, door.transform.forward);
+
+                    bool xOpposite = (mainCamera.transform.position.x < 0 && door.transform.position.x > 0) || (mainCamera.transform.position.x > 0 && door.transform.position.x < 0);
+                    bool zOpposite = (mainCamera.transform.position.z < 0 && door.transform.position.z > 0) || (mainCamera.transform.position.z > 0 && door.transform.position.z < 0);
+
+                    if (direction < 0)
+                    {
+                        //Debug.Log(mainCamera.transform.rotation.eulerAngles.y + " - " + door.transform.rotation.eulerAngles.y);
+                        if (mainCamera.transform.rotation.eulerAngles.y > door.transform.rotation.eulerAngles.y)
+                        {
+                            mainCamera.RotateCamera(1f, false);
+                        }
+                        else
+                        {
+                            mainCamera.RotateCamera(-1f, false);
+                        }
+                        //mainCamera.Rotate180Degrees();
+                    }
+
+                    //if (xOpposite && zOpposite)
+                    //{
+                    //    mainCamera.Rotate180Degrees();
+                    //}
+                    //else if (!xOpposite && !zOpposite)
+                    //{
+                    //    // Do nothing
+                    //}
+                    //else
+                    //{
+                    //    float angle = Vector3.Angle(mainCamera.transform.forward, doorToCam);
+                    //    Vector3 cross = Vector3.Cross(mainCamera.transform.forward, doorToCam);
+
+                    //    if (cross.y < 0)
+                    //        angle = -angle;
+
+                    //    if (direction < 0)
+                    //    {
+                    //        if (angle < 0)
+                    //        {
+                    //            mainCamera.RotateCamera(-1f);
+                    //        }
+                    //        else
+                    //        {
+                    //            mainCamera.RotateCamera(1f);
+                    //        }
+
+                    //        //if (mainCamera.transform.rotation.eulerAngles.y > door.transform.rotation.eulerAngles.y)
+                    //        //{
+                    //        //    mainCamera.RotateCamera(1f);
+                    //        //}
+                    //        //else
+                    //        //{
+                    //        //    mainCamera.RotateCamera(-1f);
+                    //        //}
+                    //    }
+                    //    else
+                    //    {
+                    //        if (angle < 0)
+                    //        {
+                    //            mainCamera.RotateCamera(1f);
+                    //        }
+                    //        else
+                    //        {
+                    //            mainCamera.RotateCamera(-1f);
+                    //        }
+
+                    //        //if (mainCamera.transform.rotation.eulerAngles.y > door.transform.rotation.eulerAngles.y)
+                    //        //{
+                    //        //    mainCamera.RotateCamera(-1f);
+                    //        //}
+                    //        //else
+                    //        //{
+                    //        //    mainCamera.RotateCamera(1f);
+                    //        //}
+                    //    }
+                    //}
+
+                    ColorRoom mainColorRoom = FindObjectOfType<ColorRoom>();
+                    if (color != mainColorRoom.roomColor)
+                    {
+                        float intensity = 0f;
+
+                        while (intensity < 1)
+                        {
+
+                            // Interpolate the tint value from startTint to endTint
+                            Color currentTint = Color.Lerp(endTint, startTint, intensity);
+                            chrome.intensity.value = intensity;
+                            bloomLayer.intensity.value = intensity * bloomMultiplier;
+                            bloomLayer.tint.value = currentTint;
+
+                            //// Interpolate the threshold value from startThreshold to endThreshold
+                            //float currentThreshold = Mathf.Lerp(startThreshold, endThreshold, intensity);
+                            //if (bloomLayer != null)
+                            //{
+                            //    bloomLayer.threshold.value = currentThreshold;
+                            //}
+
+                            intensity += 3 * Time.deltaTime;
+                            yield return new WaitForSeconds(0.01f);
+                        }
+
+                        bloomLayer.tint.value = startTint;
+                        bloomLayer.intensity.value = 1f;
+                        chrome.intensity.value = 1f;
+
+                        // Set the color
+                        GameObject[] colorRooms = GameObject.FindGameObjectsWithTag("ColorRoom");
+                        foreach (GameObject colorRoom in colorRooms)
+                        {
+                            colorRoom.GetComponent<ColorRoom>().ChangeRoomColor(color);
+                        }
+
+                        while (intensity > 0)
+                        {
+                            // Interpolate the tint value from startTint to endTint
+                            Color currentTint = Color.Lerp(startTint, endTint, intensity);
+                            chrome.intensity.value = intensity;
+                            bloomLayer.intensity.value = intensity * bloomMultiplier;
+                            bloomLayer.tint.value = currentTint;
+
+                            //chrome.intensity.value = intensity;
+                            //bloomLayer.threshold.value = 0.7f;
+                            //bloomLayer.tint.value = new Color(255f / 255f, 255f / 255f, 255f / 255f);
+
+                            intensity -= 6 * Time.deltaTime;
+                            yield return new WaitForSeconds(0.01f);
+                        }
+
+                        bloomLayer.tint.value = endTint;
+                        bloomLayer.intensity.value = 0f;
+                        chrome.intensity.value = 0f;
+                    }
+                }
+            }
+            changingScene = false;
+        }
     }
 
     public void ResetRoom()

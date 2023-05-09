@@ -1693,7 +1693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1205830044}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &492309159
@@ -1797,7 +1797,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2038377474725852455, guid: 2292989c6474f6f48adb37f59e6f7414, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2038377474725852455, guid: 2292989c6474f6f48adb37f59e6f7414, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2880,7 +2880,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2399668344293856795, guid: 029653578e7a9bb4497c57be705ac816, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2399668344293856795, guid: 029653578e7a9bb4497c57be705ac816, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3205,7 +3205,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6122945602649536117, guid: cda165dc0cf1b88419f46bf4a6ea2d36, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6122945602649536117, guid: cda165dc0cf1b88419f46bf4a6ea2d36, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3284,6 +3284,11 @@ PrefabInstance:
 --- !u!224 &1205830043 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6122945602649536117, guid: cda165dc0cf1b88419f46bf4a6ea2d36, type: 3}
+  m_PrefabInstance: {fileID: 1205830042}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1205830044 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 195604064820692306, guid: cda165dc0cf1b88419f46bf4a6ea2d36, type: 3}
   m_PrefabInstance: {fileID: 1205830042}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1228595255
@@ -4245,9 +4250,9 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 598196401}
-  - {fileID: 1205830043}
   - {fileID: 1017564717}
   - {fileID: 509531579}
+  - {fileID: 1205830043}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

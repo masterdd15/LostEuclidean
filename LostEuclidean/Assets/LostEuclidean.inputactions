@@ -1018,6 +1018,12 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "EmptyControls",
+            "id": "365b4cdc-32cd-4707-8113-a9bfe926f20f",
+            "actions": [],
+            "bindings": []
         }
     ],
     "controlSchemes": [
