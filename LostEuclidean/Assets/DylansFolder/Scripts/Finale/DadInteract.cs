@@ -12,11 +12,13 @@ public class DadInteract : Interactable
     private AnimatorController controller;
 
     private Animator animator;
+    private Transform characterModel;
     
 
     public override void Start()
     {
         playerObj = GameObject.FindGameObjectWithTag("Player");
+        characterModel = playerObj.transform.Find("Character Model").transform;
         animator = playerObj.GetComponentInChildren<Animator>();
         base.Start();
     }
@@ -40,6 +42,7 @@ public class DadInteract : Interactable
         playerObj.transform.Rotate(0,-90,0);
 
         //Now play the animation
+        characterModel.localPosition = Vector3.zero;
         animator.runtimeAnimatorController = controller;
 
         //Playing the music
