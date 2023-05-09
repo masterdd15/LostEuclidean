@@ -37,6 +37,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioClip blueDimensionMusic;
 
     [Header("Finale Music")]
+    [SerializeField] AudioSource _finaleSource;
     [SerializeField] AudioClip finaleMusic;
 
     [Header("Sound FX")]
@@ -253,6 +254,11 @@ public class AudioManager : MonoBehaviour
 
     IEnumerator FinaleAudio()
     {
+        float waitTime = _finaleSource.clip.length;
+        _finaleSource.Play();
+        yield return new WaitForSecondsRealtime(waitTime);
+        Debug.Log("Music is over!!!");
+        GameManager.Instance.ChangeScene("ProtoMenu", " ", LightColor.Off);
         yield return null;
     }
 
@@ -278,8 +284,16 @@ public class AudioManager : MonoBehaviour
         StartCoroutine(TransitionMusic(LightColor.Off));
     }
 
+    //We start the finale music
+    //We also return the time it takes for the music to end
     public void HandleFinaleMusic()
     {
+        //_finaleSource.clip = finaleMusic;
+        //_finaleSource.PlayOneShot(finaleMusic);
 
+        _finaleSource.clip = finaleMusic;
+        _finaleSource.volume = 1;
+        StartCoroutine(FinaleAudio());
+        //return finaleMusic.length;
     }
 }

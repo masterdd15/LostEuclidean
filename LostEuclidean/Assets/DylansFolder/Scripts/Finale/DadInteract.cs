@@ -37,6 +37,7 @@ public class DadInteract : Interactable
         //playerObj.GetComponentInChildren<Animator>().SetLayerWeight(1, 1);
 
         //Playing the music
+        AudioManager.Instance.HandleFinaleMusic();
 
         yield return null;
     }
