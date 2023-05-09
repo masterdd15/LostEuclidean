@@ -71,6 +71,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator LoadNewScene(string sceneName, string doorName, LightColor color)
     {
+        Debug.Log(sceneName + " " + changingScene);
         if (!changingScene)
         {
             changingScene = true;
