@@ -73,7 +73,6 @@ public class ProtoMenuLogic : MonoBehaviour
     {
         // Load the saved scene index from PlayerPrefs
         int savedSceneIndex = PlayerPrefs.GetInt("CurrentSceneIndex");
-
         // Load the saved scene
         SceneManager.LoadScene(savedSceneIndex);
     }
