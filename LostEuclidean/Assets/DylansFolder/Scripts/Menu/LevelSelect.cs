@@ -7,6 +7,7 @@ public class LevelSelect : MonoBehaviour
 {
     GameManager gm;
     [SerializeField] string levelName;
+    [SerializeField] LightColor levelColor;
 
     // Start is called before the first frame update
     private void Awake()
@@ -27,7 +28,8 @@ public class LevelSelect : MonoBehaviour
 
     public void OpenScene()
     {
-        gm.HasWonOn();
-        SceneManager.LoadScene(levelName);
+        //gm.HasWonOn();
+        //SceneManager.LoadScene(levelName);
+        GameManager.Instance.ChangeScene(levelName, "Entrance", levelColor);
     }
 }
