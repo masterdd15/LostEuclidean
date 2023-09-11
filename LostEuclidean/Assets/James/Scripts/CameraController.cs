@@ -64,6 +64,8 @@ public class CameraController : MonoBehaviour
 
     public void RotateCamera(float direction, bool fast)
     {
+        Debug.Log("ROTATING CAM");
+
         StartCoroutine(CameraRotatingCoroutine(direction, fast));
     }
 

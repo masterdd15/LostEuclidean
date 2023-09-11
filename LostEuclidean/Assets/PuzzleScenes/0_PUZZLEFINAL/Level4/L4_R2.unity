@@ -372,7 +372,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &90031545
 PrefabInstance:
@@ -900,6 +900,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ortho Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 2915566448870680948, guid: a34defe71ee85e04fad803995f1c189c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2915566448870680950, guid: a34defe71ee85e04fad803995f1c189c, type: 3}
       propertyPath: m_ClearFlags
       value: 2
@@ -1046,7 +1050,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &492309160
 MonoBehaviour:
@@ -1286,7 +1290,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1025256635
 PrefabInstance:
@@ -1492,7 +1496,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7340790340623683020, guid: fc265c59d21699947a9c4f2550b9e162, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7340790340623683020, guid: fc265c59d21699947a9c4f2550b9e162, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1694,6 +1698,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df02d59add2187b41a9b0ec4c6a3cae0, type: 3}
+--- !u!1001 &1452951666
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7472984407582854427, guid: 7a4476a63e26ebe4786ba96beecec8ef, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7472984407582854427, guid: 7a4476a63e26ebe4786ba96beecec8ef, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.34066
+      objectReference: {fileID: 0}
+    - target: {fileID: 7472984407582854427, guid: 7a4476a63e26ebe4786ba96beecec8ef, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 18.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7472984407582854427, guid: 7a4476a63e26ebe4786ba96beecec8ef, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.4833007
+      objectReference: {fileID: 0}
+    - target: {fileID: 7472984407582854427, guid: 7a4476a63e26ebe4786ba96beecec8ef, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6532815
+      objectReference: {fileID: 0}
+    - target: {fileID: 7472984407582854427, guid: 7a4476a63e26ebe4786ba96beecec8ef, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.6532815
+      objectReference: {fileID: 0}
+    - target: {fileID: 7472984407582854427, guid: 7a4476a63e26ebe4786ba96beecec8ef, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.27059805
+      objectReference: {fileID: 0}
+    - target: {fileID: 7472984407582854427, guid: 7a4476a63e26ebe4786ba96beecec8ef, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.27059805
+      objectReference: {fileID: 0}
+    - target: {fileID: 7472984407582854427, guid: 7a4476a63e26ebe4786ba96beecec8ef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7472984407582854427, guid: 7a4476a63e26ebe4786ba96beecec8ef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7472984407582854427, guid: 7a4476a63e26ebe4786ba96beecec8ef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -45
+      objectReference: {fileID: 0}
+    - target: {fileID: 7472984407582854430, guid: 7a4476a63e26ebe4786ba96beecec8ef, type: 3}
+      propertyPath: m_Name
+      value: Follow Camera
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7a4476a63e26ebe4786ba96beecec8ef, type: 3}
 --- !u!1001 &1481187430
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1966,7 +2027,7 @@ RectTransform:
   - {fileID: 97322007}
   - {fileID: 139255783}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2534,7 +2595,7 @@ Transform:
   - {fileID: 650553786}
   - {fileID: 1629324574}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2124588157
 PrefabInstance:
