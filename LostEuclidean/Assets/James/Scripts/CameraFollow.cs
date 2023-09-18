@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class CameraFollow : CameraController
 {
+    [SerializeField] Vector3 cameraOffset;
     Player player;
+    Transform camFollow;
 
     private void Start()
     {
         player = GameObject.FindObjectOfType<Player>();
+        camFollow = player.transform.Find("Camera Follow");
     }
 
     private void Update()
     {
-        Vector3 newPos = player.transform.position;
-        newPos.y = transform.position.y;
-
+        Vector3 newPos = camFollow.position + cameraOffset;
         transform.position = newPos;
+
+        transform.LookAt(camFollow);
     }
 
     public new void RotateCamera(float direction, bool fast)

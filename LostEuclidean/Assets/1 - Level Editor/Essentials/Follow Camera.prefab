@@ -159,3 +159,4 @@ MonoBehaviour:
   camTarget: {fileID: 0}
   wallParent: {fileID: 0}
   cameraSpeed: 0
+  cameraOffset: {x: -6, y: 10, z: -6}

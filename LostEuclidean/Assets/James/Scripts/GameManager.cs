@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour
         if (!changingScene)
         {
             changingScene = true;
+            Debug.Log(sceneName + " - " + SceneManager.GetActiveScene().name);
             if (sceneName != SceneManager.GetActiveScene().name)
             {
                 // Fade out

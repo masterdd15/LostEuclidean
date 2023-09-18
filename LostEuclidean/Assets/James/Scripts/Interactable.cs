@@ -14,7 +14,7 @@ public class Interactable : MonoBehaviour
 
     public bool hidden;
 
-    [SerializeField] Collider colliderMesh;
+    [SerializeField] public Collider colliderMesh;
 
     public virtual void Start()
     {
