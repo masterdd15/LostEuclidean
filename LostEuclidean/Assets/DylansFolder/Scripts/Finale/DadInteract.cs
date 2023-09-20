@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.Animations;
+//using UnityEditor.Animations;
 
 public class DadInteract : Interactable
 {
@@ -9,7 +9,7 @@ public class DadInteract : Interactable
     public GameObject dadObj;
     [SerializeField] private float speed;
     [SerializeField]
-    private AnimatorController controller;
+    private RuntimeAnimatorController controller;
 
     private Animator animator;
     private Transform characterModel;
