@@ -18,12 +18,12 @@ struct CustomLightingData
 float GetSmoothnessPower(float rawSmoothness)
 {
 	return exp2(10 * rawSmoothness + 1);
-}
+} 
 
 #ifndef SHADERGRAPH_PREVIEW
 float3 CustomLightHandling(CustomLightingData d, Light light)
 {
-	float3 radiance = light.color * light.shadowAttenuation;
+	float3 radiance = light.color * (light.distanceAttenuation * light.shadowAttenuation);
 	
 	float diffuse = saturate(dot(d.normalWS, light.direction));
 	float specularDot = saturate(dot(d.normalWS, normalize(light.direction + d.viewDirectionWS)));
@@ -50,6 +50,16 @@ float3 CalculateCustomLighting(CustomLightingData d)
 	float3 color = 0;
 	//Shade the main light
 	color += CustomLightHandling(d, mainlight);
+
+	#ifdef _ADDITIONAL_LIGHTS
+		//Shade additional cone and point lights. Functions in URP/ShaderLibrary/Lighting.hlsl
+		uint numAdditionalLights = GetAdditionalLightsCount();
+		for(uint lightI = 0; lightI < numAdditionalLights; lightI++)
+		{
+			Light light = GetAdditionalLight(lightI, d.positionWS, 1);
+			color += CustomLightHandling(d, light);
+		}
+	#endif
 
 	return color;
 #endif

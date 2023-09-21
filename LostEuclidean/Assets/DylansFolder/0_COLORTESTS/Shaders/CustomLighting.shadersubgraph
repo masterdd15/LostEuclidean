@@ -21,6 +21,9 @@
             "m_Id": "b878bcf3424b4b77ad9cef45266fd17e"
         },
         {
+            "m_Id": "b423315e87c141738ceacc5a474d9839"
+        },
+        {
             "m_Id": "6666802c1201426db6181e30ec556f33"
         }
     ],
@@ -430,6 +433,9 @@
         },
         {
             "m_Id": "b878bcf3424b4b77ad9cef45266fd17e"
+        },
+        {
+            "m_Id": "b423315e87c141738ceacc5a474d9839"
         }
     ]
 }
@@ -758,6 +764,30 @@
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.ShaderKeyword",
+    "m_ObjectId": "b423315e87c141738ceacc5a474d9839",
+    "m_Guid": {
+        "m_GuidSerialized": "7560976a-5624-4d23-b39d-c26b28c309c9"
+    },
+    "m_Name": "AdditionalLight",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "AdditionalLight",
+    "m_DefaultReferenceName": "_ADDITIONALLIGHT",
+    "m_OverrideReferenceName": "_ADDITIONAL_LIGHTS",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_KeywordType": 0,
+    "m_KeywordDefinition": 1,
+    "m_KeywordScope": 1,
+    "m_KeywordStages": 63,
+    "m_Entries": [],
+    "m_Value": 1,
+    "m_IsEditable": true
 }
 
 {
